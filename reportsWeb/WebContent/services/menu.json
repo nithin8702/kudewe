@@ -1,0 +1,3 @@
+
+
+{"items":[{"name":"Ventas","dashBoardUrl":"","items":[{"name":"Ventas Anuales","dashBoardUrl":"sales/yearly"},{"name":"Por Marca","dashBoardUrl":"sales/brand"},{"name":"Comparar marcas","dashBoardUrl":"sales/compareBrand"},{"name":"Ventas vs Stock","dashBoardUrl":"sales/vsStock"}]},{"name":"Stock","dashBoardUrl":"","items":[{"name":"Stock Anual","dashBoardUrl":"stock/yearly"},{"name":"Por Marca","dashBoardUrl":"stock/brand"}]}]}
