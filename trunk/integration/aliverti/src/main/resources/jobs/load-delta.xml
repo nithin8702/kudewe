@@ -43,6 +43,25 @@
 	    </property>
 	</bean>
 	
+	<bean id="ftStockReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	    <property name="dataSource" ref="dataSourceAliverti"/>
+	    <property name="sql" 
+	    	value="select p.sku,
+	    				  p.costo_p as costo,
+	    				  p.stock,
+	    				  p.stock_xxs,
+	    				  p.stock_xs,
+	    				  p.stock_s,
+	    				  p.stock_m,
+	    				  p.stock_l,
+	    				  p.stock_xl,
+	    				  p.stock_xxl
+	    		   from oha_prod p"/>
+	    <property name="rowMapper">
+	        <bean class="kdw.aliverti.mapper.ReadFtStockMapper"/>
+	    </property>
+	</bean>
+	
 	<bean id="lkProductWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
 	    <property name="resource" ref="lkProductResource" />
 	    <property name="headerCallback" ref="lkProductHeader" />
@@ -81,7 +100,22 @@
 				<property name="format" value="&quot;%1$s&quot;,&quot;%2$s&quot;,%3$s,%4$s,%5$s" />
 				<property name="fieldExtractor">
 					<bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
-						<property name="names" value="date.id,product.id,price,cost,quantity"/>					
+						<property name="names" value="product.id,date.id,quantity,price,cost"/>					
+					</bean>
+				</property>
+			</bean>
+	    </property>
+	</bean>
+	
+	<bean id="ftStockWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+	    <property name="resource" ref="ftStockResource" />
+	    <property name="headerCallback" ref="ftStockHeader" />
+	    <property name="lineAggregator">
+	        <bean class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+				<property name="format" value="&quot;%1$s&quot;,&quot;%2$s&quot;,%3$s,%4$s" />
+				<property name="fieldExtractor">
+					<bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="product.id,date.id,quantity,cost"/>					
 					</bean>
 				</property>
 			</bean>
@@ -91,25 +125,27 @@
 	<bean id="lkProductResource" class="org.springframework.core.io.FileSystemResource">
 		<constructor-arg value="${batch.output.lkProduct}" />	
 	</bean>
-	
 	<bean id="lkTimeResource" class="org.springframework.core.io.FileSystemResource">
 		<constructor-arg value="${batch.output.lkTime}" />	
 	</bean>
-	
 	<bean id="ftSalesResource" class="org.springframework.core.io.FileSystemResource">
 		<constructor-arg value="${batch.output.ftSales}" />	
+	</bean>
+	<bean id="ftStockResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="${batch.output.ftStock}" />	
 	</bean>
 	
 	<bean id="lkProductHeader" class="kdw.aliverti.header.FlatFileHeader">
 		<property name="header" value="&quot;product_id&quot;,&quot;product_name&quot;,&quot;brand_id&quot;,&quot;brand_name&quot;,&quot;category_id&quot;,&quot;category_level1_name&quot;,&quot;category_level2_name&quot;,&quot;category_level3_name&quot;" />
 	</bean>
-	
 	<bean id="lkTimeHeader" class="kdw.aliverti.header.FlatFileHeader">
 		<property name="header" value="&quot;date_id&quot;,&quot;year&quot;,&quot;quarter&quot;,&quot;month&quot;,&quot;month_name&quot;,&quot;day_in_month&quot;,&quot;day_name&quot;" />
 	</bean>
-	
 	<bean id="ftSalesHeader" class="kdw.aliverti.header.FlatFileHeader">
 		<property name="header" value="&quot;product_id&quot;,&quot;date_id&quot;,&quot;quantity&quot;,&quot;sale_peso&quot;,&quot;cost_peso&quot;" />
+	</bean>
+	<bean id="ftStockHeader" class="kdw.aliverti.header.FlatFileHeader">
+		<property name="header" value="&quot;product_id&quot;,&quot;date_id&quot;,&quot;quantity&quot;,&quot;cost_peso&quot;" />
 	</bean>
 	
 	<bean id="legacyStep"
@@ -122,6 +158,11 @@
 	</bean>
 	
 	<job id="loadDaily" xmlns="http://www.springframework.org/schema/batch">
+		<step id="ftStock" parent="legacyStep" next="lkTime">
+			<tasklet>
+				<chunk reader="ftStockReader" writer="ftStockWriter" />
+			</tasklet>
+		</step>
 		<step id="lkTime" parent="legacyStep" next="lkProduct">
 			<tasklet>
 				<chunk reader="lkTimeReader" writer="lkTimeWriter" />
@@ -137,6 +178,7 @@
 				<chunk reader="ftSalesReader" writer="ftSalesWriter" />
 			</tasklet>
 		</step>
+		
 	</job>
 	
 </beans>
