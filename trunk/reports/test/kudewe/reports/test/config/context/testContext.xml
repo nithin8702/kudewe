@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- Constantes -->
+    <bean id="filterQuery" class="java.lang.String">
+    	<constructor-arg value="WITH MEMBER [Measures].[one] AS '1' SELECT {[Measures].[one]} ON COLUMNS, {[Brand].members} on rows FROM [Sales]"/>
+    </bean>
+    <bean id="connectionString" class="java.lang.String">
+    	<constructor-arg value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/data/test/mondrian/cube_sales.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:/home/fer/workspace/kudewe/data/test/hsqldb/testdb;jdbcUser=sa;jdbcPassword=;"/>
+    </bean>
+    
+    <!-- Repositories/url mapper -->
+    <bean id="urlMapperTest" class="kudewe.reports.repository.filesystem.UrlMapperFileSystem">
+    	<property name="repositoryBasePath" value="root/${tenant}/metadata/"></property>
+    	<property name="securityContext" ref="securityContext"></property>
+    </bean>
+    
+    <!-- Security -->
+    <bean id="securityContext" class="kudewe.reports.mock.cross.SecurityContextTest">
+    </bean>
+</beans>

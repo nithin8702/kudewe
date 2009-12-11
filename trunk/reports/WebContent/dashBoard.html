@@ -1,0 +1,95 @@
+<html>
+<head>
+  <title>Kudewe Reports</title>
+    <!-- ** CSS ** -->
+    <!-- base library -->
+    <link rel="stylesheet" type="text/css" href="lib/ext-3.0.0/resources/css/ext-all.css" />
+
+    <!-- overrides to base library -->
+    <link rel="stylesheet" type="text/css" href="lib/ext-3.0.0/examples/ux/css/Portal.css" />
+    
+    
+    <!-- ** Javascript ** -->
+    <!-- ExtJS library: base/adapter -->
+ 	<script type="text/javascript" src="lib/ext-3.0.0/adapter/ext/ext-base-debug.js"></script>
+	
+ 	<!-- ExtJS library: all widgets -->
+    <script type="text/javascript" src="lib/ext-3.0.0/ext-all-debug.js"></script>
+	
+	<!-- extensions -->
+    <script type="text/javascript" src="lib/ext-3.0.0/examples/ux/Portal.js"></script>
+    <script type="text/javascript" src="lib/ext-3.0.0/examples/ux/PortalColumn.js"></script>
+    <script type="text/javascript" src="lib/ext-3.0.0/examples/ux/Portlet.js"></script>
+	
+	<!-- libs -->
+	<script type="text/javascript" src="lib/tibco/pagebus.js"></script>
+	<script type="text/javascript" src="lib/ui/buildDashBoard.js"></script>
+	<script type="text/javascript" src="lib/ui/buildView.js"></script>
+	<script type="text/javascript" src="lib/ui/buildFilter.js"></script>
+	
+	<style type="text/css">
+	html, body
+	{
+        font:normal 12px verdana;
+        margin:0;
+        padding:0;
+        border:0 none;
+        overflow:hidden;
+        height:100%;
+    }
+    </style>
+	<script type="text/javascript">
+	
+    Ext.onReady(function(){
+
+        // NOTE: This is an example showing simple state management. During development,
+        // it is generally best to disable state management as dynamically-generated ids
+        // can change across page loads, leading to unpredictable results.  The developer
+        // should ensure that stable state ids are set for stateful components in real apps.
+        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+
+		// Get query string
+		var queryString = Ext.urlDecode(window.location.search.substring(1));
+		
+		// Get dash board definition and build it
+		Ext.Ajax.request({
+			url: 'metadata/' + queryString.dashBoard + '.json' , 
+			params: {},
+			method: 'GET',
+			success: function (result, request) { 
+				var dashBoard = Ext.util.JSON.decode(result.responseText);
+
+				var viewport = new Ext.Viewport({
+					layout: 'border',
+					items:[{
+						region: 'east',
+						title: 'Filtros',
+						collapsible: true,
+						split:true,
+						width: 225,
+						minSize: 175,
+						maxSize: 400,
+						margins:'0 5 0 0',
+						layout:'anchor',
+			            layoutConfig:{
+			                animate:true
+			            },
+						items: buildFilters(dashBoard)
+					}, buildDashBoard(dashBoard)
+					]
+			    });
+						
+			},
+			failure: function ( result, request) { 
+				Ext.MessageBox.alert('Failed', result.responseText); 
+			} 
+		});
+
+    });
+
+	</script>
+</head>
+<body>
+<div id="panelDebugPagebus"></div>
+</body>
+</html>
