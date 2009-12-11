@@ -1,0 +1,114 @@
+<html>
+<head>
+  <title>ToclaSaas Olap Dashboard</title>
+    <!-- ** CSS ** -->
+    <!-- base library -->
+    <link rel="stylesheet" type="text/css" href="../lib/ext-3.0.0/resources/css/ext-all.css" />
+
+    <!-- overrides to base library -->
+    <link rel="stylesheet" type="text/css" href="../lib/ext-3.0.0/examples/ux/css/Portal.css" />
+    
+    
+    <!-- ** Javascript ** -->
+    <!-- ExtJS library: base/adapter -->
+ 	<script type="text/javascript" src="../lib/ext-3.0.0/adapter/ext/ext-base-debug.js"></script>
+	
+ 	<!-- ExtJS library: all widgets -->
+    <script type="text/javascript" src="../lib/ext-3.0.0/ext-all-debug.js"></script>
+	
+	<!-- extensions -->
+    <script type="text/javascript" src="../lib/ext-3.0.0/examples/ux/Portal.js"></script>
+    <script type="text/javascript" src="../lib/ext-3.0.0/examples/ux/PortalColumn.js"></script>
+    <script type="text/javascript" src="../lib/ext-3.0.0/examples/ux/Portlet.js"></script>
+	
+	<!-- libs -->
+	<script type="text/javascript" src="../lib/tibco/pagebus.js"></script>
+	<script type="text/javascript" src="../lib/ui/buildDashBoard.js"></script>
+	
+	<style type="text/css">
+	html, body
+	{
+        font:normal 12px verdana;
+        margin:0;
+        padding:0;
+        border:0 none;
+        overflow:hidden;
+        height:100%;
+    }
+    </style>
+	<script type="text/javascript">
+    Ext.onReady(function(){
+
+        // NOTE: This is an example showing simple state management. During development,
+        // it is generally best to disable state management as dynamically-generated ids
+        // can change across page loads, leading to unpredictable results.  The developer
+        // should ensure that stable state ids are set for stateful components in real apps.
+        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+
+		// Get dash board definition and build it
+		var dashBoard = {
+			"filters":[
+				{"name":"brand","url":"sales/product/filter/brand","label":"Marca"},
+				{"name":"month","url":"sales/product/filter/month","label":"Mes"}
+			],"views":[{
+				"name":"productsByMonth",
+				"url":"sales/product/view/productsByMonth",
+				"look":{
+					"lookType":"ext.grid",
+					title: 'Productos por Mes',
+					"width":400,
+					"height":200,
+					"fields":["Product","SalePrice","Quantity"],
+					"columns":[
+						{"header":"Product","dataIndex":"Product"},
+						{"header":"Precio Venta $","dataIndex":"SalePrice"},
+						{"header":"Cantidad","dataIndex":"Quantity"}
+					]
+				}
+			},{
+				"name":"salesYearly",
+				"url":"sales/product/view/salesYearly",
+				"look": {
+					lookType: "ext.graph",
+					title: 'Ventas Anuales',
+					width:300,
+					height:300,
+					xtype: 'linechart',
+					xField: 'Time',
+					fields: ['Time', 'SalePrice', 'Quantity'],
+					series: [
+						{type: 'column', displayName: 'Precio', yField: 'SalePrice'},
+						{type:'line', displayName: 'Cantidad', yField: 'Quantity'}
+					]
+				}
+			}]
+		};
+    
+		var viewport = new Ext.Viewport({
+			layout: 'border',
+			items:[{
+				region: 'east',
+				title: 'Filtros',
+				collapsible: true,
+				split:true,
+				width: 225,
+				minSize: 175,
+				maxSize: 400,
+				margins:'0 5 0 0',
+				layout:'anchor',
+	            layoutConfig:{
+	                animate:true
+	            },
+				items: buildFilters(dashBoard)
+			}, buildDashBoard(dashBoard)
+			]
+	    });
+
+    });
+
+	</script>
+</head>
+<body>
+<div id="panelDebugPagebus"></div>
+</body>
+</html>

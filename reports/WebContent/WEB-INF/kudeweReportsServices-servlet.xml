@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+    <!-- Mappers -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="alwaysUseFullPath" value="true"/>
+        <property name="mappings">
+            <props>
+            	<prop key="/metadata/menu.json">olapMenuDefinitionController</prop>
+            	<prop key="/metadata/**/*.json">olapDashBoardDefinitionController</prop>
+            	<prop key="/olap/**/filter/*.json">olapFilterController</prop>
+            	<prop key="/olap/**/view/*.json">olapViewController</prop>
+            	<!-- <prop key="/metadata/test/dashBoard.json">olapDashBoardDefinitionTestController</prop> -->
+            </props>
+        </property>
+    </bean>
+    
+    <!-- Controllers -->
+    <bean id="olapFilterController" class="kudewe.reports.mvc.controller.OlapFilterController">
+    	<property name="olapService" ref="olapService"/>
+    </bean>
+	<bean id="olapViewController" class="kudewe.reports.mvc.controller.OlapViewController">
+    	<property name="olapService" ref="olapService"/>
+    	<property name="olapResultAdapter" ref="olapResultAdapter"/>
+    </bean>
+    <bean id="olapDashBoardDefinitionController" class="kudewe.reports.mvc.controller.OlapDashBoardDefinitionController">
+    	<property name="olapService" ref="olapService"/>
+    	<property name="lookDefinitionIterator" ref="lookDefinitionIterator"/>
+    </bean>
+    <!--
+    <bean id="olapDashBoardDefinitionTestController" class="kudewe.reports.mvc.controller.OlapDashBoardDefinitionTestController">
+    	<property name="lookDefinitionIterator" ref="lookDefinitionIterator"/>
+    </bean>
+     -->
+	<bean id="olapMenuDefinitionController" class="kudewe.reports.mvc.controller.OlapMenuDefinitionController">
+    	<property name="olapService" ref="olapService"/>
+    </bean>
+    
+	<!-- views -->
+	<bean id="olapResultAdapter" class="kudewe.reports.mvc.view.OlapResultAdapter"/>
+	<bean id="lookDefinitionIterator" class="kudewe.reports.mvc.view.LookDefinitionIterator"/>
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd"> 
+	<http auto-config='true'>
+		<concurrent-session-control max-sessions="1" exception-if-maximum-exceeded="false"/>
+		<intercept-url pattern="/**" access="ROLE_USER" />
+		<intercept-url pattern="/login.jsp" filters="none" />
+		<form-login login-page="/login.jsp" 
+			authentication-failure-url="/login.jsp?login_error=1" 
+			always-use-default-target="false"
+			login-processing-url="/login_check"/>
+		<logout logout-url="/logout" logout-success-url="/login.jsp" />
+	</http>
+	<authentication-provider>
+    	<user-service>
+      		<user name="fer" password="fer" authorities="ROLE_USER, ROLE_ADMIN" />
+      		<user name="rober" password="rober" authorities="ROLE_USER" />
+      		<user name="aliverti" password="aliverti" authorities="ROLE_USER" />
+      		<user name="google" password="google" authorities="ROLE_USER" />
+    	</user-service>
+  	</authentication-provider>
+  	<!-- Security -->
+    <beans:bean id="securityContext" class="kudewe.reports.cross.spring.SecurityContextSpring">
+    </beans:bean>
+</beans:beans>
