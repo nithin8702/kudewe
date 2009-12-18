@@ -15,17 +15,17 @@
 	
 	<bean id="jobRepository"
 		class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean"
-		p:dataSource-ref="dataSource" p:transactionManager-ref="transactionManager" />
+		p:dataSource-ref="dataSourceBatchRepository" p:transactionManager-ref="transactionManager" />
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="${batch.jdbc.driver}" />
-		<property name="url" value="${batch.jdbc.url}" />
-		<property name="username" value="${batch.jdbc.user}" />
-		<property name="password" value="${batch.jdbc.password}" />
+	<bean id="dataSourceBatchRepository" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${batch.repository.jdbc.driver}" />
+		<property name="url" value="${batch.repository.jdbc.url}" />
+		<property name="username" value="${batch.repository.jdbc.user}" />
+		<property name="password" value="${batch.repository.jdbc.password}" />
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="true">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="dataSourceBatchRepository" />
 	</bean>
 
 	<bean id="placeholderProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -37,8 +37,8 @@
 
 	<!-- Initialize the datasource - remove this bean definition for production use! -->
 	<bean id="dataSourceInitializer" class="test.jdbc.datasource.DataSourceInitializer">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="initScripts" value="${batch.schema.script}"/>
+		<property name="dataSource" ref="dataSourceBatchRepository"/>
+		<property name="initScripts" value="${batch.repository.schema.script}"/>
 	</bean>
 
 </beans>

@@ -5,9 +5,23 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<description>Job for load delta information from legacy system</description>
-
+	
+	<!-- Readers -->
+	<bean id="cleanTableReader" class="kdw.aliverti.reader.TableReader">
+	    <property name="tables">
+	    	<list>
+	            <value>ft_stock</value>
+	            <!-- 
+	            <value>ft_sales</value>
+	            <value>lk_product</value>
+	            <value>lk_time</value>
+	             -->
+          </list>
+	    </property>
+	</bean>
+	
 	<bean id="lkProductReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
-	    <property name="dataSource" ref="dataSourceAliverti"/>
+	    <property name="dataSource" ref="dataSourceInputAliverti"/>
 	    <property name="sql" 
 	    	value="select p.sku, p.nombre as p_nombre, 
 	    				  m.id_marca, m.nombre as m_nombre,
@@ -29,7 +43,7 @@
 	</bean>
 	
 	<bean id="ftSalesReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
-	    <property name="dataSource" ref="dataSourceAliverti"/>
+	    <property name="dataSource" ref="dataSourceInputAliverti"/>
 	    <property name="sql" 
 	    	value="select ri.sku,
 	    				  ri.costo,
@@ -44,7 +58,7 @@
 	</bean>
 	
 	<bean id="ftStockReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
-	    <property name="dataSource" ref="dataSourceAliverti"/>
+	    <property name="dataSource" ref="dataSourceInputAliverti"/>
 	    <property name="sql" 
 	    	value="select p.sku,
 	    				  p.costo_p as costo,
@@ -62,6 +76,66 @@
 	    </property>
 	</bean>
 	
+	<!-- Writters -->
+	<bean id="cleanTableWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" value="DELETE FROM :name"/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="lkProductWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO lk_product (product_id, product_name, brand_id, brand_name, category_id, category_level1_name, category_level2_name, category_level3_name)
+				   values (:id, :name, :brand.id, :brand.name, :category3.id, :category1.name, :category2.name, :category3.name)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="lkTimeWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO lk_time (date_id, year, quarter, month, month_name, day_in_month, day_name)
+				   values (:id, :year, :quarter, :month, :monthName, :day, :dayName)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="ftSalesWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO ft_sales (product_id, date_id, quantity, sale_peso, cost_peso)
+				   values (:product.id, :date.id, :quantity, :price, :cost)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="ftStockWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO ft_stock (product_id, date_id, quantity, cost_peso)
+				   values (:product.id, :date.id, :quantity, :cost)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<!-- Flat file writers -->
+	<!--
 	<bean id="lkProductWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
 	    <property name="resource" ref="lkProductResource" />
 	    <property name="headerCallback" ref="lkProductHeader" />
@@ -121,6 +195,9 @@
 			</bean>
 	    </property>
 	</bean>
+	-->
+	
+	<!-- Resources -->
 	
 	<bean id="lkProductResource" class="org.springframework.core.io.FileSystemResource">
 		<constructor-arg value="${batch.output.lkProduct}" />	
@@ -135,6 +212,7 @@
 		<constructor-arg value="${batch.output.ftStock}" />	
 	</bean>
 	
+	<!-- File Headers definition -->
 	<bean id="lkProductHeader" class="kdw.aliverti.header.FlatFileHeader">
 		<property name="header" value="&quot;product_id&quot;,&quot;product_name&quot;,&quot;brand_id&quot;,&quot;brand_name&quot;,&quot;category_id&quot;,&quot;category_level1_name&quot;,&quot;category_level2_name&quot;,&quot;category_level3_name&quot;" />
 	</bean>
@@ -148,37 +226,46 @@
 		<property name="header" value="&quot;product_id&quot;,&quot;date_id&quot;,&quot;quantity&quot;,&quot;cost_peso&quot;" />
 	</bean>
 	
+	<!-- Common definitions for all steps -->
 	<bean id="legacyStep"
 		class="org.springframework.batch.core.step.item.SimpleStepFactoryBean"
 		abstract="true">
-		<property name="transactionManager" ref="transactionManagerAliverti" />
+		<property name="transactionManager" ref="transactionManagerOutputKudewe" />
 		<property name="jobRepository" ref="jobRepository" />
 		<property name="startLimit" value="100" />
-		<property name="commitInterval" value="1" />
+		<property name="commitInterval" value="10" />
 	</bean>
 	
+	<!-- Job definition -->
 	<job id="loadDaily" xmlns="http://www.springframework.org/schema/batch">
-		<step id="ftStock" parent="legacyStep" next="lkTime">
+		<!--
+		<step id="cleanTable" parent="legacyStep">
 			<tasklet>
-				<chunk reader="ftStockReader" writer="ftStockWriter" />
+				<chunk reader="cleanTableReader" writer="cleanTableWriter" />
 			</tasklet>
 		</step>
+		-->
 		<step id="lkTime" parent="legacyStep" next="lkProduct">
 			<tasklet>
 				<chunk reader="lkTimeReader" writer="lkTimeWriter" />
 			</tasklet>
 		</step>
+		
 		<step id="lkProduct" parent="legacyStep" next="ftSales">
 			<tasklet>
 				<chunk reader="lkProductReader" writer="lkProductWriter" />
 			</tasklet>
 		</step>
-		<step id="ftSales" parent="legacyStep">
+		<step id="ftSales" parent="legacyStep" next="ftStock">
 			<tasklet>
 				<chunk reader="ftSalesReader" writer="ftSalesWriter" />
 			</tasklet>
 		</step>
-		
+		<step id="ftStock" parent="legacyStep">
+			<tasklet>
+				<chunk reader="ftStockReader" writer="ftStockWriter" />
+			</tasklet>
+		</step>
 	</job>
 	
 </beans>
