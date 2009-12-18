@@ -7,8 +7,7 @@
 	<packaging>jar</packaging>
 	<name>Commandline</name>
 	<url>http://www.springframework.org/spring-batch/archetypes/simple-cli-archetype</url>
-	<description>    This project is a minimal command line batch sample from      Spring Batch.  Once installed you can use "mvn exec:java" to       see the job run; or if you ship the lib directory you can put      the project jar on the classpath and run the      CommandLineJobRunner directly or with "java -jar".
-  </description>
+	<description>This project is an integration from a client legacy application to kudewe reports.</description>
 	<properties>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<spring.framework.version>2.5.6</spring.framework.version>
@@ -105,6 +104,11 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.5.4</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.10</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -4,15 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 	
-	<bean id="dataSourceAliverti" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="${batch.aliverti.jdbc.driver}" />
-		<property name="url" value="${batch.aliverti.jdbc.url}" />
-		<property name="username" value="${batch.aliverti.jdbc.user}" />
-		<property name="password" value="${batch.aliverti.jdbc.password}" />
+	<bean id="dataSourceInputAliverti" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${batch.input.aliverti.jdbc.driver}" />
+		<property name="url" value="${batch.input.aliverti.jdbc.url}" />
+		<property name="username" value="${batch.input.aliverti.jdbc.username}" />
+		<property name="password" value="${batch.input.aliverti.jdbc.password}" />
 	</bean>
 	
-	<bean id="transactionManagerAliverti" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="true">
-		<property name="dataSource" ref="dataSourceAliverti" />
+	<bean id="dataSourceOutputKudewe" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${batch.output.kudewe.jdbc.driver}" />
+		<property name="url" value="${batch.output.kudewe.jdbc.url}" />
+		<property name="username" value="${batch.output.kudewe.jdbc.username}" />
+		<property name="password" value="${batch.output.kudewe.jdbc.password}" />
+	</bean>
+	
+	<bean id="transactionManagerOutputKudewe" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="true">
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
 	</bean>
 
 </beans>
