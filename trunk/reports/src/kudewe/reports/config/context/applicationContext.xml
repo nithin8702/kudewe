@@ -39,7 +39,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     
     <!-- Repositories/connection string builder -->
     <bean id="connectionStringBuilder" class="kudewe.reports.repository.olap.ConnectionStringBuilderOlap">
-    	<property name="template" value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/data/${tenant}/mondrian/${cubeAlias}.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:/home/fer/workspace/kudewe/data/${tenant}/hsqldb/${dataBaseAlias};jdbcUser=sa;jdbcPassword=;"></property>
+    	<!-- <property name="template" value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/data/${tenant}/mondrian/${cubeAlias}.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:/home/fer/workspace/kudewe/data/${tenant}/hsqldb/${dataBaseAlias};jdbcUser=sa;jdbcPassword=;"></property>  -->
+    	<property name="template" value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/data/${tenant}/mondrian/${cubeAlias}.xml;JdbcDrivers=com.mysql.jdbc.Driver;Jdbc=jdbc:mysql://localhost/${tenant};jdbcUser=aliverti;jdbcPassword=aliverti;"></property>
     	<property name="securityContext" ref="securityContext"></property>
     </bean>
     

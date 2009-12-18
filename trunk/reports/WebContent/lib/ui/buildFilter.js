@@ -9,10 +9,16 @@ function buildComboFilter(filterDefinition) {
         displayField: 'name',
 	    forceSelection: true,
 	    loadingText: 'Loading...',
-	    triggerAction: 'all'
+	    triggerAction: 'all',
+	    mode: 'local'
 	    //lazyInit: false
-	    //mode: 'remote',
 	    //lazyRender: true
+	});
+
+	comboFilter.on('beforequery', function(queryEvent , store) {
+		if (queryEvent.combo.store.getCount() == 0) {
+			queryEvent.combo.store.load();
+		}
 	});
 	
 	// Set on select event handler
