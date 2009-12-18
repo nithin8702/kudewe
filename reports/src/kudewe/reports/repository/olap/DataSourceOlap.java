@@ -23,12 +23,12 @@ public class DataSourceOlap implements DataSource<Result> {
 	public Result ExecuteQuery(String connection, String query) {
 		// Load the HSQL Database Engine JDBC driver
         // hsqldb.jar should be in the class path or made part of the current jar
-        try {
-			Class.forName("org.hsqldb.jdbcDriver");
-		} catch (ClassNotFoundException e) {
+        //try {
+			//Class.forName("org.hsqldb.jdbcDriver");
+		//} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			//e.printStackTrace();
+		//}
         
 	    // Retrieve a connection from the DriveManager
 	    Connection olapConnection = DriverManager.getConnection(connection, null);

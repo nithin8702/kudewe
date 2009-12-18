@@ -14,6 +14,19 @@ function buildViewStore(viewDefinition) {
     });
 }
 
+var loadStoreDelay = 1000;
+var loadStoreTime = loadStoreDelay;
+function loadStore(store) {
+	store.load({params:{}});
+//	setTimeout(
+//		function() {
+//			store.load({params:{}});
+//		},
+//		loadStoreTime
+//	);
+//	loadStoreTime += loadStoreDelay;
+}
+	
 function buildViewGrid(gridDefinition) {
 	// create the Data Store
     var storeView = buildViewStore(gridDefinition);
@@ -35,7 +48,7 @@ function buildViewGrid(gridDefinition) {
     });
 	
 	// trigger the data store load
-    storeView.load({params:{start:0, limit:25}});
+    loadStore(storeView);
     
 	// Subscribe store view to bus
     subscribeStoreViewToBus(storeView, gridDefinition)
@@ -104,10 +117,10 @@ function buildViewGraph(graphDefinition) {
             series: graphDefinition.look.series
         }
     });
-
+    
 	// trigger the data store load
-    storeView.load({params:{start:0, limit:25}});
-
+    loadStore(storeView);
+    
  	// Subscribe store view to bus
     subscribeStoreViewToBus(storeView, graphDefinition)
     
