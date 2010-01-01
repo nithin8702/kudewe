@@ -91,9 +91,9 @@
 			],
 			"columns":[
 				{"header":"Marca","dataIndex":"Brand"},
-				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber"},
-				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber"},
-				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber"}
+				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber", align: "right"},
+				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber", align: "right"},
+				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber", align: "right"}
 			]
 		}
 	},{
@@ -108,9 +108,9 @@
 			"fields":["Category","Quantity","SaleAmount","Profit"],
 			"columns":[
 				{"header":"Categoria","dataIndex":"Category"},
-				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber"},
-				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber"},
-				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber"}
+				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber", align: "right"},
+				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber", align: "right"},
+				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber", align: "right"}
 			]
 		}
 	},{
@@ -125,9 +125,9 @@
 			"fields":["Product","Quantity","SaleAmount","Profit"],
 			"columns":[
 				{"header":"Producto","dataIndex":"Product"},
-				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber"},
-				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber"},
-				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber"}
+				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber", align: "right"},
+				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber", align: "right"},
+				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber", align: "right"}
 			]
 		}
 	}]
