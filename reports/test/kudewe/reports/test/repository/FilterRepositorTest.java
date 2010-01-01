@@ -29,6 +29,7 @@ public class FilterRepositorTest extends BaseTest {
 		filterDefinition.getDataSourceDefinition().setConnection(new ConnectionDefinition());
 		filterDefinition.getDataSourceDefinition().getConnection().setCubeAlias("cube_sales");
 		filterDefinition.getDataSourceDefinition().getConnection().setDataBaseAlias("testdb");
+		filterDefinition.getDataSourceDefinition().getConnection().setTemplate("hsqldb");
 		filterDefinition.getDataSourceDefinition().setQuery(
 	    	"WITH MEMBER [Measures].[one] AS '1' " +
 	    	"SELECT {[Measures].[one]} ON COLUMNS, " +
