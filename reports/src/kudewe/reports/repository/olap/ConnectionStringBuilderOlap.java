@@ -4,7 +4,6 @@ import java.util.Map;
 
 import kudewe.reports.cross.SecurityContext;
 import kudewe.reports.metadata.ConnectionDefinition;
-import kudewe.reports.model.Filter;
 import kudewe.reports.repository.ConnectionStringBuilder;
 
 public class ConnectionStringBuilderOlap implements ConnectionStringBuilder {
