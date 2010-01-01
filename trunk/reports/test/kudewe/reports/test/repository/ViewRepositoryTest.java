@@ -30,6 +30,7 @@ public class ViewRepositoryTest extends BaseTest {
 		viewDefinition.getDataSourceDefinition().setConnection(new ConnectionDefinition());
 		viewDefinition.getDataSourceDefinition().getConnection().setCubeAlias("cube_sales");
 		viewDefinition.getDataSourceDefinition().getConnection().setDataBaseAlias("testdb");
+		viewDefinition.getDataSourceDefinition().getConnection().setTemplate("hsqldb");
 		viewDefinition.getDataSourceDefinition().setQuery(
 	    	"SELECT {[Measures].[Quantity], [Measures].[SalePrice]} ON COLUMNS, " +
 	    	"{[Product].members} on rows " +

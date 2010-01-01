@@ -114,7 +114,10 @@ function buildViewGraph(graphDefinition) {
             xtype: graphDefinition.look.xtype,
             store: storeView,
             xField: graphDefinition.look.xField,
-            series: graphDefinition.look.series
+            series: graphDefinition.look.series,
+    		yAxis: new Ext.chart.NumericAxis({
+                labelRenderer : Ext.util.Format.numberRenderer('0.000/i')
+            })
         }
     });
     
@@ -171,4 +174,8 @@ function buildViewDebug() {
 		mySubscriberData);
 
 	return viewDebug;
+}
+
+Ext.util.Format.intNumber = function (value) {
+	return Ext.util.Format.number(value, '0.000/i');
 }

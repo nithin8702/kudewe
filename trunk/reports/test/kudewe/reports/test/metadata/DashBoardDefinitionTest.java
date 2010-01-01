@@ -28,7 +28,7 @@ public class DashBoardDefinitionTest extends BaseTest {
 	public void setUp() throws Exception {
 		dashBoard = new DashBoardDefinition();
 		dashBoard.setConnection(new ConnectionDefinition());
-		dashBoard.getConnection().setConnectionString("connectionA");
+		dashBoard.getConnection().setCubeAlias("connectionA");
 		
 		// Test view
 		// Set 1st data source, then dash board
@@ -50,7 +50,7 @@ public class DashBoardDefinitionTest extends BaseTest {
 		view3.setName("view3");
 		view3.setDataSourceDefinition(new DataSourceDefinition());
 		view3.getDataSourceDefinition().setConnection(new ConnectionDefinition());
-		view3.getDataSourceDefinition().getConnection().setConnectionString("connectionB");
+		view3.getDataSourceDefinition().getConnection().setCubeAlias("connectionB");
 		dashBoard.addView(view3);
 		
 		// Test filter
@@ -73,7 +73,7 @@ public class DashBoardDefinitionTest extends BaseTest {
 		filter3.setName("filter3");
 		filter3.setDataSourceDefinition(new DataSourceDefinition());
 		filter3.getDataSourceDefinition().setConnection(new ConnectionDefinition());
-		filter3.getDataSourceDefinition().getConnection().setConnectionString("connectionB");
+		filter3.getDataSourceDefinition().getConnection().setCubeAlias("connectionB");
 		dashBoard.addFilter(filter3);
 		
 	}
@@ -83,32 +83,32 @@ public class DashBoardDefinitionTest extends BaseTest {
 		
 		// Test view
 		// Set 1st data source, then dash board
-		assertEquals("connectionA", view1.getDataSourceDefinition().getConnection().getConnectionString());
+		assertEquals("connectionA", view1.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertNotNull(view1.getDashBoardDefinition());
 		
 		// Test view
 		// Set 1st dash board, then data source
-		assertEquals("connectionA", view2.getDataSourceDefinition().getConnection().getConnectionString());
+		assertEquals("connectionA", view2.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertNotNull(view2.getDashBoardDefinition());
 		
 		// Test view
 		// with connection
-		assertEquals("connectionB", view3.getDataSourceDefinition().getConnection().getConnectionString());
+		assertEquals("connectionB", view3.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertNotNull(view3.getDashBoardDefinition());
 		
 		// Test filter
 		// Set 1st data source, then dash board
-		assertEquals("connectionA", filter1.getDataSourceDefinition().getConnection().getConnectionString());
+		assertEquals("connectionA", filter1.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertNotNull(filter1.getDashBoardDefinition());
 		
 		// Test filter
 		// Set 1st dash board, then data source
-		assertEquals("connectionA", filter2.getDataSourceDefinition().getConnection().getConnectionString());
+		assertEquals("connectionA", filter2.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertNotNull(filter2.getDashBoardDefinition());
 		
 		// Test filter
 		// with connection
-		assertEquals("connectionB", filter3.getDataSourceDefinition().getConnection().getConnectionString());
+		assertEquals("connectionB", filter3.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertNotNull(filter3.getDashBoardDefinition());
 		
 	}

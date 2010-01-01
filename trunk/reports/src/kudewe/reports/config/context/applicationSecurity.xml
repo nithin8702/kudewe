@@ -17,7 +17,6 @@
 	<authentication-provider>
     	<user-service>
       		<user name="fer" password="fer" authorities="ROLE_USER, ROLE_ADMIN" />
-      		<user name="rober" password="rober" authorities="ROLE_USER" />
       		<user name="aliverti" password="aliverti" authorities="ROLE_USER" />
       		<user name="google" password="google" authorities="ROLE_USER" />
     	</user-service>

@@ -168,31 +168,11 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 			}
 
 		} else if ("cubeAlias".equals(name)) {
-			
-			// Set connection string in function of parent node
-			if ("dashboard".equals(getAncestorNodeName(2))) {
-				// parser is on dashboard/connection
-				dashBoardDefinition.getConnection().setCubeAlias(text.toString());
-			} else if ("view".equals(getAncestorNodeName(3))) {
-				// parser is on view/datasource.connection
-				viewDefinition.getDataSourceDefinition().getConnection().setCubeAlias(text.toString());
-			} else if ("filter".equals(getAncestorNodeName(3))) {
-				// parser is on filter/datasource.connection
-				filterDefinition.getDataSourceDefinition().getConnection().setCubeAlias(text.toString());
-			}
+			getConnectionDefinition().setCubeAlias(text.toString());
 		} else if ("dataBaseAlias".equals(name)) {
-			
-			// Set connection string in function of parent node
-			if ("dashboard".equals(getAncestorNodeName(2))) {
-				// parser is on dashboard/connection
-				dashBoardDefinition.getConnection().setDataBaseAlias(text.toString());
-			} else if ("view".equals(getAncestorNodeName(3))) {
-				// parser is on view/datasource.connection
-				viewDefinition.getDataSourceDefinition().getConnection().setDataBaseAlias(text.toString());
-			} else if ("filter".equals(getAncestorNodeName(3))) {
-				// parser is on filter/datasource.connection
-				filterDefinition.getDataSourceDefinition().getConnection().setDataBaseAlias(text.toString());
-			}
+			getConnectionDefinition().setDataBaseAlias(text.toString());
+		} else if ("template".equals(name)) {
+			getConnectionDefinition().setTemplate(text.toString());
 		} else {
 			if ("look".equals(getAncestorNodeName(1))) {
 				// parser is on look
@@ -211,6 +191,23 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 		
 		}
 		path.remove(path.size() - 1);
+	}
+
+	private ConnectionDefinition getConnectionDefinition() {
+		ConnectionDefinition connectionDefinition = null;
+		
+		// Set connection string in function of parent node
+		if ("dashboard".equals(getAncestorNodeName(2))) {
+			// parser is on dashboard/connection
+			connectionDefinition = dashBoardDefinition.getConnection();
+		} else if ("view".equals(getAncestorNodeName(3))) {
+			// parser is on view/datasource.connection
+			connectionDefinition =  viewDefinition.getDataSourceDefinition().getConnection();
+		} else if ("filter".equals(getAncestorNodeName(3))) {
+			// parser is on filter/datasource.connection
+			connectionDefinition = filterDefinition.getDataSourceDefinition().getConnection();
+		}
+		return connectionDefinition;
 	}
 	
 	private Object getGenericDefinitionValue(String valueString) {

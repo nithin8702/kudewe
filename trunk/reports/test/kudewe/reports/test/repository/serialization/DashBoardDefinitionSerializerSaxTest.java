@@ -32,6 +32,7 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 				"<connection>" +
 					"<cubeAlias>cubeA</cubeAlias>" +
 					"<dataBaseAlias>dbA</dataBaseAlias>" +
+					"<template>templateA</template>" +
 				"</connection>" +
 				"<views>" +
 					"<view>" +
@@ -80,6 +81,7 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 							"<connection>" +
 								"<cubeAlias>cubeB</cubeAlias>" +
 								"<dataBaseAlias>dbB</dataBaseAlias>" +
+								"<template>templateB</template>" +
 							"</connection>" +
 						"</datasource>" +
 						"<look type=\"ext.graph\">" +
@@ -101,6 +103,7 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 							"<connection>" +
 								"<cubeAlias>cubeC</cubeAlias>" +
 								"<dataBaseAlias>dbC</dataBaseAlias>" +
+								"<template>templateC</template>" +
 							"</connection>" +
 							"<dependencies>" + 
 								"<filter>quarter</filter>" +
@@ -139,6 +142,7 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 		// Connection
 		assertEquals("cubeA", dashBoardDefinition.getConnection().getCubeAlias());
 		assertEquals("dbA", dashBoardDefinition.getConnection().getDataBaseAlias());
+		assertEquals("templateA", dashBoardDefinition.getConnection().getTemplate());
 		
 		// View 1
 		ViewDefinition viewDefinition1 = dashBoardDefinition.getViews().get(0);
@@ -146,6 +150,7 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 		assertEquals("query view 1", viewDefinition1.getDataSourceDefinition().getQuery());
 		assertEquals("cubeA", viewDefinition1.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertEquals("dbA", viewDefinition1.getDataSourceDefinition().getConnection().getDataBaseAlias());
+		assertEquals("templateA", viewDefinition1.getDataSourceDefinition().getConnection().getTemplate());
 		
 		// Dependencies 1
 		assertEquals(2, viewDefinition1.getDataSourceDefinition().getDependencies().size());
@@ -199,6 +204,7 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 		
 		assertEquals("cubeB", viewDefinition2.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertEquals("dbB", viewDefinition2.getDataSourceDefinition().getConnection().getDataBaseAlias());
+		assertEquals("templateB", viewDefinition2.getDataSourceDefinition().getConnection().getTemplate());
 		
 		// Filter brand
 		FilterDefinition filterBrand = dashBoardDefinition.getFilters().get(0);
@@ -216,6 +222,8 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 		assertEquals("WITH MEMBER [Measures].[one] AS '1' SELECT {[Measures].[one]} ON COLUMNS, {[Time].members} on rows FROM [Sales]", filterMonth.getDataSourceDefinition().getQuery());
 		assertEquals("cubeA", filterMonth.getDataSourceDefinition().getConnection().getCubeAlias());
 		assertEquals("dbA", filterMonth.getDataSourceDefinition().getConnection().getDataBaseAlias());
+		assertEquals("templateA", filterMonth.getDataSourceDefinition().getConnection().getTemplate());
+		
 		assertEquals(2, filterMonth.getDataSourceDefinition().getDependencies().size());
 		assertEquals("quarter", filterMonth.getDataSourceDefinition().getDependencies().get(0));
 		assertEquals("year", filterMonth.getDataSourceDefinition().getDependencies().get(1));
