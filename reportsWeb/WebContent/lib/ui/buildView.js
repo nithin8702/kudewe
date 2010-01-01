@@ -10,14 +10,23 @@ function buildViewStore(viewDefinition) {
 	return new Ext.data.JsonStore({
         root: 'data',
         fields: viewDefinition.look.fields,
-        proxy : new Ext.data.HttpProxy({
-            method: 'GET',
-            url: 'services/' + viewDefinition.url + '.json'
-
-       })
+        url: 'olap/' + viewDefinition.url + '.json'
     });
 }
 
+var loadStoreDelay = 1000;
+var loadStoreTime = loadStoreDelay;
+function loadStore(store) {
+	store.load({params:{}});
+//	setTimeout(
+//		function() {
+//			store.load({params:{}});
+//		},
+//		loadStoreTime
+//	);
+//	loadStoreTime += loadStoreDelay;
+}
+	
 function buildViewGrid(gridDefinition) {
 	// create the Data Store
     var storeView = buildViewStore(gridDefinition);
@@ -39,7 +48,7 @@ function buildViewGrid(gridDefinition) {
     });
 	
 	// trigger the data store load
-    storeView.load({params:{start:0, limit:25}});
+    loadStore(storeView);
     
 	// Subscribe store view to bus
     subscribeStoreViewToBus(storeView, gridDefinition)
@@ -105,13 +114,16 @@ function buildViewGraph(graphDefinition) {
             xtype: graphDefinition.look.xtype,
             store: storeView,
             xField: graphDefinition.look.xField,
-            series: graphDefinition.look.series
+            series: graphDefinition.look.series,
+    		yAxis: new Ext.chart.NumericAxis({
+                labelRenderer : Ext.util.Format.numberRenderer('0.000/i')
+            })
         }
     });
-
+    
 	// trigger the data store load
-    storeView.load({params:{start:0, limit:25}});
-
+    loadStore(storeView);
+    
  	// Subscribe store view to bus
     subscribeStoreViewToBus(storeView, graphDefinition)
     
@@ -162,4 +174,8 @@ function buildViewDebug() {
 		mySubscriberData);
 
 	return viewDebug;
+}
+
+Ext.util.Format.intNumber = function (value) {
+	return Ext.util.Format.number(value, '0.000/i');
 }

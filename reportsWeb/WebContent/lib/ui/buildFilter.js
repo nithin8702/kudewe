@@ -7,11 +7,18 @@ function buildComboFilter(filterDefinition) {
 		store: storeFilter,
         valueField: 'id',
         displayField: 'name',
-	    triggerAction: 'all',
 	    forceSelection: true,
-	    mode: 'remote',
 	    loadingText: 'Loading...',
+	    triggerAction: 'all',
 	    mode: 'local'
+	    //lazyInit: false
+	    //lazyRender: true
+	});
+
+	comboFilter.on('beforequery', function(queryEvent , store) {
+		if (queryEvent.combo.store.getCount() == 0) {
+			queryEvent.combo.store.load();
+		}
 	});
 	
 	// Set on select event handler
@@ -41,7 +48,7 @@ function buildComboFilter(filterDefinition) {
 	// Subscribe store view to bus
     subscribeStoreFilterToBus(storeFilter, filterDefinition, comboFilter)
     
-    storeFilter.load({params:{start:0}});
+    //storeFilter.load({params:{start:0}});
     
 	return {
 		title: filterDefinition.label,
@@ -56,13 +63,9 @@ function buildComboFilter(filterDefinition) {
 function buildFilterStore(filterDefinition) {
 	return new Ext.data.JsonStore({
 		autoLoad: false,
+        url: 'olap/' + filterDefinition.url + '.json',
         root: 'data',
-        fields: ['id', 'name'],
-        proxy : new Ext.data.HttpProxy({
-            method: 'GET',
-            url: 'services/' + filterDefinition.url + '.json'
-       })
-
+        fields: ['id', 'name']
     });
 }
 

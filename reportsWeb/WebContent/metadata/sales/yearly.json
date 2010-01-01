@@ -1,0 +1,134 @@
+{
+	"filters":[{
+		"name":"brand",
+		"url":"sales/yearly/filter/brand",
+		"label":"Brand",
+		"dependencies":[],
+		"dependants":["product"]
+	},{
+		"name":"categoryLevel1",
+		"url":"sales/yearly/filter/categoryLevel1",
+		"label":"Categoria 1",
+		"dependencies":[],
+		"dependants":["categoryLevel2","categoryLevel3","product"]
+	},{
+		"name":"categoryLevel2",
+		"url":"sales/yearly/filter/categoryLevel2",
+		"label":"Categoria 2",
+		"dependencies":["categoryLevel1"],
+		"dependants":["categoryLevel3","product"]
+	},{
+		"name":"categoryLevel3",
+		"url":"sales/yearly/filter/categoryLevel3",
+		"label":"Categoria 3",
+		"dependencies":["categoryLevel1","categoryLevel2"],
+		"dependants":["product"]
+	},{
+		"name":"product",
+		"url":"sales/yearly/filter/product",
+		"label":"Producto",
+		"dependencies":["categoryLevel1","categoryLevel2","categoryLevel3","brand"],
+		"dependants":[]
+	},{
+		"name":"year",
+		"url":"sales/yearly/filter/year",
+		"label":"Año",
+		"dependencies":[],
+		"dependants":["month"]
+	},{
+		"name":"month","url":"sales/yearly/filter/month",
+		"label":"Mes",
+		"dependencies":["year"],
+		"dependants":[]
+	}], 
+	"views":[{
+		"name":"salesAmount",
+		"url":"sales/yearly/view/salesAmount",
+		"dependencies":["brand","categoryLevel1","categoryLevel2","categoryLevel3","product","year"],
+		"look":{
+			"lookType":"ext.graph",
+			"title":"Montos Vendido",
+			"width":200,
+			"height":200,
+			"xtype":"linechart",
+			"xField":"Time",
+			"fields":["Time","SaleAmount","Profit"],
+			"series":[
+				{"type":"column","displayName":"Monto Venta","yField":"SaleAmount"},
+				{"type":"line","displayName":"Ganancia","yField":"Profit"}
+			]
+		}
+	}, {
+		"name":"salesQuantity",
+		"url":"sales/yearly/view/salesQuantity",
+		"dependencies":["brand","categoryLevel1","categoryLevel2","categoryLevel3","product","year"],
+		"look":{
+			"lookType":"ext.graph",
+			"title":"Cantidades Vendidas",
+			"width":200,
+			"height":200,
+			"xtype":"linechart",
+			"xField":"Time",
+			"fields":["Time","Quantity"],
+			"series":[
+				{"type":"line","displayName":"Cantidad","yField":"Quantity"}
+			]
+		}
+	},{
+		"name":"salesByBrand",
+		"url":"sales/yearly/view/salesByBrand",
+		"dependencies":["categoryLevel1","categoryLevel2","categoryLevel3","product","month","year"],
+		"look":{
+			"lookType":"ext.grid",
+			"title":"Ventas x Marca",
+			"width":200,
+			"height":100,
+			"fields":[
+				{"name": "Brand"},
+				{"name": "Quantity", type:"float"},
+				{"name": "SaleAmount", type:"float"},
+				{"name": "Profit", type:"float"}
+			],
+			"columns":[
+				{"header":"Marca","dataIndex":"Brand"},
+				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber"},
+				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber"},
+				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber"}
+			]
+		}
+	},{
+		"name":"salesByCategory",
+		"url":"sales/yearly/view/salesByCategory",
+		"dependencies":["brand","product","month","year"],
+		"look":{
+			"lookType":"ext.grid",
+			"title":"Ventas x Categoria",
+			"width":200,
+			"height":100,
+			"fields":["Category","Quantity","SaleAmount","Profit"],
+			"columns":[
+				{"header":"Categoria","dataIndex":"Category"},
+				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber"},
+				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber"},
+				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber"}
+			]
+		}
+	},{
+		"name":"salesByProduct",
+		"url":"sales/yearly/view/salesByProduct",
+		"dependencies":["brand","categoryLevel1","categoryLevel2","categoryLevel3","month","year"],
+		"look":{
+			"lookType":"ext.grid",
+			"title":"Ventas x Producto",
+			"width":200,
+			"height":100,
+			"fields":["Product","Quantity","SaleAmount","Profit"],
+			"columns":[
+				{"header":"Producto","dataIndex":"Product"},
+				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber"},
+				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber"},
+				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber"}
+			]
+		}
+	}]
+}
