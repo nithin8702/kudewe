@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Feed Viewer 3</title>
+
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+    <link rel="stylesheet" type="text/css" href="feed-viewer.css" />
+	    
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+ 	<script type="text/javascript" src="../../ext-all.js"></script>
+    <script type="text/javascript" src="FeedGrid.js"></script>
+    
+    <script type="text/javascript">
+	    Ext.onReady(function(){
+	        Ext.QuickTips.init();
+	
+	        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+	
+	        var tpl = Ext.Template.from('preview-tpl', {
+	            compiled:true,
+	            getBody : function(v, all){
+	                return Ext.util.Format.stripScripts(v || all.description);
+	            }
+	        });
+	        
+	        this.grid = new FeedGrid({
+	        	height: 350,
+	            width: 600,
+	            stripeRows: true
+	        });
+	        grid.loadFeed('http://feeds.feedburner.com/extblog');
+	        
+	        //render the grid to the specified div in the page
+	        grid.render('gridFeed');
+	        
+	    });
+    </script>
+	
+</head>
+<body>
+
+hola
+<div id="gridFeed"></div>
+
+<!-- Template used for Feed Items -->
+<div id="preview-tpl" style="display:none;">
+    <div class="post-data">
+        <span class="post-date">{pubDate:date("M j, Y, g:i a")}</span>
+        <h3 class="post-title">{title}</h3>
+        <h4 class="post-author">by {author:defaultValue("Unknown")}</h4>
+    </div>
+    <div class="post-body">{content:this.getBody}</div>
+</div>
+
+</body>
+</html>
