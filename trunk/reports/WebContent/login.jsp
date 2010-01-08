@@ -17,12 +17,6 @@
  	<!-- ExtJS library: all widgets -->
     <script type="text/javascript" src="lib/ext-3.0.0/ext-all-debug.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="lib/ext-3.0.0/examples/form/forms.css"/>
-
-    <!-- Common Styles for the examples -->
-    <link rel="stylesheet" type="text/css" href="lib/ext-3.0.0/examples/shared/examples.css"/>
-	
-	
 	<script type="text/javascript">
     Ext.onReady(function(){
     	Ext.QuickTips.init();
@@ -32,9 +26,6 @@
 
         var simple = new Ext.FormPanel({
             labelWidth: 75, // label settings here cascade unless overridden
-            //method: 'POST',
-            //url: 'login_check',
-            //standardSubmit: true,
             bodyStyle:'padding:5px 5px 0',
             frame:true,
             title: 'Acceso',
@@ -45,8 +36,8 @@
             items: [{
                     fieldLabel: 'Usuario',
                     name: 'username',
-                    allowBlank: false,
-                    value: Ext.get('j_username').getValue()
+                    allowBlank: false
+                    <c:if test="${not empty param.login_error}">,value: Ext.get('j_username').getValue()</c:if>
                 },{
                 	inputType: 'password',
                     fieldLabel: 'Password',
@@ -62,8 +53,8 @@
             buttons: [{
                 text: 'Ingresar',
                 handler: function(){
-	                var fp = this.ownerCt.ownerCt,
-	                    form = fp.getForm();
+	                var fp = this.ownerCt.ownerCt;
+	                var form = fp.getForm();
 	                if (form.isValid()) {
 	                	document.getElementById('j_username').value = form.items.get(0).getValue();
 	                	document.getElementById('j_password').value = form.items.get(1).getValue();
@@ -74,26 +65,55 @@
             }]
         });
 
-        simple.render('divForm');
-        Ext.get('divMessage').removeClass('x-hide-display');
+        simple.render('login');
+        Ext.get('error').removeClass('x-hide-display');
     });
 	</script>
+	<style>
+		body {
+			padding: 20px;
+			font-family: tahoma,arial,helvetica,sans-serif;
+			font-size: 12px;
+		}
+		h1 {
+			font-size: 14px;
+		}
+		#logo {
+			float: left;
+			margin-top: 50px;
+			padding-right: 20px;
+		}
+		#messagePanel {
+			float: left;
+		}
+		#login {
+			padding-top:10px;
+			padding-bottom:10px;
+		}
+		#error {
+			color: red;
+		}
+	</style>
   </head>
 
   <body>
-  	<div id="divForm"></div>
-  	<form id="frmMain" method="post" action="login_check">
-    	<input id='j_username' type='hidden' name='j_username' value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>'/>
-		<input id='j_password' type='hidden' name='j_password'>
-		<input id="_spring_security_remember_me" type="hidden" name="_spring_security_remember_me">
-    </form>
-    <div id="divMessage" class="x-hide-display">
-	    <c:if test="${not empty param.login_error}">
-	      <font color="red">
-	      	Su intento de acceso no fue exitoso, por favor intente nuevamente.<br/><br/>
-	        Reason: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
-	      </font>
-	    </c:if>
+ 	<div id="logo">
+ 		<img src="img/logo.gif">
+ 	</div>
+  	<div id="messagePanel">
+  		<h1>Bienvenido a Kudewe Reports</h1>
+	  	<div id="login"></div>
+	  	<div id="error" class="x-hide-display">
+		    <c:if test="${not empty param.login_error}">
+		      	Su intento de acceso no fue exitoso, por favor intente nuevamente.<br/>
+		        Reason: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+		    </c:if>
+	    </div>
+	  	<form id="frmMain" method="post" action="login_check">
+	    	<input id='j_username' type='hidden' name='j_username' value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>'/>
+			<input id='j_password' type='hidden' name='j_password'>
+			<input id="_spring_security_remember_me" type="hidden" name="_spring_security_remember_me">
+	    </form>
     </div>
   </body>
 </html>

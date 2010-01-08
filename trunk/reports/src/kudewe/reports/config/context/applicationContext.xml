@@ -23,9 +23,14 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     	<property name="urlMapper" ref="urlMapper"></property>
     	<property name="dashBoardDefinitionSerializerSax" ref="dashBoardDefinitionSerializerSax"></property>
     	<property name="menuDefinitionSerializerSax" ref="menuDefinitionSerializerSax"></property>
+    	<property name="includeParser" ref="includeParser"></property>
     </bean>
     
-    <!-- Repositories/serialization -->
+    <!-- Repositories/include parser -->
+    <bean id="includeParser" class="kudewe.reports.repository.filesystem.IncludeParserFileSystem">
+    	<property name="wordTokenizer" ref="wordTokenizer"></property>
+    </bean>
+    
     <bean id="dashBoardDefinitionSerializerSax" class="kudewe.reports.repository.serialization.sax.DashBoardDefinitionSerializerSax">
     </bean>
     <bean id="menuDefinitionSerializerSax" class="kudewe.reports.repository.serialization.sax.MenuDefinitionSerializerSax">

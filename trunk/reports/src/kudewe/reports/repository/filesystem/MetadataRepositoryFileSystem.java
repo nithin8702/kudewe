@@ -1,11 +1,14 @@
 package kudewe.reports.repository.filesystem;
 
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.List;
 
 import kudewe.reports.metadata.DashBoardDefinition;
 import kudewe.reports.metadata.FilterDefinition;
 import kudewe.reports.metadata.MenuItemDefinition;
 import kudewe.reports.metadata.ViewDefinition;
+import kudewe.reports.repository.IncludeParser;
 import kudewe.reports.repository.MetadataRepository;
 import kudewe.reports.repository.UrlMapper;
 import kudewe.reports.repository.serialization.Serializer;
@@ -25,6 +28,11 @@ public class MetadataRepositoryFileSystem implements MetadataRepository {
 	private UrlMapper urlMapper;
 	
 	/**
+	 * Strategy for parser include instructions 
+	 */
+	private IncludeParser includeParser;
+	
+	/**
 	 * Object used to deserealize dash board definition 
 	 */
 	private Serializer<DashBoardDefinition, InputSource> dashBoardDefinitionSerializerSax;
@@ -42,6 +50,14 @@ public class MetadataRepositoryFileSystem implements MetadataRepository {
 		this.urlMapper = urlMapper;
 	}
 
+	/**
+	 * Setter injection
+	 * @param urlMapper
+	 */
+	public void setIncludeParser(IncludeParser includeParser) {
+		this.includeParser = includeParser;
+	}
+	
 	/**
 	 * Setter injection
 	 * @param dashBoardDefinitionSerializerSax
@@ -80,9 +96,12 @@ public class MetadataRepositoryFileSystem implements MetadataRepository {
 		String dashBoardUrl = urlMapper.GetDashBoardDefinitionUrl(url);
 		String dashBoardPath = urlMapper.GetDashBoardDefinitionPath(url);
 		
-		InputSource file = new InputSource(dashBoardPath);
+		// Parse include instructions
+		Reader reader = new StringReader(includeParser.parse(dashBoardPath));
+		InputSource source = new InputSource(reader);
 		
-		DashBoardDefinition dashBoardDefinition = dashBoardDefinitionSerializerSax.DeSerealize(file);
+		// Deserealize dashboard
+		DashBoardDefinition dashBoardDefinition = dashBoardDefinitionSerializerSax.DeSerealize(source);
 		dashBoardDefinition.setUrl(dashBoardUrl);
 		return dashBoardDefinition;
 	}

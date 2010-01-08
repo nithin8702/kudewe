@@ -52,12 +52,13 @@ function buildLayoutPortal(viewDefinitions) {
 				});
 			}
 		);
-	
+	/*
 	portal.items[0].items.push({
 		title: 'Debug',
 		layout:'fit',
         items: buildViewDebug()
 	});
+	*/
 	
 	return portal;
 }
