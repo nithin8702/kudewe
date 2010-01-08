@@ -85,12 +85,12 @@
 			"height":100,
 			"fields":[
 				{"name": "Brand"},
-				{"name": "Quantity", type:"float"},
-				{"name": "SaleAmount", type:"float"},
-				{"name": "Profit", type:"float"}
+				{"name": "Quantity"},
+				{"name": "SaleAmount"},
+				{"name": "Profit"}
 			],
 			"columns":[
-				{"header":"Marca","dataIndex":"Brand"},
+				{"header":"Marca","dataIndex":"Brand", width: 200},
 				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber", align: "right"},
 				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber", align: "right"},
 				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber", align: "right"}

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+
+<channel>
+	<title>Kudewe Blog</title>
+	
+	<link>http://blog.kudewe.com/</link>
+	<description>JavaScript UI Component Library</description>
+	<lastBuildDate>Tue, 05 Jan 2010 22:53:51 +0000</lastBuildDate>
+	<generator>http://wordpress.org/?v=2.8.6</generator>
+	<language>en</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+			<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/extblog" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com" /><item>
+		<title>Implementation Spotlight: Spiral Universe</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/iPYYkIbX5so/</link>
+		<comments>http://www.extjs.com/blog/2010/01/05/implementation-spotlight-spiral-universe/#comments</comments>
+		<pubDate>Tue, 05 Jan 2010 22:50:50 +0000</pubDate>
+		<author>Darrell Meyer</author>
+				<category><![CDATA[Ext GWT]]></category>
+
+		<guid isPermaLink="false">http://www.extjs.com/blog/?p=2332</guid>
+		<description>Spiral 2.0 is a browser-based desktop used by schools to increase efficiency, reduce costs, and improve their management and administration. Built on Ext GWT, Spiral Universe has become the fastest growing School Information System available.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=iPYYkIbX5so:ZcBRDro2Pho:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=iPYYkIbX5so:ZcBRDro2Pho:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=iPYYkIbX5so:ZcBRDro2Pho:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=iPYYkIbX5so:ZcBRDro2Pho:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=iPYYkIbX5so:ZcBRDro2Pho:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=iPYYkIbX5so:ZcBRDro2Pho:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=iPYYkIbX5so:ZcBRDro2Pho:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=iPYYkIbX5so:ZcBRDro2Pho:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=iPYYkIbX5so:ZcBRDro2Pho:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=iPYYkIbX5so:ZcBRDro2Pho:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2010/01/05/implementation-spotlight-spiral-universe/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2010/01/05/implementation-spotlight-spiral-universe/</feedburner:origLink></item>
+		<item>
+		<title>Ext JS 3.1: Massive memory improvements, TreeGrid, and more</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/nSUKrAdraag/</link>
+		<comments>http://www.extjs.com/blog/2009/12/17/ext-js-3-1-massive-memory-improvements-treegrid-and-more%e2%80%a6/#comments</comments>
+		<pubDate>Thu, 17 Dec 2009 17:53:45 +0000</pubDate>
+		<author>Jamie Avins</author>
+				<category><![CDATA[Community]]></category>
+		<category><![CDATA[Ext JS]]></category>
+
+		<guid isPermaLink="false">http://www.extjs.com/blog/?p=2273</guid>
+		<description>On behalf of the Ext Team, I am extremely excited to announce the final release of Ext JS 3.1. With this release we rededicate ourselves to making Ext JS the best it can be, in both features and performance.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=nSUKrAdraag:q3PjP4JrEXs:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=nSUKrAdraag:q3PjP4JrEXs:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=nSUKrAdraag:q3PjP4JrEXs:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=nSUKrAdraag:q3PjP4JrEXs:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=nSUKrAdraag:q3PjP4JrEXs:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=nSUKrAdraag:q3PjP4JrEXs:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=nSUKrAdraag:q3PjP4JrEXs:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=nSUKrAdraag:q3PjP4JrEXs:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=nSUKrAdraag:q3PjP4JrEXs:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=nSUKrAdraag:q3PjP4JrEXs:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/12/17/ext-js-3-1-massive-memory-improvements-treegrid-and-more%e2%80%a6/feed/</wfw:commentRss>
+		<slash:comments>61</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/12/17/ext-js-3-1-massive-memory-improvements-treegrid-and-more%e2%80%a6/</feedburner:origLink></item>
+		<item>
+		<title>Creating a Custom Ext GWT Component</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/kK50rYeU6Sc/</link>
+		<comments>http://www.extjs.com/blog/2009/11/23/creating-a-custom-ext-gwt-component/#comments</comments>
+		<pubDate>Mon, 23 Nov 2009 09:08:52 +0000</pubDate>
+		<author>Darrell Meyer</author>
+				<category><![CDATA[Ext GWT]]></category>
+		<category><![CDATA[Tutorials]]></category>
+
+		<guid isPermaLink="false">http://www.extjs.com/blog/?p=2200</guid>
+		<description>Creating custom Web components can prove challenging without a good foundation.  Fortunately, the Ext GWT framework contains a Component API that provides the ability to quickly and easily create custom components while using Java.  This post will walk you through the steps needed to create our ContentScroller - an Ext GWT UX component.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=kK50rYeU6Sc:yHcR1r-tj2Q:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=kK50rYeU6Sc:yHcR1r-tj2Q:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=kK50rYeU6Sc:yHcR1r-tj2Q:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=kK50rYeU6Sc:yHcR1r-tj2Q:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=kK50rYeU6Sc:yHcR1r-tj2Q:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=kK50rYeU6Sc:yHcR1r-tj2Q:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=kK50rYeU6Sc:yHcR1r-tj2Q:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=kK50rYeU6Sc:yHcR1r-tj2Q:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=kK50rYeU6Sc:yHcR1r-tj2Q:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=kK50rYeU6Sc:yHcR1r-tj2Q:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/11/23/creating-a-custom-ext-gwt-component/feed/</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/11/23/creating-a-custom-ext-gwt-component/</feedburner:origLink></item>
+		<item>
+		<title>Advanced Plugin Development with Ext JS</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/LLGRuD9dOz8/</link>
+		<comments>http://www.extjs.com/blog/2009/11/11/advanced-plugin-development-with-ext-js/#comments</comments>
+		<pubDate>Wed, 11 Nov 2009 20:32:40 +0000</pubDate>
+		<author>Nigel White</author>
+				<category><![CDATA[Ext JS]]></category>
+		<category><![CDATA[Extensions]]></category>
+		<category><![CDATA[Tutorials]]></category>
+
+		<guid isPermaLink="false">http://www.extjs.com/blog/?p=1765</guid>
+		<description>When creating a cross browser RIA, choosing a framework with a plethora of components is where most of us look first.  Selecting a framework that enables you the flexibility to enhance and expand its offering becomes very important.  Fortunately, Ext JS has all the rich UI functionality that most applications require coupled with a vibrant community creating  impressive extensions.   Ext's elegant design allows us to explore our creativity by adding new features to existing widgets.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=LLGRuD9dOz8:LPCLbgCpeFU:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=LLGRuD9dOz8:LPCLbgCpeFU:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=LLGRuD9dOz8:LPCLbgCpeFU:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=LLGRuD9dOz8:LPCLbgCpeFU:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=LLGRuD9dOz8:LPCLbgCpeFU:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=LLGRuD9dOz8:LPCLbgCpeFU:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=LLGRuD9dOz8:LPCLbgCpeFU:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=LLGRuD9dOz8:LPCLbgCpeFU:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=LLGRuD9dOz8:LPCLbgCpeFU:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=LLGRuD9dOz8:LPCLbgCpeFU:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/11/11/advanced-plugin-development-with-ext-js/feed/</wfw:commentRss>
+		<slash:comments>27</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/11/11/advanced-plugin-development-with-ext-js/</feedburner:origLink></item>
+		<item>
+		<title>Ext JS Designer Preview</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/1d2qAeavSr0/</link>
+		<comments>http://www.extjs.com/blog/2009/10/08/ext-js-designer-preview/#comments</comments>
+		<pubDate>Thu, 08 Oct 2009 04:29:32 +0000</pubDate>
+		<author>Aaron Conran</author>
+				<category><![CDATA[Adobe AIR]]></category>
+		<category><![CDATA[Ext JS]]></category>
+
+		<guid isPermaLink="false">http://www.extjs.com/blog/?p=2003</guid>
+		<description>We are very excited to share our latest version of the Ext JS Designer.  This new version adds many new features to improve your efficiency creating application designs. Once you get accustomed to these features its difficult to live without them.  For those of you that don't have the time or ability to download and play around with the Designer, we have created a Preview screencast in which we mock up some interfaces. We have tried to show off as much features and functionality as possible.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=1d2qAeavSr0:A59AHnkIq_0:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=1d2qAeavSr0:A59AHnkIq_0:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=1d2qAeavSr0:A59AHnkIq_0:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=1d2qAeavSr0:A59AHnkIq_0:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=1d2qAeavSr0:A59AHnkIq_0:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=1d2qAeavSr0:A59AHnkIq_0:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=1d2qAeavSr0:A59AHnkIq_0:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=1d2qAeavSr0:A59AHnkIq_0:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=1d2qAeavSr0:A59AHnkIq_0:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=1d2qAeavSr0:A59AHnkIq_0:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/10/08/ext-js-designer-preview/feed/</wfw:commentRss>
+		<slash:comments>130</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/10/08/ext-js-designer-preview/</feedburner:origLink></item>
+		<item>
+		<title>Ext JS on Rails: A ComprehensiveTutorial</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/prFPrqI8ApQ/</link>
+		<comments>http://www.extjs.com/blog/2009/09/30/ext-js-on-rails-a-comprehensivetutorial/#comments</comments>
+		<pubDate>Wed, 30 Sep 2009 16:12:07 +0000</pubDate>
+		<author>Chris Scott</author>
+				<category><![CDATA[Ext JS]]></category>
+
+		<guid isPermaLink="false">http://extjs.com/blog/?p=1447</guid>
+		<description>I've had my eyes on Ruby-based ExtJS code-generation tools for a few years now.  Back in Ext-1.0 days, I even took a shot at creating a large Rails wrapper framework, mapping Ext UI widgets to plain-old Ruby-objects which could be stored in YAML files and rendered into views.  However, with Ext-2.0+ came new ideas which brought many changes to the framework (great new component-model, plugins, xtype, normalized component configuration-objects) and the Rails wrapper framework was rendered immediately obsolete.  Until recently, I gave up on auto-generating ExtJS code and concentrated upon writing good Ext plugins and base-classes.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=prFPrqI8ApQ:sJmYZqgIiWc:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=prFPrqI8ApQ:sJmYZqgIiWc:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=prFPrqI8ApQ:sJmYZqgIiWc:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=prFPrqI8ApQ:sJmYZqgIiWc:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=prFPrqI8ApQ:sJmYZqgIiWc:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=prFPrqI8ApQ:sJmYZqgIiWc:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=prFPrqI8ApQ:sJmYZqgIiWc:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=prFPrqI8ApQ:sJmYZqgIiWc:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=prFPrqI8ApQ:sJmYZqgIiWc:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=prFPrqI8ApQ:sJmYZqgIiWc:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/09/30/ext-js-on-rails-a-comprehensivetutorial/feed/</wfw:commentRss>
+		<slash:comments>41</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/09/30/ext-js-on-rails-a-comprehensivetutorial/</feedburner:origLink></item>
+		<item>
+		<title>5 Steps to Understanding Drag and Drop with Ext JS</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/0dbL1QXfaG8/</link>
+		<comments>http://www.extjs.com/blog/2009/09/13/5-steps-drag-and-drop-with-ext-js/#comments</comments>
+		<pubDate>Sun, 13 Sep 2009 16:45:42 +0000</pubDate>
+		<author>Jay Garcia</author>
+				<category><![CDATA[Ext Tips]]></category>
+		<category><![CDATA[Tutorials]]></category>
+		<category><![CDATA[Drag and Drop]]></category>
+		<category><![CDATA[Ext JS]]></category>
+
+		<guid isPermaLink="false">http://extjs.com/blog/?p=1555</guid>
+		<description>One of the most powerful interaction design patterns available to developers is "Drag and Drop."  We utilize Drag and Drop without really giving it much thought - especially when its done right.   Jay Garcia, author of Ext JS in Action, walks you through 5 easy steps to ensure an elegant implementation.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=0dbL1QXfaG8:VXrtyxhr8rQ:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=0dbL1QXfaG8:VXrtyxhr8rQ:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=0dbL1QXfaG8:VXrtyxhr8rQ:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=0dbL1QXfaG8:VXrtyxhr8rQ:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=0dbL1QXfaG8:VXrtyxhr8rQ:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=0dbL1QXfaG8:VXrtyxhr8rQ:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=0dbL1QXfaG8:VXrtyxhr8rQ:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=0dbL1QXfaG8:VXrtyxhr8rQ:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=0dbL1QXfaG8:VXrtyxhr8rQ:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=0dbL1QXfaG8:VXrtyxhr8rQ:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/09/13/5-steps-drag-and-drop-with-ext-js/feed/</wfw:commentRss>
+		<slash:comments>49</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/09/13/5-steps-drag-and-drop-with-ext-js/</feedburner:origLink></item>
+		<item>
+		<title>Implementation Spotlight: Eaton’s Intelligent Power Manager</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/Qpryye6VXs8/</link>
+		<comments>http://www.extjs.com/blog/2009/08/31/implementation-spotlight-eaton%e2%80%99s-intelligent-power%c2%ae-manager/#comments</comments>
+		<pubDate>Mon, 31 Aug 2009 19:21:18 +0000</pubDate>
+		<author>Abraham Elias</author>
+				<category><![CDATA[Ext JS]]></category>
+
+		<guid isPermaLink="false">http://extjs.com/blog/?p=1438</guid>
+		<description>Eaton Corporation is a diversified power management company, with 75,000 employees, that sells products to customers in more than 150 countries. Eaton's electrical business is a global leader in power distribution, power quality, control and industrial automation products and services.  Read how Eaton's superstars Jonathan Bonzy, Sebastien Volle, and their team implemented an amazing RIA for managing power with Ext JS.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=Qpryye6VXs8:bS2eLQkeerI:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=Qpryye6VXs8:bS2eLQkeerI:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=Qpryye6VXs8:bS2eLQkeerI:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=Qpryye6VXs8:bS2eLQkeerI:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=Qpryye6VXs8:bS2eLQkeerI:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=Qpryye6VXs8:bS2eLQkeerI:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=Qpryye6VXs8:bS2eLQkeerI:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=Qpryye6VXs8:bS2eLQkeerI:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=Qpryye6VXs8:bS2eLQkeerI:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=Qpryye6VXs8:bS2eLQkeerI:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/08/31/implementation-spotlight-eaton%e2%80%99s-intelligent-power%c2%ae-manager/feed/</wfw:commentRss>
+		<slash:comments>30</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/08/31/implementation-spotlight-eaton%e2%80%99s-intelligent-power%c2%ae-manager/</feedburner:origLink></item>
+		<item>
+		<title>Ext JS 3.0 – Be Outstanding</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/j46xXDKMF40/</link>
+		<comments>http://www.extjs.com/blog/2009/08/10/ext-js-30-be-outstanding/#comments</comments>
+		<pubDate>Mon, 10 Aug 2009 18:54:32 +0000</pubDate>
+		<author>Abraham Elias</author>
+				<category><![CDATA[Community]]></category>
+		<category><![CDATA[Ext JS]]></category>
+
+		<guid isPermaLink="false">http://extjs.com/blog/?p=948</guid>
+		<description>On behalf of the Ext Team, I am pleased to announce the final release of Ext JS 3.0.  This release is the culmination of tens of thousands of hours of architecture, development and community feedback.  A  change log  and online documentation can be found on the download page.  Together we've accomplished a level of excellence to be proud of, but we want to enable you to be even better.  We want you to be Outstanding.&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=j46xXDKMF40:G-7R8qlI080:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=j46xXDKMF40:G-7R8qlI080:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=j46xXDKMF40:G-7R8qlI080:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=j46xXDKMF40:G-7R8qlI080:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=j46xXDKMF40:G-7R8qlI080:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=j46xXDKMF40:G-7R8qlI080:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=j46xXDKMF40:G-7R8qlI080:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=j46xXDKMF40:G-7R8qlI080:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=j46xXDKMF40:G-7R8qlI080:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=j46xXDKMF40:G-7R8qlI080:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/08/10/ext-js-30-be-outstanding/feed/</wfw:commentRss>
+		<slash:comments>98</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/08/10/ext-js-30-be-outstanding/</feedburner:origLink></item>
+		<item>
+		<title>Ext GWT 2.0 Released</title>
+		<link>http://feedproxy.google.com/~r/extblog/~3/wbmcgN5w6lQ/</link>
+		<comments>http://www.extjs.com/blog/2009/07/09/ext-gwt-20-released/#comments</comments>
+		<pubDate>Thu, 09 Jul 2009 12:55:31 +0000</pubDate>
+		<author>Darrell Meyer</author>
+				<category><![CDATA[Ext GWT]]></category>
+
+		<guid isPermaLink="false">http://extjs.com/blog/?p=1370</guid>
+		<description>&lt;p&gt;The Ext Team is happy to announce the availability of Ext GWT 2.0 available for immediate download. Ext GWT 2.0 is packed full of new components and features, expanding on the Ext GWT 1.0 feature set.&lt;/p&gt;&lt;div class="feedflare"&gt;
+&lt;a href="http://feeds.feedburner.com/~ff/extblog?a=wbmcgN5w6lQ:gecuVm_Y_Jg:yIl2AUoC8zA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=wbmcgN5w6lQ:gecuVm_Y_Jg:dnMXMwOfBR0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=wbmcgN5w6lQ:gecuVm_Y_Jg:F7zBnMyn0Lo"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=wbmcgN5w6lQ:gecuVm_Y_Jg:F7zBnMyn0Lo" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=wbmcgN5w6lQ:gecuVm_Y_Jg:7Q72WNTAKBA"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=wbmcgN5w6lQ:gecuVm_Y_Jg:V_sGLiPBpWU"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=wbmcgN5w6lQ:gecuVm_Y_Jg:V_sGLiPBpWU" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=wbmcgN5w6lQ:gecuVm_Y_Jg:l6gmwiTKsz0"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"&gt;&lt;/img&gt;&lt;/a&gt; &lt;a href="http://feeds.feedburner.com/~ff/extblog?a=wbmcgN5w6lQ:gecuVm_Y_Jg:gIN9vFwOqvQ"&gt;&lt;img src="http://feeds.feedburner.com/~ff/extblog?i=wbmcgN5w6lQ:gecuVm_Y_Jg:gIN9vFwOqvQ" border="0"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+		<wfw:commentRss>http://www.extjs.com/blog/2009/07/09/ext-gwt-20-released/feed/</wfw:commentRss>
+		<slash:comments>25</slash:comments>
+		<feedburner:origLink>http://www.extjs.com/blog/2009/07/09/ext-gwt-20-released/</feedburner:origLink></item>
+	</channel>
+</rss>
