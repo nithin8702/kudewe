@@ -13,6 +13,7 @@
     <servlet-name>kudeweReportsServices</servlet-name>
     <url-pattern>/metadata/*</url-pattern>
    	<url-pattern>/olap/*</url-pattern>
+   	<url-pattern>/feed/*</url-pattern>
   </servlet-mapping>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
