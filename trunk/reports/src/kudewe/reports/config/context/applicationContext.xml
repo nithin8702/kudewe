@@ -68,6 +68,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="metadataRepository" ref="metadataRepository"></property>
 		<property name="loadDB" ref="loadDB"></property>
     </bean>
+    
+    <bean id="feedService" class="kudewe.reports.services.implementation.FeedServiceImplementation">
+    	<property name="urlRseFeed" value="http://atom2rss.semiologic.com/?atom=http://blog.kudewe.com/feeds/posts/default"></property>
+    </bean>
 
 </beans>
 
