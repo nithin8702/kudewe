@@ -13,7 +13,7 @@
             	<prop key="/metadata/**/*.json">olapDashBoardDefinitionController</prop>
             	<prop key="/olap/**/filter/*.json">olapFilterController</prop>
             	<prop key="/olap/**/view/*.json">olapViewController</prop>
-            	<prop key="/feed/rse.xml">rseFeedController</prop>
+            	<prop key="/feed/*.xml">feedController</prop>
             	<!-- <prop key="/metadata/test/dashBoard.json">olapDashBoardDefinitionTestController</prop> -->
             </props>
         </property>
@@ -31,7 +31,7 @@
     	<property name="olapService" ref="olapService"/>
     	<property name="lookDefinitionIterator" ref="lookDefinitionIterator"/>
     </bean>
-    <bean id="rseFeedController" class="kudewe.reports.mvc.controller.RseFeedController">
+    <bean id="feedController" class="kudewe.reports.mvc.controller.FeedController">
     	<property name="feedService" ref="feedService"/>
     </bean>
     <!--
