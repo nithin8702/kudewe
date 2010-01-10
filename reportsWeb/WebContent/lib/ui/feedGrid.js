@@ -4,19 +4,18 @@
  * licensing@extjs.com
  * http://www.extjs.com/license
  */
-FeedGrid = function(config) {
+FeedGridRse = function(config) {
     Ext.apply(this, config);
 
     this.store = new Ext.data.Store({
         proxy: new Ext.data.HttpProxy({
-            url: 'feed/rse.xml',
             method: 'GET'
         }),
 
         reader: new Ext.data.XmlReader(
-            {record: 'item'},
-            ['title', 'author', {name:'pubDate', type:'date'}, 'link', 'description', 'content']
-        )
+	            {record: 'item'},
+	            ['title', 'author', {name:'pubDate', type:'date'}, 'link', 'description', 'content']
+	        )
     });
     this.store.setDefaultSort('pubDate', "DESC");
 
@@ -42,7 +41,7 @@ FeedGrid = function(config) {
         sortable:true
     }];
 
-    FeedGrid.superclass.constructor.call(this, {
+    FeedGridRse.superclass.constructor.call(this, {
         //region: 'center',
         id: 'topic-grid',
         loadMask: {msg:'Loading Feed...'},
@@ -62,7 +61,7 @@ FeedGrid = function(config) {
     this.on('rowcontextmenu', this.onContextClick, this);
 };
 
-Ext.extend(FeedGrid, Ext.grid.GridPanel, {
+Ext.extend(FeedGridRse, Ext.grid.GridPanel, {
 
     onContextClick : function(grid, index, e){
         if(!this.menu){ // create context menu on first right click
@@ -106,9 +105,10 @@ Ext.extend(FeedGrid, Ext.grid.GridPanel, {
     },
 
     loadFeed : function(url) {
-        this.store.baseParams = {
-            feed: url
-        };
+    	this.store.proxy = new Ext.data.HttpProxy({
+    		url: url,
+            method: 'GET'
+        });
         this.store.load();
     },
 
@@ -152,4 +152,104 @@ Ext.extend(FeedGrid, Ext.grid.GridPanel, {
     }
 });
 
-Ext.reg('appfeedgrid', FeedGrid);
+FeedGridTwitter = function(config) {
+    Ext.apply(this, config);
+
+    this.store = new Ext.data.Store({
+        proxy: new Ext.data.HttpProxy({
+            method: 'GET'
+        }),
+
+        reader: new Ext.data.XmlReader(
+	            {record: 'status'},
+	            ['text']
+	        )
+    });
+
+    this.columns = [{
+        id: 'text',
+        header: "Twitt",
+        dataIndex: 'text',
+        renderer: this.formatTitle,
+        width: 580,
+        sortable: true
+      }];
+
+    FeedGridTwitter.superclass.constructor.call(this, {
+        //region: 'center',
+        id: 'topic-grid',
+        loadMask: {msg:'Loading Feed...'},
+
+        sm: new Ext.grid.RowSelectionModel({
+            singleSelect:true
+        }),
+
+        viewConfig: {
+            forceFit:true,
+            enableRowBody:true,
+            showPreview:true
+        }
+    });
+
+    this.on('rowcontextmenu', this.onContextClick, this);
+};
+
+Ext.extend(FeedGridTwitter, Ext.grid.GridPanel, {
+
+    onContextClick : function(grid, index, e){
+        if(!this.menu){ // create context menu on first right click
+            this.menu = new Ext.menu.Menu({
+                id:'grid-ctx',
+                items: [{
+                    iconCls: 'refresh-icon',
+                    text:'Refresh',
+                    scope:this,
+                    handler: function(){
+                        this.ctxRow = null;
+                        this.store.reload();
+                    }
+                }]
+            });
+            this.menu.on('hide', this.onContextHide, this);
+        }
+        e.stopEvent();
+        if(this.ctxRow){
+            Ext.fly(this.ctxRow).removeClass('x-node-ctx');
+            this.ctxRow = null;
+        }
+        this.ctxRow = this.view.getRow(index);
+        this.ctxRecord = this.store.getAt(index);
+        Ext.fly(this.ctxRow).addClass('x-node-ctx');
+        this.menu.showAt(e.getXY());
+    },
+
+    onContextHide : function(){
+        if(this.ctxRow){
+            Ext.fly(this.ctxRow).removeClass('x-node-ctx');
+            this.ctxRow = null;
+        }
+    },
+
+    loadFeed : function(url) {
+    	this.store.proxy = new Ext.data.HttpProxy({
+    		url: url,
+            method: 'GET'
+        });
+        this.store.load();
+    },
+
+    togglePreview : function(show){
+        this.view.showPreview = show;
+        this.view.refresh();
+    },
+
+    formatTitle: function(value, p, record) {
+    	var xf = Ext.util.Format;
+        var body = '<p style="white-space:normal;">' + xf.ellipsis(xf.stripTags(record.data.text), 200) + '</p>';
+        return body;
+    	return String.format(
+                '<div class="topic"><p>hola</p></div>',
+                value
+                );
+    }
+});
