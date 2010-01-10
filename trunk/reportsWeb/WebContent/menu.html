@@ -89,23 +89,26 @@
     Ext.onReady(function(){
         Ext.QuickTips.init();
 
-        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
-
-        var tpl = Ext.Template.from('preview-tpl', {
-            compiled:true,
-            getBody : function(v, all){
-                return Ext.util.Format.stripScripts(v || all.description);
-            }
-        });
-        
-        this.grid = new FeedGrid({
-        	height: 200,
-            width: 600,
-            stripeRows: true
-        });
-        grid.render('gridFeed');
-        grid.loadFeed('rse');
-        
+        var feedGridRse = new FeedGridRse (
+            {
+	        	height: 200,
+	            width: 600,
+	            stripeRows: true
+	        }
+        );
+        feedGridRse.render('feedGridRse');
+        feedGridRse.loadFeed('feed/rse1.xml');
+		
+        var feedGridTwitter = new FeedGridTwitter(
+                {
+    	        	height: 100,
+    	            width: 600,
+    	            stripeRows: true
+    	        }
+            );
+        feedGridTwitter.render('feedGridTwitter');
+        feedGridTwitter.loadFeed('feed/twitter.xml');
+            
     });
 	</script>
 </head>
@@ -121,30 +124,17 @@
   			<p>&nbsp;</p>
   			
   			<h1>Novedades via twitter (<a href="http://www.twitter.com/kudewe" target="_blank">@kudewe</a>)</h1>
-  			<ol>
-  				<li>Instalamos nuestro 1er panel solar!</li>
-  				<li>Quien quiere un dashboard gratis?</li>
-  				<li>Quien quiere un dashboard gratis?</li>
-  				<li>Quien quiere un dashboard gratis?</li>
-  			</ol>
+  			<div id="feedGridTwitter"></div>
   			<p>&nbsp;</p>
   			
 	    	<h1>#RSE en <a href="http://blog.kudewe.com/search/label/rse" target="_blank">blog.kudewe.com</a></h1>
   			<p>Peque&ntilde;as acciones con impacto <a href="http://blog.kudewe.com/search/label/impacto%20ambiental" target="_blank">ambiental</a> y <a href="http://blog.kudewe.com/search/label/impacto%20social" target="_blank">social</a></p>
-  			<div id="gridFeed"></div>
+  			<div id="feedGridRse"></div>
   			<p>&nbsp;</p>
   			
 	    </div>
 		<div><p>Estamos para ayudarlo a gestionar mejor su organizaci&oacute;n, ante cualquier duda o consulta, lo inviamos a escribirnos a <a href="mailto:reports@kudewe.com">reports@kudewe.com</a></p></div>
     </div>
     
-	<!-- Template used for Feed Items -->
-	<div id="preview-tpl" style="display:none;">
-	    <div class="post-data">
-	        <span class="post-date">{pubDate:date("M j, Y, g:i a")}</span>
-	        <h3 class="post-title">{title}</h3>
-	    </div>
-	    <div class="post-body">{content:this.getBody}</div>
-	</div>    
 </body>
 </html>
