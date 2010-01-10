@@ -38,7 +38,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     
     <!-- Repositories/url mapper -->
     <bean id="urlMapper" class="kudewe.reports.repository.filesystem.UrlMapperFileSystem">
-    	<property name="repositoryBasePath" value="/home/fer/workspace/kudewe/data/${tenant}/metadata/"></property>
+    	<property name="repositoryBasePath" value="/home/fer/workspace/kudewe/repository/${tenant}/metadata/"></property>
     	<property name="securityContext" ref="securityContext"></property>
     </bean>
     
@@ -46,8 +46,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <bean id="connectionStringBuilder" class="kudewe.reports.repository.olap.ConnectionStringBuilderOlap">
     	<property name="templates">	
     		<map>
-                <entry key="hsqldb" value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/data/${tenant}/mondrian/${cubeAlias}.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:/home/fer/workspace/kudewe/data/${tenant}/hsqldb/${dataBaseAlias};jdbcUser=sa;jdbcPassword=;"/>
-                <entry key="mysql"  value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/data/${tenant}/mondrian/${cubeAlias}.xml;JdbcDrivers=com.mysql.jdbc.Driver;Jdbc=jdbc:mysql://localhost/${tenant};jdbcUser=aliverti;jdbcPassword=aliverti;"/>
+                <entry key="hsqldb" value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/repository/${tenant}/mondrian/${cubeAlias}.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:/home/fer/workspace/kudewe/repository/${tenant}/hsqldb/${dataBaseAlias};jdbcUser=sa;jdbcPassword=;"/>
+                <entry key="mysql"  value="Provider=mondrian;Catalog=/home/fer/workspace/kudewe/repository/${tenant}/mondrian/${cubeAlias}.xml;JdbcDrivers=com.mysql.jdbc.Driver;Jdbc=jdbc:mysql://localhost/${tenant};jdbcUser=aliverti;jdbcPassword=aliverti;"/>
             </map>
         </property>
     	<property name="securityContext" ref="securityContext"></property>
@@ -70,7 +70,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     </bean>
     
     <bean id="feedService" class="kudewe.reports.services.implementation.FeedServiceImplementation">
-    	<property name="urlRseFeed" value="http://atom2rss.semiologic.com/?atom=http://blog.kudewe.com/feeds/posts/default"></property>
+    	<property name="urlRseFeed" value="http://atom2rss.semiologic.com/?atom=http://www.blogger.com/feeds/8700470556582436056/posts/default/-/rse"></property>
+    	<property name="urlTwitterFeed" value="http://twitter.com/statuses/user_timeline/kudewe.xml"></property>
     </bean>
 
 </beans>

@@ -20,7 +20,7 @@ public class ConnectionStringBuilderTest extends BaseTest {
 		connectionDefinition.setDataBaseAlias("testdb");
 		connectionDefinition.setTemplate("hsqldb");
 		
-		assertEquals("Provider=mondrian;Catalog=/home/fer/workspace/kudewe/data/test/mondrian/cube_sales.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:/home/fer/workspace/kudewe/data/test/hsqldb/testdb;jdbcUser=sa;jdbcPassword=;", connectionStringBuilder.buildConnectionString(connectionDefinition));
+		assertEquals("Provider=mondrian;Catalog=/home/fer/workspace/kudewe/repository/test/mondrian/cube_sales.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:/home/fer/workspace/kudewe/data/test/hsqldb/testdb;jdbcUser=sa;jdbcPassword=;", connectionStringBuilder.buildConnectionString(connectionDefinition));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
