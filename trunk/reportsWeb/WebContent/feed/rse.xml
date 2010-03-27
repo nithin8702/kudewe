@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:date="http://exslt.org/dates-and-times" version="2.0"> 
+  <channel> 
+    <description/> 
+    <pubDate>Fri, 08 Jan 2010 17:09:40 GMT
+</pubDate> 
+    <title><![CDATA[Kudewe]]></title> 
+    <!--Unknown element link--> 
+    <link xmlns="http://www.w3.org/2005/Atom" rel="http://schemas.google.com/g/2005#feed" type="application/atom+xml" href="http://blog.kudewe.com/feeds/posts/default"/> 
+    <!-- source: http://www.blogger.com/feeds/8700470556582436056/posts/default --> 
+    <link>http://blog.kudewe.com/</link> 
+    <!--Unknown element link--> 
+    <link xmlns="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/"/> 
+    <!--Unknown element link--> 
+    <link xmlns="http://www.w3.org/2005/Atom" rel="next" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default?start-index=26&amp;max-results=25"/> 
+    <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+    <!--Unknown element totalResults--> 
+    <openSearch:totalResults xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/">56</openSearch:totalResults> 
+    <!--Unknown element startIndex--> 
+    <openSearch:startIndex xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/">1</openSearch:startIndex> 
+    <!--Unknown element itemsPerPage--> 
+    <openSearch:itemsPerPage xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/">25</openSearch:itemsPerPage> 
+    <item> 
+      <description><![CDATA[Otra de las iniciativas con impacto social que apoyamos, es la de Rodolfo Llanos (@soloenglish). Su proyecto consiste en construir una escuela en el Barrio Congreso Nacional, Cerrillos, Salta. Para eso, Rodolfo corrío una carrera muy dura en patagonia (150km) y le propuso a la gente comprar cada kilómetro recorrido. Si ganaba, los vendía. El proyecto es interesante a nivel social y deportivo.Para]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-2903450828809091629</guid> 
+      <pubDate>Wed, 06 Jan 2010 16:04:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto social</category> 
+      <title><![CDATA[150 x 300 Por una escuela]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/2903450828809091629/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=2903450828809091629" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2903450828809091629"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2903450828809091629"/> 
+      <link>http://blog.kudewe.com/2010/01/150-x-300-por-una-escuela.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Como parte de esta idea loca de hacer un mundo mejor, nos sumamos como cómplice de Juan Villarino y su viaje de Mar del Plata a Alaska en americiclo.Creo que su viaje puede ser una lección importante para toda la sociedad. Me da la sensación que hay mucho para aprender de los pueblos que viven con simpleza. Como dice Juan, la hospitalidad de estas personas es asombrosa. Reatratar el lado bueno de]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-1845633626561946195</guid> 
+      <pubDate>Wed, 06 Jan 2010 15:36:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto social</category> 
+      <title><![CDATA[Un viaje en bicicleta por America retratando pueblos]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/1845633626561946195/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=1845633626561946195" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1845633626561946195"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1845633626561946195"/> 
+      <link>http://blog.kudewe.com/2010/01/un-viaje-en-bicicleta-por-america.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Hace poco incursioné en el mundo de la integración continua. Les dejo una breve guía de cómo configurar un Cruise Control .net + svn + MS Test desde 0.1. Instalar CCnet http://confluence.public.thoughtworks.org/display/CCNET/Download.2. Bajar nAnt http://nant.sourceforge.net/ y copiar a directorio local (yo los copié en c:\archivos de programa).3. Bajar nAnt Contrib http://]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-6921107189478090972</guid> 
+      <pubDate>Tue, 05 Jan 2010 04:11:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">.net</category> 
+      <title><![CDATA[Configurando Cruise Control .net + svn + MS Test desde 0]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/6921107189478090972/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=6921107189478090972" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/6921107189478090972"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/6921107189478090972"/> 
+      <link>http://blog.kudewe.com/2010/01/configurando-cruise-control-net-svn-ms.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Hoy tuve que hacer un refactor de una aplicación para inyectar DataContext en los repositorios por IoC y utilizar el patrón unit of work.Esta es la interface de un repositorio:public interface IContactInformationRepository{    void Save(ContactInformation contactInformation);}y su implementación (recibe por constructor el DataContext):public class ContactInformationRepository : ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-3225402683336715676</guid> 
+      <pubDate>Mon, 28 Dec 2009 13:36:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">.net</category> 
+      <title><![CDATA[Inyectando DataContext en repositorios]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/3225402683336715676/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=3225402683336715676" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/3225402683336715676"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/3225402683336715676"/> 
+      <link>http://blog.kudewe.com/2009/12/inyectando-datacontext-en-repositorios.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Como comenté hace unas semanas, junto con Andrés Navarro vamos a estar difundiendo temas relacionados con minimizar el impacto ambiental. Esta vez, me gustaría comentar sobre el proyecto en que está trabajando Andrés.Él junto con Nicolas Losano, un compañero de la tecnicatura superior en energía industrial (orientación energía renovable y arquitectura bioclimática), se propusieron la meta de ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-1894297365283246787</guid> 
+      <pubDate>Tue, 15 Dec 2009 19:19:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto ambiental</category> 
+      <title><![CDATA[Proyecto Generador Savonious]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/1894297365283246787/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=1894297365283246787" title="1 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1894297365283246787"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1894297365283246787"/> 
+      <link>http://blog.kudewe.com/2009/12/proyecto-desarrollo-generador-savonious.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element thumbnail--> 
+      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://1.bp.blogspot.com/_HTsF5nAznt0/SyhWnMVGPnI/AAAAAAAABag/Nw1QjcvxLuE/s72-c/modelo+savonius.png" height="72" width="72"/> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">1</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Ayer tuve la oportunidad de almorzar con Ingrid Astiz. Ella es miembro de la cómunidad ágil, en el último encuentro de ágiles Buenos Aires dio una charla sobre retrospectivas:http://www.agiles.org/agiles-bsas/agiles-bsas-20091110Ingrid me hizo algunas observaciones interesantes respecto a implementar scrum en una empresa. Comparando scrum con las metodologías tradicionales, hay una diferencia de ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-1131794509809590513</guid> 
+      <pubDate>Sat, 05 Dec 2009 07:22:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">agile</category> 
+      <title><![CDATA[Un almuerzo sobre Scrum]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/1131794509809590513/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=1131794509809590513" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1131794509809590513"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1131794509809590513"/> 
+      <link>http://blog.kudewe.com/2009/12/un-almuerzo-sobre-scrum.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Algo interesante a la hora de resolver un problema es aprender a mirar fuera del cuadrante para descubrir nuevas posibilidades. Hoy tuve la suerte de charlar con Andrés Navarro, un especialista en energías limpias que me ayudó a abrir la cabeza. Les dejo el link de la charla:http://dondevuelaelcondor.blogspot.com/2009/12/un-nuevo-amigo-en-el-desafio-del-cambio.htmlUna manera de minimizar el ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-4718897554484741926</guid> 
+      <pubDate>Fri, 04 Dec 2009 21:33:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">creatividad</category> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto ambiental</category> 
+      <title><![CDATA[Difusión: otra manera de minimizar el impacto ambiental]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/4718897554484741926/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=4718897554484741926" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/4718897554484741926"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/4718897554484741926"/> 
+      <link>http://blog.kudewe.com/2009/12/difusion-otra-manera-de-minimizar-el.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Hoy pasé una tarde de cafe con Fernando Chicho un colega que conocí en un campamento hace menos de 2 semanas. Cuando era chico iba a un grupo scout, hace ya varios años (como pasa el tiempo...). Hace poco los chicos del grupo organizaron un campamento donde invitaron a las generaciones anteriores, las raices, los viejos, los dinosaurios. Fue un encuentro muy emotivo para todos.En ese viaje, ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-9085525311770174593</guid> 
+      <pubDate>Wed, 02 Dec 2009 18:05:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto social</category> 
+      <title><![CDATA[Un proyecto abierto, colaborativo y por una causa]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/9085525311770174593/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=9085525311770174593" title="1 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/9085525311770174593"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/9085525311770174593"/> 
+      <link>http://blog.kudewe.com/2009/12/un-proyecto-abierto-colaborativo-y-por.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">1</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Una técnica para hacer testing unitario de repositorios y servicios es usar mock objects. Si bien está técnica nos permite probar aisladamente una clase (es el objetivo de una prueba unitaria), en casos simples me parece que es más difícil construir el mock que la funcionalidad.Supongamos que estamos trabajando con un sitio simple de contenidos. Nuestros repositorios pueden ser del tipo:]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-4876664987937128085</guid> 
+      <pubDate>Thu, 26 Nov 2009 15:39:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">testing</category> 
+      <title><![CDATA[Testing práctico de repositorios y servicios con xUnit]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/4876664987937128085/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=4876664987937128085" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/4876664987937128085"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/4876664987937128085"/> 
+      <link>http://blog.kudewe.com/2009/11/tdd-practico-de-repositorios-y.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Un punto importante a resolver en una herramienta de reporting es la integración con otros point solutions. Lo primero que pensé fue en una herramienta tipo ETL para extraer los datos de los point solutions, transformarlos y cargarlos en kudewe reports. Buscando encontré esta lista open source:http://www.manageability.org/blog/stuff/open-source-etlQuería algo liviano, simple y fácilmente ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-724868540944915116</guid> 
+      <pubDate>Sat, 21 Nov 2009 10:07:00 GMT
+</pubDate> 
+      <title><![CDATA[Integración kudewe reports con sistemas legacy]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/724868540944915116/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=724868540944915116" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/724868540944915116"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/724868540944915116"/> 
+      <link>http://blog.kudewe.com/2009/11/integracion-kudewe-reports-con-sistemas.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Acabamos de subir a google code los fuentes del front end kudewe reports. http://code.google.com/p/kudewe/downloads/listEsta versión tiene "mockeados" los servicios server side (json), por lo que corre en cualquier web server.Para los que aún no lo conocen, esta es una demo de lo que puede hacer la herramienta:http://blog.kudewe.com/2009/09/toclasaas-2da-demo.htmlMás post relaciomados con Kudewe ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-1447196575061810902</guid> 
+      <pubDate>Thu, 19 Nov 2009 18:00:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">Kudewe Reports</category> 
+      <title><![CDATA[Download Kudewe Reports Web 0.1]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/1447196575061810902/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=1447196575061810902" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1447196575061810902"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1447196575061810902"/> 
+      <link>http://blog.kudewe.com/2009/11/download-kudewe-reports-web-01.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Algo interesante de scrum es que puede aplicarse a otras actividades, no solo al desarrollo de software. De hecho, me imagino sería muy enriquecedor usarlo en escenarios que no tengan nada que ver.Muchas de las cosas que plante scrum no son nuevas, como por ejemplo los equipos auto organizados. Es muy interesante la dinámica de un equipo que no sigue las reglas de un líder, sino donde el ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-8813629057055493419</guid> 
+      <pubDate>Sun, 15 Nov 2009 13:42:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">agile</category> 
+      <title><![CDATA[Equipos auto organizados: la cordada]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/8813629057055493419/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=8813629057055493419" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/8813629057055493419"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/8813629057055493419"/> 
+      <link>http://blog.kudewe.com/2009/11/equipos-auto-organizados-la-cordada.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element thumbnail--> 
+      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://1.bp.blogspot.com/_KJxP8stBacs/SwB6hytjUHI/AAAAAAAAACY/hPaiv4g955Y/s72-c/IMG_3889.jpg" height="72" width="72"/> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Durante el segundo día de scrum aprendí un poco más sobre el framework. Hicimos un juego muy bueno en donde construimos algo en 4 sprints, usando user stories, autorganizándonos como equipo haciendo pequeños plannings y retrospectivas. Fue una actividad muy dinámica en la que aprendí scrum haciendo. Ya voy a poner una foto de nuestro "producto".Otra actividad que me pareció muy buena fue un role ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-1452193475432078446</guid> 
+      <pubDate>Wed, 11 Nov 2009 10:07:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">agile</category> 
+      <title><![CDATA[2do día Curso Scrum Master]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/1452193475432078446/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=1452193475432078446" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1452193475432078446"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/1452193475432078446"/> 
+      <link>http://blog.kudewe.com/2009/11/2do-dia-curso-scrum-master.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element thumbnail--> 
+      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://2.bp.blogspot.com/_HTsF5nAznt0/SwMZ3mbGkvI/AAAAAAAABY0/Y-KIA9S2J_g/s72-c/pajarraco.jpg" height="72" width="72"/> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Hoy asistí al 1er día de entrenamiento de scrum master. Si bien solo vamos la mitad del curso, me pareció buenísimo la dinámica con que se dicta (gracias a Alan y Ariel). Esta ver no quiero comentar sobre scrum, sus roles/responsabilidades, flujos y artefactos. Sino de algo que creo que va más allá de scrum y está presente en casi toda actividad, que tiene que ver con formar equipos, buenos ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-2244714480191530376</guid> 
+      <pubDate>Mon, 09 Nov 2009 16:59:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">agile</category> 
+      <title><![CDATA[1er día Curso Scrum Master]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/2244714480191530376/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=2244714480191530376" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2244714480191530376"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2244714480191530376"/> 
+      <link>http://blog.kudewe.com/2009/11/1er-dia-curso-scrum-master.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Luego de actualizar Ubuntu 9.10 y bajar Galileo, me pasó que dejaron de andar algunos botontes en eclipse. Por suerte encontré cómo arreglarlo:http://ubuntulife.wordpress.com/2009/11/03/solucionar-botones-no-funcionan-de-eclipse-galileo-en-ubuntu-9-10/Tuve algunos problemas para instalar tigris svn (me dejó de andar el eclipse ganymede, por lo que me bajé el galileo). Asi que sobre el galileo ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-5927620107057201520</guid> 
+      <pubDate>Sun, 08 Nov 2009 14:26:00 GMT
+</pubDate> 
+      <title><![CDATA[Instalar SVN en Eclipse Galileo y Ubuntu 9.10]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/5927620107057201520/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=5927620107057201520" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/5927620107057201520"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/5927620107057201520"/> 
+      <link>http://blog.kudewe.com/2009/11/instalar-svn-en-eclipse-galileo-y.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Hoy voy a publicar en google code el código del front end de Kudewe Reports, que se llama Kudewe Reports Web (me maté con el nombre). Se trata de una herramienta web de reporting que permite fácilmente construir tableros de control (dashboard) que contienen vistas (grillas y gráficos) y filtros (por ahora tipo combo).Esta es la url del repositorio en goolge code:http://code.google.com/p/kudewe/]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-5744403094074772128</guid> 
+      <pubDate>Sat, 07 Nov 2009 15:46:00 GMT
+</pubDate> 
+      <title><![CDATA[Publicando Kudewe Reports Web en el mundo open source]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/5744403094074772128/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=5744403094074772128" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/5744403094074772128"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/5744403094074772128"/> 
+      <link>http://blog.kudewe.com/2009/11/publicando-kudewe-reports-web-en-el.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Gracias a idea connection, me enteré de una manera innovadora de generar energía a partir del sol.http://www.ideaconnection.com/new-inventions/solar-salt-energy-02972.html Algo parecido había visto hace tiempo, donde leí que google estaba investigando en tecnologías de espejo para abaratar los costos de generación de energía (http://energiasolarok.blogspot.com/2009/09/]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-2927263723324194271</guid> 
+      <pubDate>Sat, 07 Nov 2009 08:13:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto ambiental</category> 
+      <title><![CDATA[Sol + sal = energía]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/2927263723324194271/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=2927263723324194271" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2927263723324194271"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2927263723324194271"/> 
+      <link>http://blog.kudewe.com/2009/11/sol-sal-energia.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Últimamente me pasa seguido de conversar con amigos respecto a trabajar en otra cosa, algo propio. Lo que compartimos en general es que después de estar algunos años en el mismo trabajo, es difícil mantener la motivación.Una vez escuche en una charla de @bilinkis, que las empresas buscan el engranaje que mejor encaje en su maquinaria. El problema con esto es que nosotros somos personas, no ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-3895308288631750400</guid> 
+      <pubDate>Sun, 01 Nov 2009 15:40:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">entrepreneurship</category> 
+      <title><![CDATA[De la relación de dependencia al emprendimiento]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/3895308288631750400/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=3895308288631750400" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/3895308288631750400"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/3895308288631750400"/> 
+      <link>http://blog.kudewe.com/2009/11/de-la-relacion-de-dependencia-al.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Gracias a twitter me enteré de una herramienta para crear presentaciones visuales http://prezi.com/Por lo que comencé a idear una presentación sobre la herramienta de reporting que estoy construyendo:              Comentarios y sugerencias son bienvenidos!]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-4017164382682132798</guid> 
+      <pubDate>Sat, 31 Oct 2009 19:50:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">Kudewe Reports</category> 
+      <title><![CDATA[Probando prezi.com]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/4017164382682132798/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=4017164382682132798" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/4017164382682132798"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/4017164382682132798"/> 
+      <link>http://blog.kudewe.com/2009/10/probando-prezicom.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Este post describe distintas técnicas de optimización de performance para sitios web. Se basa en la experiencia de una aplicación de reporting construida en asp.net con fuertes constraints de performance (tiempo de ejecución por debajo de 2 segundos para accesos locales y 8 segundos para accesos remotos), teniendo una conectividad pobre desde sitios remotos. Sin embargo estas técnicas aplican a ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-6551106435045104742</guid> 
+      <pubDate>Tue, 27 Oct 2009 16:56:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">ajax</category> 
+      <title><![CDATA[Tuneando la performance de sitios web]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/6551106435045104742/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=6551106435045104742" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/6551106435045104742"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/6551106435045104742"/> 
+      <link>http://blog.kudewe.com/2009/10/tuneando-la-performance-de-sitios-web.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element thumbnail--> 
+      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://1.bp.blogspot.com/_HTsF5nAznt0/SueNREorBRI/AAAAAAAABXA/GyaNfmQ8jk4/s72-c/tuning.jpg" height="72" width="72"/> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Desde hace un tiempo vengo trabajando en esta idea. Conseguí una lista de los proveedores en Argentina (http://www.energiaslimpias.org/categoria/informes-energia-solar/) y me contacté con todos para consultar por una instalación para hacer andar una notebook (80w) durante 8hs x día.La típica instalación está formada por los paneles solares, regulador (para no sobre cargar la batería), batería (]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-841471116059278312</guid> 
+      <pubDate>Thu, 22 Oct 2009 16:21:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto ambiental</category> 
+      <title><![CDATA[Cuál es la instalación de paneles solares más sustentable?]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/841471116059278312/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=841471116059278312" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/841471116059278312"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/841471116059278312"/> 
+      <link>http://blog.kudewe.com/2009/10/cual-es-la-instalacion-de-paneles.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Dado que estoy empezando a usar un DSL, me gustaría compartir mi experiencia, por si otros deciden incursionar en el mundo de los DSL. Voy a aprovechar para contar que me lleva a usar un DSL.Uno de los problemas de mi dominio es resolver el binding de los filtros, pertenecientes a mi domain model, en una consulta MDX. Para eso adopté la siguiente sintaxis:SELECT {[Measures].[SaleAmount], []]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-8515128746431547203</guid> 
+      <pubDate>Sun, 18 Oct 2009 19:45:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">java</category> 
+      <category domain="http://www.blogger.com/atom/ns#">diseño</category> 
+      <title><![CDATA[Parser para un simple DSL]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/8515128746431547203/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=8515128746431547203" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/8515128746431547203"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/8515128746431547203"/> 
+      <link>http://blog.kudewe.com/2009/10/parser-para-un-simple-dsl.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Gracias a mi amigo @javierclimbing estoy leyendo el libro Free,  The Future of a Radical Price de Chris Anderson. Es interesante ver cómo detrás de un producto gratis, pueden haber grandes negocios (en internet tenemos muchos de estos casos, como google, facebook, twitter, etc). Creo que algo de esto, lejos de ser un experto en el tema, estoy aplicando vaya a saber porque...El desarrollo de ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-8444402103342704497</guid> 
+      <pubDate>Thu, 08 Oct 2009 20:44:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">Kudewe Reports</category> 
+      <category domain="http://www.blogger.com/atom/ns#">creatividad</category> 
+      <title><![CDATA[Quien quiere un dashboard gratis?]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/8444402103342704497/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=8444402103342704497" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/8444402103342704497"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/8444402103342704497"/> 
+      <link>http://blog.kudewe.com/2009/10/quien-quiere-un-dashboard-gratis.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Gracias a http://www.softwarebyrob.com/2009/10/06/micropreneur-spotlight-online-mind-mapping-software-thoughtmuse/ encontré una herramienta en la web para armar mapas mentales. Me pareció muy buena para organizar las distintas aristas de un problema. Asi que aproveché para hacer el ejercicio de alimentar una notebook con paneles solareshttp://thoughtmuse.com/editor/readonly/?load_map=]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-6343692386275561059</guid> 
+      <pubDate>Tue, 06 Oct 2009 19:42:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">creatividad</category> 
+      <category domain="http://www.blogger.com/atom/ns#">impacto ambiental</category> 
+      <title><![CDATA[Problema paneles solares y mapa mental]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/6343692386275561059/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=6343692386275561059" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/6343692386275561059"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/6343692386275561059"/> 
+      <link>http://blog.kudewe.com/2009/10/problema-paneles-solares-y-mapa-mental.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <item> 
+      <description><![CDATA[Hoy me pasó que la virtual con ubuntu se quedó sin espacio en disco (la imagen original tiene 8 GB). Mi sistema operativo host es windows vista y la tengo una virtual machine con Ubuntu Desktop 9.04 (con vmware player).Estos son los pasos para agrandar el tamaño del disco a 100 GB.1. Convertir el disco a 2GB split not pre-allocated usando vmware converter. Se puede bajar de la página de ]]></description> 
+      <guid isPermaLink="false">tag:blogger.com,1999:blog-8700470556582436056.post-2715243825965855625</guid> 
+      <pubDate>Sun, 04 Oct 2009 14:20:00 GMT
+</pubDate> 
+      <category domain="http://www.blogger.com/atom/ns#">ubuntu</category> 
+      <title><![CDATA[Expandir disco guest ubuntu, host vista (vmware player)]]></title> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="application/atom+xml" href="http://blog.kudewe.com/feeds/2715243825965855625/comments/default" title="Enviar comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="replies" type="text/html" href="https://www.blogger.com/comment.g?blogID=8700470556582436056&amp;postID=2715243825965855625" title="0 comentarios"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2715243825965855625"/> 
+      <!--Unknown element link--> 
+      <link xmlns="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/8700470556582436056/posts/default/2715243825965855625"/> 
+      <link>http://blog.kudewe.com/2009/10/expandir-disco-guest-ubuntu-host-vista.html</link> 
+      <managingEditor>noreply@blogger.com
+         (Fernando Claverino)
+</managingEditor> 
+      <!--Unknown element total--> 
+      <thr:total xmlns:thr="http://purl.org/syndication/thread/1.0">0</thr:total> 
+      <source url="http://www.blogger.com/feeds/8700470556582436056/posts/default">Kudewe</source> 
+    </item> 
+    <generator>Blogger v7.00 (http://www.blogger.com) + Atom 1.0 XSLT Transform v1 (http://atom.geekhood.net/)</generator> 
+  </channel> 
+</rss> 

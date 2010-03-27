@@ -17,47 +17,44 @@ function buildFilters(dashBoardDefinition) {
 
 // Build dash board
 function buildDashBoard(dashBoardDefinition) {
-    return buildLayoutPortal(dashBoardDefinition.views);
+    return buildLayoutPortal(dashBoardDefinition);
 }
 
-function buildLayoutPortal(viewDefinitions) {
+function buildLayoutPortal(dashBoardDefinition) {
+	var viewDefinitions = dashBoardDefinition.views;
 	var portal =  {
 		xtype:'portal',
         region:'center',
         margins:'0 0 0 0',
-        items:[{
-        	columnWidth:.5,
+        items:[]
+	};
+	
+	for (i = 0; i < dashBoardDefinition.look.cols; i++) {
+		portal.items.push({
+        	columnWidth: 1 / dashBoardDefinition.look.cols,
             style:'padding:5px 5px 5px 5px',
             items:[]
-        },{
-        	columnWidth:.5,
-            style:'padding:5px 5px 5px 5px',
-            items:[]
-        }]
+        });
 	}
 
 	Ext.each(
-			viewDefinitions, 
-		    function(viewDefinition, index, allItems) {
-				var column;
-				if (index % 2 == 0) {
-					portalColumn = portal.items[0];
-				} else {
-					portalColumn = portal.items[1];
-				}
-				portalColumn.items.push({
-					title: viewDefinition.look.title,
-					layout:'fit',
-	                items: buildView(viewDefinition)
-				});
-			}
-		);
-	
+		viewDefinitions, 
+	    function(viewDefinition, index, allItems) {
+			var portalColumn = portal.items[index % dashBoardDefinition.look.cols];
+			portalColumn.items.push({
+				title: viewDefinition.look.title,
+				layout:'fit',
+                items: buildView(viewDefinition)
+			});
+		}
+	);
+	/*
 	portal.items[0].items.push({
 		title: 'Debug',
 		layout:'fit',
         items: buildViewDebug()
 	});
+	*/
 	
 	return portal;
 }
