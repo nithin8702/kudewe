@@ -17,7 +17,17 @@ function buildFilters(dashBoardDefinition) {
 
 // Build dash board
 function buildDashBoard(dashBoardDefinition) {
-    return buildLayoutPortal(dashBoardDefinition);
+	setDefaultValues(dashBoardDefinition);
+	return buildLayoutPortal(dashBoardDefinition);
+}
+
+function setDefaultValues(dashBoardDefinition) {
+	if (!dashBoardDefinition.look) {
+		dashBoardDefinition.look = {};
+	}
+	if (!dashBoardDefinition.look.cols) {
+		dashBoardDefinition.look.cols = 2;
+	}
 }
 
 function buildLayoutPortal(dashBoardDefinition) {
