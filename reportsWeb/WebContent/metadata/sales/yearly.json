@@ -1,7 +1,4 @@
 {
-	"look":{
-		"cols": 2
-	},
 	"filters":[{
 		"name":"brand",
 		"url":"sales/yearly/filter/brand",
