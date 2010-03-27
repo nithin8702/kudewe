@@ -19,6 +19,7 @@
       		<user name="fer" password="fer" authorities="ROLE_USER, ROLE_ADMIN" />
       		<user name="aliverti" password="aliverti" authorities="ROLE_USER" />
       		<user name="google" password="google" authorities="ROLE_USER" />
+      		<user name="demo" password="demo" authorities="ROLE_USER" />
     	</user-service>
   	</authentication-provider>
   	<!-- Security -->
