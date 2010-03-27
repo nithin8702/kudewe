@@ -43,7 +43,7 @@ function buildViewGrid(gridDefinition) {
     var viewGrid = new Ext.grid.GridPanel({
         store: storeView,
         columns: gridDefinition.look.columns,
-        stripeRows: true,
+        //stripeRows: true,
         height:gridDefinition.look.height
     });
 	

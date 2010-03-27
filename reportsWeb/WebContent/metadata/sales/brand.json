@@ -1,6 +1,6 @@
 {
 	"look":{
-		"cols": 2
+		"cols": 1
 	},
 	"filters":[{
 		"name":"brand",
@@ -75,62 +75,6 @@
 			"fields":["Time","Quantity"],
 			"series":[
 				{"type":"line","displayName":"Cantidad","yField":"Quantity"}
-			]
-		}
-	},{
-		"name":"salesByBrand",
-		"url":"sales/yearly/view/salesByBrand",
-		"dependencies":["categoryLevel1","categoryLevel2","categoryLevel3","product","month","year"],
-		"look":{
-			"lookType":"ext.grid",
-			"title":"Ventas x Marca",
-			"width":200,
-			"height":100,
-			"fields":[
-				{"name": "Brand"},
-				{"name": "Quantity"},
-				{"name": "SaleAmount"},
-				{"name": "Profit"}
-			],
-			"columns":[
-				{"header":"Marca","dataIndex":"Brand", width: 200},
-				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber", align: "right"},
-				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber", align: "right"},
-				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber", align: "right"}
-			]
-		}
-	},{
-		"name":"salesByCategory",
-		"url":"sales/yearly/view/salesByCategory",
-		"dependencies":["brand","product","month","year"],
-		"look":{
-			"lookType":"ext.grid",
-			"title":"Ventas x Categoria",
-			"width":200,
-			"height":100,
-			"fields":["Category","Quantity","SaleAmount","Profit"],
-			"columns":[
-				{"header":"Categoria","dataIndex":"Category"},
-				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber", align: "right"},
-				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber", align: "right"},
-				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber", align: "right"}
-			]
-		}
-	},{
-		"name":"salesByProduct",
-		"url":"sales/yearly/view/salesByProduct",
-		"dependencies":["brand","categoryLevel1","categoryLevel2","categoryLevel3","month","year"],
-		"look":{
-			"lookType":"ext.grid",
-			"title":"Ventas x Producto",
-			"width":200,
-			"height":100,
-			"fields":["Product","Quantity","SaleAmount","Profit"],
-			"columns":[
-				{"header":"Producto","dataIndex":"Product"},
-				{"header":"Cantidad","dataIndex":"Quantity", renderer: "intNumber", align: "right"},
-				{"header":"Monto Venta $","dataIndex":"SaleAmount", renderer: "intNumber", align: "right"},
-				{"header":"Ganancia $","dataIndex":"Profit", renderer: "intNumber", align: "right"}
 			]
 		}
 	}]
