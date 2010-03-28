@@ -52,6 +52,7 @@ function buildLayoutPortal(dashBoardDefinition) {
 	    function(viewDefinition, index, allItems) {
 			var portalColumn = portal.items[index % dashBoardDefinition.look.cols];
 			portalColumn.items.push({
+				id: "container" + viewDefinition.name,
 				title: viewDefinition.look.title,
 				layout:'fit',
                 items: buildView(viewDefinition)
