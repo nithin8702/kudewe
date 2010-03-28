@@ -26,8 +26,10 @@ function buildComboFilter(filterDefinition) {
 		// Create the message
 		var message = {
 			filterName: filterDefinition.name,
-			filterValue: comboFilter.getValue()};
-
+			filterValue: comboFilter.getValue(),
+			filterText: comboFilter.store.getById(comboFilter.getValue()).data.name
+		};
+		
 		// Save filter on page bus
 		window.PageBus.store('dash.filter.' + message.filterName, message)
 		
