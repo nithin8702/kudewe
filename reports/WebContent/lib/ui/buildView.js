@@ -1,4 +1,5 @@
 function buildView(viewDefinition) {
+	subscribeTitleToBus(viewDefinition);
 	if (viewDefinition.look.lookType == 'ext.grid') {
 		return buildViewGrid(viewDefinition);
 	} else if (viewDefinition.look.lookType == 'ext.graph') {
@@ -18,13 +19,6 @@ var loadStoreDelay = 1000;
 var loadStoreTime = loadStoreDelay;
 function loadStore(store) {
 	store.load({params:{}});
-//	setTimeout(
-//		function() {
-//			store.load({params:{}});
-//		},
-//		loadStoreTime
-//	);
-//	loadStoreTime += loadStoreDelay;
 }
 	
 function buildViewGrid(gridDefinition) {
@@ -97,6 +91,55 @@ function subscribeStoreViewToBus(store, viewDefinition) {
 					null
 				);
 			}
+		},
+		mySubscriberData);
+}
+
+function subscribeTitleToBus(viewDefinition) {
+	// Create a scope object
+	var myScope = {};
+	
+	// Create a subscriberData with storeReport
+	var mySubscriberData = {
+		viewDefinition: viewDefinition
+	};
+	
+	// Subscribe to a subject.
+	var mySubscription = window.PageBus.subscribe(
+		"dash.filter.onSelect",
+		myScope,
+		function(subject, message, subscriberData) {
+			var filters = '';
+
+			// Query to bus for get selected filters
+			window.PageBus.query(
+				'dash.filter.*', 
+				myScope, 
+				function(subject, value, data) {
+					if (subject != 'com.tibco.pagebus.query.done') {
+						// If filter is in view's dependencies
+						if (subscriberData.viewDefinition.dependencies.indexOf(value.filterName) >= 0
+							&& value.filterValue.search(/.\[All\]$/) < 0) {
+							if (filters) {
+								filters = filters + ', ';
+							}
+							filters = filters + value.filterText;
+						}
+						// Get next result
+						return true;
+					} else {
+						// Enclose title
+						if (filters) {
+							filters = '(' + filters + ')';
+						}
+						// Reload title
+						var container = Ext.getCmp('container' + subscriberData.viewDefinition.name);
+						container.setTitle(subscriberData.viewDefinition.look.title + ' ' + filters);
+					}
+				},
+				null,
+				null
+			);
 		},
 		mySubscriberData);
 }
