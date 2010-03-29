@@ -8,7 +8,9 @@ function buildFilters(dashBoardDefinition) {
 	Ext.each(
 		dashBoardDefinition.filters, 
 	    function(item, index, allItems) {
-			filters.push(buildComboFilter(item))
+			if (item.label) {
+				filters.push(buildComboFilter(item));
+			}
 		}
 	);
 	
