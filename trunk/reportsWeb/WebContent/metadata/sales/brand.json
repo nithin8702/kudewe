@@ -9,6 +9,8 @@
 		"dependencies":[],
 		"dependants":["product"]
 	},{
+		"name":"brand"
+	},{
 		"name":"categoryLevel1",
 		"url":"sales/yearly/filter/categoryLevel1",
 		"label":"Categoria 1",
