@@ -10,12 +10,10 @@
 	<bean id="cleanTableReader" class="kdw.aliverti.reader.TableReader">
 	    <property name="tables">
 	    	<list>
-	            <value>ft_stock</value>
-	            <!-- 
-	            <value>ft_sales</value>
-	            <value>lk_product</value>
-	            <value>lk_time</value>
-	             -->
+	            <value>FT_STOCK</value>
+	            <value>FT_SALES</value>
+	            <value>LK_PRODUCT</value>
+	            <value>LK_TIME</value>
           </list>
 	    </property>
 	</bean>
@@ -48,10 +46,10 @@
 	    	value="select ri.sku,
 	    				  ri.costo,
 	    				  ri.precio,
-	    				  ri.cantidad,
+	    				  (ri.cantidad + ri.cantidad_xxs + ri.cantidad_xs + ri.cantidad_s + ri.cantidad_m + ri.cantidad_l + ri.cantidad_xl + ri.cantidad_xxl) as cantidad,
 	    				  r.fecha
 	    		   from oha_receipt r, oha_receipt_item ri
-	    		   where ri.id_order = r.id_order"/>
+	    		   where ri.id_order = r.id_order and ri.id_moneda = 1"/>
 	    <property name="rowMapper">
 	        <bean class="kdw.aliverti.mapper.ReadFtSalesMapper"/>
 	    </property>
@@ -77,12 +75,7 @@
 	</bean>
 	
 	<!-- Writters -->
-	<bean id="cleanTableWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-		<property name="assertUpdates" value="true" />
-		<property name="itemSqlParameterSourceProvider">
-			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
-		</property>
-		<property name="sql" value="DELETE FROM :name"/>
+	<bean id="cleanTableWriter" class="kdw.aliverti.writer.CleanTableWriter">
 		<property name="dataSource" ref="dataSourceOutputKudewe" />
 	</bean>
 	
@@ -197,6 +190,10 @@
 	</bean>
 	-->
 	
+	<!-- Processors -->
+	<bean id="productProcessor" class="kdw.aliverti.processor.ProductProcessor">
+	</bean>
+	
 	<!-- Resources -->
 	
 	<bean id="lkProductResource" class="org.springframework.core.io.FileSystemResource">
@@ -238,13 +235,13 @@
 	
 	<!-- Job definition -->
 	<job id="loadDaily" xmlns="http://www.springframework.org/schema/batch">
-		<!--
-		<step id="cleanTable" parent="legacyStep">
+		
+		<step id="cleanTable" parent="legacyStep" next="lkTime">
 			<tasklet>
 				<chunk reader="cleanTableReader" writer="cleanTableWriter" />
 			</tasklet>
 		</step>
-		-->
+		
 		<step id="lkTime" parent="legacyStep" next="lkProduct">
 			<tasklet>
 				<chunk reader="lkTimeReader" writer="lkTimeWriter" />
@@ -253,7 +250,7 @@
 		
 		<step id="lkProduct" parent="legacyStep" next="ftSales">
 			<tasklet>
-				<chunk reader="lkProductReader" writer="lkProductWriter" />
+				<chunk reader="lkProductReader" processor="productProcessor" writer="lkProductWriter" />
 			</tasklet>
 		</step>
 		<step id="ftSales" parent="legacyStep" next="ftStock">
@@ -266,6 +263,7 @@
 				<chunk reader="ftStockReader" writer="ftStockWriter" />
 			</tasklet>
 		</step>
+		
 	</job>
 	
 </beans>

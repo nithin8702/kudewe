@@ -3,7 +3,6 @@ package kdw.aliverti.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import kdw.aliverti.model.Table;
 import kdw.aliverti.reader.TableReader;
 
 import static org.junit.Assert.*;
@@ -17,7 +16,7 @@ public class TableReaderTest {
 	@Test
 	public void reader_empty_returnNull() throws UnexpectedInputException, org.springframework.batch.item.ParseException, Exception {
 		// Arrange
-		ItemReader<Table> tableReader = new TableReader();
+		ItemReader<String> tableReader = new TableReader();
 		
 		// Act
 		
@@ -37,7 +36,7 @@ public class TableReaderTest {
 		// Act
 			
 		// Assert
-		assertEquals("lk_time", tableReader.read().getName());
+		assertEquals("lk_time", tableReader.read());
 		assertNull(tableReader.read());
 	}
 	
@@ -54,8 +53,8 @@ public class TableReaderTest {
 		// Act
 		
 		// Assert
-		assertEquals("lk_time", tableReader.read().getName());
-		assertEquals("lk_product", tableReader.read().getName());
+		assertEquals("lk_time", tableReader.read());
+		assertEquals("lk_product", tableReader.read());
 		assertNull(tableReader.read());
 	}
 }
