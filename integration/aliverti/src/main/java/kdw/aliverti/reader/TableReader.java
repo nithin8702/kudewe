@@ -2,13 +2,11 @@ package kdw.aliverti.reader;
 
 import java.util.List;
 
-import kdw.aliverti.model.Table;
-
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 
-public class TableReader implements ItemReader<Table>{
+public class TableReader implements ItemReader<String>{
 	private List<String> tables;
 	private int index = 0;
 	
@@ -16,18 +14,12 @@ public class TableReader implements ItemReader<Table>{
 		this.tables = tables;
 	}
 	
-	public Table read() throws Exception, UnexpectedInputException, ParseException {
-		Table table = null;
+	public String read() throws Exception, UnexpectedInputException, ParseException {
+		String table = null;
 		if (tables != null && index < tables.size()) {
-			table = new Table();
-			table.setName(tables.get(index));
+			table = tables.get(index);
 			index++;
 		}
 		return table;
 	}
-
-
-
-	
-	
 }
