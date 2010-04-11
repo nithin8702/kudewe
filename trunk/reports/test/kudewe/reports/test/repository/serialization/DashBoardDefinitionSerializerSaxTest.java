@@ -34,6 +34,9 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 					"<dataBaseAlias>dbA</dataBaseAlias>" +
 					"<template>templateA</template>" +
 				"</connection>" +
+				"<look>" +
+					"<cols>2</cols>" +
+				"</look>" +
 				"<views>" +
 					"<view>" +
 						"<name>view1</name>" +
@@ -143,6 +146,10 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 		assertEquals("cubeA", dashBoardDefinition.getConnection().getCubeAlias());
 		assertEquals("dbA", dashBoardDefinition.getConnection().getDataBaseAlias());
 		assertEquals("templateA", dashBoardDefinition.getConnection().getTemplate());
+		
+		// Dashboard look
+		assertEquals("cols", dashBoardDefinition.getLookDefinition().getProperties().get(0).getName());
+		assertEquals(2, dashBoardDefinition.getLookDefinition().getProperties().get(0).getValue());
 		
 		// View 1
 		ViewDefinition viewDefinition1 = dashBoardDefinition.getViews().get(0);

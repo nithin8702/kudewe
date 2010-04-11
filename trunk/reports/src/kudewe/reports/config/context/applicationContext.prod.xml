@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- Repositories -->
+    <bean id="dataSource" class="kudewe.reports.repository.olap.DataSourceOlap">
+    </bean>
+    <bean id="queryBuilder" class="kudewe.reports.repository.olap.QueryBuilderOlap">
+    	<property name="wordTokenizer" ref="wordTokenizer"></property>
+    </bean>
+ 	<bean id="filterRepository" class="kudewe.reports.repository.olap.FilterRepositoryOlap">
+ 		<property name="dataSource" ref="dataSource"></property>
+ 		<property name="connectionStringBuilder" ref="connectionStringBuilder"></property>
+ 		<property name="queryBuilder" ref="queryBuilder"></property>
+    </bean>
+    <bean id="viewRepository" class="kudewe.reports.repository.olap.ViewRepositoryOlap">
+ 		<property name="dataSource" ref="dataSource"></property>
+ 		<property name="queryBuilder" ref="queryBuilder"></property>
+ 		<property name="connectionStringBuilder" ref="connectionStringBuilder"></property>
+    </bean>
+    <bean id="metadataRepository" class="kudewe.reports.repository.filesystem.MetadataRepositoryFileSystem">
+    	<property name="urlMapper" ref="urlMapper"></property>
+    	<property name="dashBoardDefinitionSerializerSax" ref="dashBoardDefinitionSerializerSax"></property>
+    	<property name="menuDefinitionSerializerSax" ref="menuDefinitionSerializerSax"></property>
+    	<property name="includeParser" ref="includeParser"></property>
+    </bean>
+    
+    <!-- Repositories/include parser -->
+    <bean id="includeParser" class="kudewe.reports.repository.filesystem.IncludeParserFileSystem">
+    	<property name="wordTokenizer" ref="wordTokenizer"></property>
+    </bean>
+    
+    <bean id="dashBoardDefinitionSerializerSax" class="kudewe.reports.repository.serialization.sax.DashBoardDefinitionSerializerSax">
+    </bean>
+    <bean id="menuDefinitionSerializerSax" class="kudewe.reports.repository.serialization.sax.MenuDefinitionSerializerSax">
+    </bean>
+    
+    <!-- Repositories/url mapper -->
+    <bean id="urlMapper" class="kudewe.reports.repository.filesystem.UrlMapperFileSystem">
+    	<property name="repositoryBasePath" value="C:\Kudewe\repository\${tenant}\metadata\"></property>
+    	<property name="securityContext" ref="securityContext"></property>
+    </bean>
+    
+    <!-- Repositories/connection string builder -->
+    <bean id="connectionStringBuilder" class="kudewe.reports.repository.olap.ConnectionStringBuilderOlap">
+    	<property name="templates">	
+    		<map>
+                <entry key="hsqldb" value="Provider=mondrian;Catalog=C:\Kudewe\repository\${tenant}\mondrian\${cubeAlias}.xml;JdbcDrivers=org.hsqldb.jdbcDriver;Jdbc=Jdbc:hsqldb:file:C:\Kudewe\repository\${tenant}\hsqldb\${dataBaseAlias};jdbcUser=sa;jdbcPassword=;"/>
+                <entry key="mysql"  value="Provider=mondrian;Catalog=C:\Kudewe\repository\${tenant}\mondrian\${cubeAlias}.xml;JdbcDrivers=com.mysql.jdbc.Driver;Jdbc=jdbc:mysql://localhost/${tenant};jdbcUser=aliverti;jdbcPassword=aliverti;"/>
+            </map>
+        </property>
+    	<property name="securityContext" ref="securityContext"></property>
+    </bean>
+    
+    <!-- Repositories/db loaders -->
+    <bean id="loadDB" class="kudewe.reports.repository.googlespreadsheet.LoadDBGoogleSpreadSheet">
+    </bean>
+    
+    <!-- Repositories/db loaders -->
+    <bean id="wordTokenizer" class="kudewe.reports.repository.olap.WordTokenizerString">
+    </bean>
+    
+	<!-- Servicios -->
+ 	<bean id="olapService" class="kudewe.reports.services.implementation.OlapServiceImplementation">
+		<property name="filterRepository" ref="filterRepository"></property>
+		<property name="viewRepository" ref="viewRepository"></property>
+		<property name="metadataRepository" ref="metadataRepository"></property>
+		<property name="loadDB" ref="loadDB"></property>
+    </bean>
+    
+    <bean id="feedService" class="kudewe.reports.services.implementation.FeedServiceImplementation">
+    	<property name="urlRseFeed" value="http://atom2rss.semiologic.com/?atom=http://www.blogger.com/feeds/8700470556582436056/posts/default/-/rse"></property>
+    	<property name="urlTwitterFeed" value="http://twitter.com/statuses/user_timeline/kudewe.xml"></property>
+    	<property name="proxyHost" value="192.168.22.2"></property>
+    	<property name="proxyPort" value="90"></property>
+    	<property name="proxyUser" value="kudewe"></property>
+    	<property name="proxyPass" value="kud_$1"></property>
+    </bean>
+
+</beans>
