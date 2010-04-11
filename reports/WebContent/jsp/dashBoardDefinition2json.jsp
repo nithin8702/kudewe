@@ -4,6 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c-rt" %>
 <json:object>
+  <json:object name="look">
+    <c-rt:forEach var="lookObject" items="${dashBoardDefinition.lookDefinition.properties}">
+      <json:property name="${lookObject.name}" value="${lookObject.value}"/>
+    </c-rt:forEach>
+  </json:object>
   <json:array name="filters" var="filter" items="${dashBoardDefinition.filters}">
     <json:object>
       <json:property name="name" value="${filter.name}"/>

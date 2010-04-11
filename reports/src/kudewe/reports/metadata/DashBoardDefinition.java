@@ -33,6 +33,11 @@ public class DashBoardDefinition {
 	private Map<String, FilterDefinition> filters = new LinkedHashMap<String, FilterDefinition>();
 	
 	/**
+	 * The dashboard's look
+	 */
+	private GenericDefinition lookDefinition;
+	
+	/**
 	 * Return dashboard's url. Identify view as url address
 	 * @return
 	 */
@@ -116,4 +121,17 @@ public class DashBoardDefinition {
 		return views.get(name);
 	}
 	
+	/**
+	 * Return view's look
+	 */
+	public GenericDefinition getLookDefinition() {
+		return lookDefinition;
+	}
+
+	/**
+	 * Set view's look
+	 */
+	public void setLookDefinition(GenericDefinition lookDefinition) {
+		this.lookDefinition = lookDefinition;
+	}
 }

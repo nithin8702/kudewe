@@ -81,10 +81,13 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 		} else if ("look".equals(name)) {
 			
 			// Create look in function of parent node
-			if ("view".equals(getAncestorNodeName(1))) {
+			if ("dashboard".equals(getAncestorNodeName(1))) {
+				dashBoardDefinition.setLookDefinition(new GenericDefinition());
+			} else if ("view".equals(getAncestorNodeName(1))) {
 				// parser is on view
 				viewDefinition.setLookDefinition(new GenericDefinition());
 			}
+			
 		} else if ("datasource".equals(name)) {
 			
 			// Create data source in function of parent node
@@ -175,14 +178,18 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 			getConnectionDefinition().setTemplate(text.toString());
 		} else {
 			if ("look".equals(getAncestorNodeName(1))) {
-				// parser is on look
-				if (genericDefinition.getProperties().size() == 0) {
+				if ("dashboard".equals(getAncestorNodeName(2))) {
 					genericDefinition.setValue(getGenericDefinitionValue(text.toString()));
-					viewDefinition.getLookDefinition().addProperty(genericDefinition, genericDefinitionType);
+					dashBoardDefinition.getLookDefinition().addProperty(genericDefinition, genericDefinitionType);
 				} else {
-					viewDefinition.getLookDefinition().addProperty(new GenericDefinition(name, genericDefinition), genericDefinitionType);
+					// parser is on look
+					if (genericDefinition.getProperties().size() == 0) {
+						genericDefinition.setValue(getGenericDefinitionValue(text.toString()));
+						viewDefinition.getLookDefinition().addProperty(genericDefinition, genericDefinitionType);
+					} else {
+						viewDefinition.getLookDefinition().addProperty(new GenericDefinition(name, genericDefinition), genericDefinitionType);
+					}
 				}
-				
 			} else if ("look".equals(getAncestorNodeName(2))) {
 				// parser is on look/x
 				genericDefinition2.setValue(getGenericDefinitionValue(text.toString()));
