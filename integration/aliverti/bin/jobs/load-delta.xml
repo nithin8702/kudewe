@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<description>Job for load delta information from legacy system</description>
+	
+	<!-- Readers -->
+	<bean id="cleanTableReader" class="kdw.aliverti.reader.TableReader">
+	    <property name="tables">
+	    	<list>
+	            <value>FT_STOCK</value>
+	            <value>FT_SALES</value>
+	            <value>LK_PRODUCT</value>
+	            <value>LK_TIME</value>
+          </list>
+	    </property>
+	</bean>
+	
+	<bean id="lkProductReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	    <property name="dataSource" ref="dataSourceInputAliverti"/>
+	    <property name="sql" 
+	    	value="select p.sku, p.nombre as p_nombre, 
+	    				  m.id_marca, m.nombre as m_nombre,
+	    				  c3.id_dept as c3_id, c3.nombre as c3_nombre,
+	    				  c2.id_dept as c2_id, c2.nombre as c2_nombre,
+	    				  c1.id_dept as c1_id, c1.nombre as c1_nombre
+	    		   from oha_marca m, oha_prod p, oha_dept c3, oha_dept c2, oha_dept c1 
+	    		   where p.id_marca = m.id_marca 
+	    		   		 and p.id_dept = c3.id_dept
+	    		   		 and c3.id_parent = c2.id_dept
+	    		   		 and c2.id_parent = c1.id_dept"/>
+	    <property name="rowMapper">
+	        <bean class="kdw.aliverti.mapper.ReadLkProductMapper"/>
+	    </property>
+	</bean>
+	
+	<bean id="lkTimeReader" class="kdw.aliverti.reader.LkTimeReader">
+	    <property name="startYear" value="2007"/>
+	</bean>
+	
+	<bean id="ftSalesReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	    <property name="dataSource" ref="dataSourceInputAliverti"/>
+	    <property name="sql" 
+	    	value="select ri.sku,
+	    				  ri.costo,
+	    				  ri.precio,
+	    				  (ri.cantidad + ri.cantidad_xxs + ri.cantidad_xs + ri.cantidad_s + ri.cantidad_m + ri.cantidad_l + ri.cantidad_xl + ri.cantidad_xxl) as cantidad,
+	    				  r.fecha
+	    		   from oha_receipt r, oha_receipt_item ri
+	    		   where ri.id_order = r.id_order and ri.id_moneda = 1"/>
+	    <property name="rowMapper">
+	        <bean class="kdw.aliverti.mapper.ReadFtSalesMapper"/>
+	    </property>
+	</bean>
+	
+	<bean id="ftStockReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	    <property name="dataSource" ref="dataSourceInputAliverti"/>
+	    <property name="sql" 
+	    	value="select p.sku,
+	    				  p.costo_p as costo,
+	    				  p.stock,
+	    				  p.stock_xxs,
+	    				  p.stock_xs,
+	    				  p.stock_s,
+	    				  p.stock_m,
+	    				  p.stock_l,
+	    				  p.stock_xl,
+	    				  p.stock_xxl
+	    		   from oha_prod p"/>
+	    <property name="rowMapper">
+	        <bean class="kdw.aliverti.mapper.ReadFtStockMapper"/>
+	    </property>
+	</bean>
+	
+	<!-- Writters -->
+	<bean id="cleanTableWriter" class="kdw.aliverti.writer.CleanTableWriter">
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="lkProductWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO lk_product (product_id, product_name, brand_id, brand_name, category_id, category_level1_name, category_level2_name, category_level3_name, `use`, sale_type)
+				   values (:id, :name, :brand.id, :brand.name, :category3.id, :category1.name, :category2.name, :category3.name, :use, :saleType)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="lkTimeWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO lk_time (date_id, year, quarter, month, month_name, day_in_month, day_name)
+				   values (:id, :year, :quarter, :month, :monthName, :day, :dayName)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="ftSalesWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO ft_sales (product_id, date_id, quantity, sale_peso, cost_peso)
+				   values (:product.id, :date.id, :quantity, :price, :cost)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<bean id="ftStockWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO ft_stock (product_id, date_id, quantity, cost_peso)
+				   values (:product.id, :date.id, :quantity, :cost)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<!-- Flat file writers -->
+	<!--
+	<bean id="lkProductWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+	    <property name="resource" ref="lkProductResource" />
+	    <property name="headerCallback" ref="lkProductHeader" />
+	    <property name="lineAggregator">
+			<bean class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+				<property name="format" value="&quot;%1$s&quot;,&quot;%2$s&quot;,%3$s,&quot;%4$s&quot;,%5$s,&quot;%6$s&quot;,&quot;%7$s&quot;,&quot;%8$s&quot;" />
+				<property name="fieldExtractor">
+					<bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="id,name,brand.id,brand.name,category3.id,category1.name,category2.name,category3.name"/>					
+					</bean>
+				</property>
+			</bean>
+	    </property>
+	</bean>
+	
+	<bean id="lkTimeWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+	    <property name="resource" ref="lkTimeResource" />
+	    <property name="headerCallback" ref="lkTimeHeader" />
+	    <property name="lineAggregator">
+	        <bean class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+				<property name="format" value="&quot;%1$s&quot;,%2$s,%3$s,%4$s,&quot;%5$s&quot;,%6$s,&quot;%7$s&quot;" />
+				<property name="fieldExtractor">
+					<bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="id,year,quarter,month,monthName,day,dayName"/>					
+					</bean>
+				</property>
+			</bean>
+	    </property>
+	</bean>
+	
+	<bean id="ftSalesWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+	    <property name="resource" ref="ftSalesResource" />
+	    <property name="headerCallback" ref="ftSalesHeader" />
+	    <property name="lineAggregator">
+	        <bean class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+				<property name="format" value="&quot;%1$s&quot;,&quot;%2$s&quot;,%3$s,%4$s,%5$s" />
+				<property name="fieldExtractor">
+					<bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="product.id,date.id,quantity,price,cost"/>					
+					</bean>
+				</property>
+			</bean>
+	    </property>
+	</bean>
+	
+	<bean id="ftStockWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+	    <property name="resource" ref="ftStockResource" />
+	    <property name="headerCallback" ref="ftStockHeader" />
+	    <property name="lineAggregator">
+	        <bean class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+				<property name="format" value="&quot;%1$s&quot;,&quot;%2$s&quot;,%3$s,%4$s" />
+				<property name="fieldExtractor">
+					<bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="product.id,date.id,quantity,cost"/>					
+					</bean>
+				</property>
+			</bean>
+	    </property>
+	</bean>
+	-->
+	
+	<!-- Processors -->
+	<bean id="productProcessor" class="kdw.aliverti.processor.ProductProcessor">
+	</bean>
+	
+	<!-- Resources -->
+	
+	<bean id="lkProductResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="${batch.output.lkProduct}" />	
+	</bean>
+	<bean id="lkTimeResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="${batch.output.lkTime}" />	
+	</bean>
+	<bean id="ftSalesResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="${batch.output.ftSales}" />	
+	</bean>
+	<bean id="ftStockResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="${batch.output.ftStock}" />	
+	</bean>
+	
+	<!-- File Headers definition -->
+	<bean id="lkProductHeader" class="kdw.aliverti.header.FlatFileHeader">
+		<property name="header" value="&quot;product_id&quot;,&quot;product_name&quot;,&quot;brand_id&quot;,&quot;brand_name&quot;,&quot;category_id&quot;,&quot;category_level1_name&quot;,&quot;category_level2_name&quot;,&quot;category_level3_name&quot;" />
+	</bean>
+	<bean id="lkTimeHeader" class="kdw.aliverti.header.FlatFileHeader">
+		<property name="header" value="&quot;date_id&quot;,&quot;year&quot;,&quot;quarter&quot;,&quot;month&quot;,&quot;month_name&quot;,&quot;day_in_month&quot;,&quot;day_name&quot;" />
+	</bean>
+	<bean id="ftSalesHeader" class="kdw.aliverti.header.FlatFileHeader">
+		<property name="header" value="&quot;product_id&quot;,&quot;date_id&quot;,&quot;quantity&quot;,&quot;sale_peso&quot;,&quot;cost_peso&quot;" />
+	</bean>
+	<bean id="ftStockHeader" class="kdw.aliverti.header.FlatFileHeader">
+		<property name="header" value="&quot;product_id&quot;,&quot;date_id&quot;,&quot;quantity&quot;,&quot;cost_peso&quot;" />
+	</bean>
+	
+	<!-- Common definitions for all steps -->
+	<bean id="legacyStep"
+		class="org.springframework.batch.core.step.item.SimpleStepFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManagerOutputKudewe" />
+		<property name="jobRepository" ref="jobRepository" />
+		<property name="startLimit" value="100" />
+		<property name="commitInterval" value="10" />
+	</bean>
+	
+	<!-- Job definition -->
+	<job id="loadDaily" xmlns="http://www.springframework.org/schema/batch">
+		
+		<step id="cleanTable" parent="legacyStep" next="lkTime">
+			<tasklet>
+				<chunk reader="cleanTableReader" writer="cleanTableWriter" />
+			</tasklet>
+		</step>
+		
+		<step id="lkTime" parent="legacyStep" next="lkProduct">
+			<tasklet>
+				<chunk reader="lkTimeReader" writer="lkTimeWriter" />
+			</tasklet>
+		</step>
+		
+		<step id="lkProduct" parent="legacyStep" next="ftSales">
+			<tasklet>
+				<chunk reader="lkProductReader" processor="productProcessor" writer="lkProductWriter" />
+			</tasklet>
+		</step>
+		<step id="ftSales" parent="legacyStep" next="ftStock">
+			<tasklet>
+				<chunk reader="ftSalesReader" writer="ftSalesWriter" />
+			</tasklet>
+		</step>
+		<step id="ftStock" parent="legacyStep">
+			<tasklet>
+				<chunk reader="ftStockReader" writer="ftStockWriter" />
+			</tasklet>
+		</step>
+		
+	</job>
+	
+</beans>
