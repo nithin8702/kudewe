@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/graph/stockInvestmentYearly.view.xml"/>
+	<include file="views/graph/stockQuantitiesYearly.view.xml"/>
+	<include file="views/grid/stockByBrand.view.xml"/>
+	<include file="views/grid/stockByCategory.view.xml"/>
+	<include file="views/grid/stockByProduct.view.xml"/>
+	<filters>
+		<include file="../filters/all.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>

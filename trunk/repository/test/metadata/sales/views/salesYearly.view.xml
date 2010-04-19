@@ -1,0 +1,32 @@
+<view>
+	<name>salesYearly</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity], [Measures].[SalePrice]} ON COLUMNS, 
+	    	NON EMPTY {[Time].[Month].members} on rows
+	    	FROM [Sales]
+	    	WHERE ${brand} 
+		</query>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Ventas Anuales</title>
+		<width>300</width>
+		<height>300</height>
+		<xtype>linechart</xtype>
+		<xField>Time</xField>
+		<fields>Time</fields>
+		<fields>SalePrice</fields>
+		<fields>Quantity</fields>
+		<series>
+			<type>column</type>
+			<displayName>Precio</displayName>
+			<yField>SalePrice</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<displayName>Cantidad</displayName>
+			<yField>Quantity</yField>
+		</series>
+	</look>
+</view>

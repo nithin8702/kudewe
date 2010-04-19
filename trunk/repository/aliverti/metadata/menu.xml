@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<menu>
+		<name>Ventas</name>
+		<items>
+			<menu>
+				<name>Ventas Anuales</name>
+				<dashBoardUrl>sales/yearly</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Por Marca</name>
+				<dashBoardUrl>sales/byBrand</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Comparar marcas</name>
+				<dashBoardUrl>sales/compareBrand</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Historial</name>
+				<dashBoardUrl>sales/history</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Ventas vs Stock</name>
+				<dashBoardUrl>sales/vsStock</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+	<menu>
+		<name>Stock</name>
+		<items>
+			<menu>
+				<name>Stock Anual</name>
+				<dashBoardUrl>stock/yearly</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+</items>

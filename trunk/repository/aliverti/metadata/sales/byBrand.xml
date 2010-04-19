@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/graph/salesByBrandByYear.view.xml"/>
+	<include file="views/grid/salesByCategoryTall.view.xml"/>
+	<include file="views/graph/salesYearly.view.xml"/>
+	<include file="views/grid/salesByProduct.view.xml"/>
+	<filters>
+		<include file="../filters/all.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>

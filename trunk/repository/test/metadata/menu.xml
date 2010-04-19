@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<menu>
+		<name>Ventas</name>
+		<items>
+			<menu>
+				<name>Por Producto</name>
+				<dashBoardUrl>sales/product</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Por Marca</name>
+				<dashBoardUrl>sales/brand</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+	<menu>
+		<name>Stock</name>
+		<items>
+			<menu>
+				<name>Por Marca</name>
+				<dashBoardUrl>stock/brand</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+</items>

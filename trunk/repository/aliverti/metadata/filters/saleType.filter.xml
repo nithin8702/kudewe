@@ -1,0 +1,12 @@
+<filter>
+	<name>saleType</name>
+	<label>Tipo Vental</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[ProductSaleType].[All], [ProductSaleType].[SaleType].members} on rows
+	    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>

@@ -1,0 +1,18 @@
+<filter>
+	<name>year</name>
+	<label>Año</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+	    		ORDER(
+	    			[Time].[Year].members,
+					[Time].[Month].CurrentMember.Properties("Key"),
+ 					DESC
+				)
+	    	} on rows
+	    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>

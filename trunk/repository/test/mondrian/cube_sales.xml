@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Library  SYSTEM "mondrian.dtd"> 
+<Schema name="SaleStore">
+	<Cube name="Sales">
+		<Table name="FT_SALES"/>
+		<Dimension name="Product" foreignKey="PRODUCT_ID">
+			<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID">
+				<Table name="LK_PRODUCT"/>
+				<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Brand" foreignKey="PRODUCT_ID">
+			<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID">
+				<Table name="LK_PRODUCT"/>
+				<Level name="Brand" column="BRAND_ID" nameColumn="BRAND_NAME" uniqueMembers="false"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="DATE_ID">
+			<Hierarchy hasAll="true" allMemberName="All" primaryKey="DATE_ID">
+				<Table name="LK_TIME"/>
+				<Level name="Year" column="YEAR" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Quarter" column="QUARTER" uniqueMembers="false" levelType="TimeQuarters" />
+				<Level name="Month" column="MONTH" uniqueMembers="false" ordinalColumn="MONTH" nameColumn="MONTH_NAME" levelType="TimeMonths" type="Numeric"/>
+				<Level name="WEEK" column="WEEK_IN_MONTH" uniqueMembers="false" levelType="TimeWeeks" />
+				<Level name="DAY" column="DAY_IN_MONTH" uniqueMembers="false" ordinalColumn="DAY_IN_MONTH" nameColumn="DAY_IN_MONTH" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>		
+		<Measure name="Quantity" column="QUANTITY" aggregator="sum" formatString="#,###"/>
+		<Measure name="SalePrice" column="SALE_PESO" aggregator="sum" formatString="#,###.##"/>
+	</Cube>
+</Schema>

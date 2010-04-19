@@ -1,0 +1,19 @@
+<filter>
+	<name>product</name>
+	<label>Producto</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	NON EMPTY {[Product].members} on rows
+	    	FROM [Sales]
+	    	where (${categoryLevel3.parent(categoryLevel2).parent(categoryLevel1)}, ${brand})
+		</query>
+		<dependencies>
+			<filter>categoryLevel1</filter>
+			<filter>categoryLevel2</filter>
+			<filter>categoryLevel3</filter>
+			<filter>brand</filter>
+		</dependencies>
+	</datasource>
+</filter>

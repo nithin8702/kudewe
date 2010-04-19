@@ -1,0 +1,12 @@
+<filter>
+	<name>month</name>
+	<label>Mes</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[Time].[All], [Time].[Month].members} on rows
+	    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>

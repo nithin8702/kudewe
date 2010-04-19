@@ -1,0 +1,12 @@
+<filter>
+	<name>use</name>
+	<label>Uso</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[ProductUse].[All], [ProductUse].[Use].members} on rows
+	    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>
