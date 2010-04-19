@@ -1,0 +1,56 @@
+<view>
+	<name>salesByBrand</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
+	    	NON EMPTY {[ProductBrand].[All], [ProductBrand].[Brand].members} on rows
+	    	FROM [Sales]
+	    	WHERE ${categoryLevel3.parent(categoryLevel2).parent(categoryLevel1)}, ${product}, ${month.parent(year).default([Time].[All].LastChild)}, ${use}, ${saleType} 
+		</query>
+			<dependencies>
+			<filter>categoryLevel1</filter>
+			<filter>categoryLevel2</filter>
+			<filter>categoryLevel3</filter>
+			<filter>product</filter>
+			<filter>month</filter>
+			<filter>year</filter>
+			<filter>use</filter>
+			<filter>saleType</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Ventas x Marca</title>
+		<height>100</height>
+		<fields>ProductBrand</fields>
+		<fields>Quantity</fields>
+		<fields>SaleAmount</fields>
+		<fields>Profit</fields>
+		<columns>
+			<header>Marca</header>
+			<dataIndex>ProductBrand</dataIndex>
+			<width>150</width>
+		</columns>
+		<columns>
+			<header>Cantidad</header>
+			<dataIndex>Quantity</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>60</width>
+		</columns>
+		<columns>
+			<header>Monto Venta $</header>
+			<dataIndex>SaleAmount</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+		<columns>
+			<header>Ganancia $</header>
+			<dataIndex>Profit</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+	</look>
+</view>

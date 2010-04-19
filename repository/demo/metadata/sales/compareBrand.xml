@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<view>
+		<name>salesYearlyforBrand1</name>>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
+		    	{
+		    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+		    	} on rows
+		    	FROM [Sales]
+		    	WHERE ${brand1}, ${category}, ${sex}
+			</query>
+			<dependencies>
+				<filter>brand1</filter>
+				<filter>category</filter>
+				<filter>sex</filter>
+				<filter>year</filter>
+			</dependencies>
+		</datasource>
+		<look>
+			<lookType>ext.graph</lookType>
+			<title>Ventas Anuales p/Marca 1</title>
+			<height>200</height>
+			<xtype>linechart</xtype>
+			<xField>Time</xField>
+			<fields>Time</fields>
+			<fields>SaleAmount</fields>
+			<fields>Profit</fields>
+			<series>
+				<type>column</type>
+				<displayName>Monto Venta</displayName>
+				<yField>SaleAmount</yField>
+			</series>
+			<series>
+				<type>line</type>
+				<displayName>Ganancia</displayName>
+				<yField>Profit</yField>
+			</series>
+		</look>
+	</view>
+	<view>
+		<name>salesQuantityForBrand1</name>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
+		    	{
+		    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+		    	} on rows
+		    	FROM [Sales]
+		    	WHERE ${brand1}, ${category}, ${sex} 
+			</query>
+			<dependencies>
+				<filter>brand1</filter>
+				<filter>category</filter>
+				<filter>sex</filter>
+				<filter>year</filter>
+			</dependencies>
+		</datasource>
+		<look>
+			<lookType>ext.graph</lookType>
+			<title>Cantidades Vendidas p/Marca 1</title>
+			<height>200</height>
+			<xtype>linechart</xtype>
+			<xField>Time</xField>
+			<fields>Time</fields>
+			<fields>Quantity</fields>
+			<series type="list">
+				<type>line</type>
+				<displayName>Cantidad</displayName>
+				<yField>Quantity</yField>
+			</series>
+		</look>
+	</view>
+	<view>
+		<name>salesYearlyforBrand2</name>>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
+		    	{
+		    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+		    	} on rows
+		    	FROM [Sales]
+		    	WHERE ${brand2}, ${category), ${sex}
+			</query>
+			<dependencies>
+				<filter>brand2</filter>
+				<filter>category</filter>
+				<filter>sex</filter>
+				<filter>year</filter>
+			</dependencies>
+		</datasource>
+		<look>
+			<lookType>ext.graph</lookType>
+			<title>Ventas Anuales p/Marca 2</title>
+			<height>200</height>
+			<xtype>linechart</xtype>
+			<xField>Time</xField>
+			<fields>Time</fields>
+			<fields>SaleAmount</fields>
+			<fields>Profit</fields>
+			<series>
+				<type>column</type>
+				<displayName>Monto Venta</displayName>
+				<yField>SaleAmount</yField>
+			</series>
+			<series>
+				<type>line</type>
+				<displayName>Ganancia</displayName>
+				<yField>Profit</yField>
+			</series>
+		</look>
+	</view>
+	<view>
+		<name>salesQuantityForBrand2</name>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
+		    	{
+		    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+		    	} on rows
+		    	FROM [Sales]
+		    	WHERE ${brand2}, ${category}, ${sex} 
+			</query>
+			<dependencies>
+				<filter>brand2</filter>
+				<filter>category</filter>
+				<filter>sex</filter>
+				<filter>year</filter>
+			</dependencies>
+		</datasource>
+		<look>
+			<lookType>ext.graph</lookType>
+			<title>Cantidades Vendidas p/Marca 2</title>
+			<width>200</width>
+			<height>200</height>
+			<xtype>linechart</xtype>
+			<xField>Time</xField>
+			<fields>Time</fields>
+			<fields>Quantity</fields>
+			<series type="list">
+				<type>line</type>
+				<displayName>Cantidad</displayName>
+				<yField>Quantity</yField>
+			</series>
+		</look>
+	</view>
+	<filters>
+		<filter>
+			<name>brand1</name>
+			<label>Marca 1</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    		{[Brand].members} on rows
+			    	FROM [Sales]
+				</query>
+			</datasource>
+		</filter>
+		<filter>
+			<name>brand2</name>
+			<label>Marca 2</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    		{[Brand].members} on rows
+			    	FROM [Sales]
+				</query>
+			</datasource>
+		</filter>
+		<include file="../filters/category.filter.xml"/>
+		<include file="../filters/sex.filter.xml"/>
+		<include file="../filters/year.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>

@@ -1,0 +1,32 @@
+<view>
+	<name>productsByMonth</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity], [Measures].[SalePrice]} ON COLUMNS, 
+	    	NON EMPTY {[Product].members} on rows
+	    	FROM [Sales]
+	    	WHERE (${brand}, ${month}) 
+		</query>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Productos por Mes</title>
+		<width>400</width>
+		<height>200</height>
+		<fields>Product</fields>
+		<fields>SalePrice</fields>
+		<fields>Quantity</fields>
+		<columns>
+			<header>Product</header>
+			<dataIndex>Product</dataIndex>
+		</columns>
+		<columns>
+			<header>Precio Venta $</header>
+			<dataIndex>SalePrice</dataIndex>
+		</columns>
+		<columns>
+			<header>Cantidad</header>
+			<dataIndex>Quantity</dataIndex>
+		</columns>
+	</look>
+</view>

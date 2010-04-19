@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<view>
+		<name>productsByMonth</name>>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[Quantity], [Measures].[SalePrice]} ON COLUMNS, 
+		    	NON EMPTY {[Product].members} on rows
+		    	FROM [Sales]
+		    	WHERE (${brand}, ${month}) 
+			</query>
+		</datasource>
+		<look>
+			<lookType>ext.grid</lookType>
+			<title>Productos por Mes</title>
+			<width>400</width>
+			<height>200</height>
+			<fields>Product</fields>
+			<fields>SalePrice</fields>
+			<fields>Quantity</fields>
+			<columns>
+				<header>Product</header>
+				<dataIndex>Product</dataIndex>
+			</columns>
+			<columns>
+				<header>Precio Venta $</header>
+				<dataIndex>SalePrice</dataIndex>
+			</columns>
+			<columns>
+				<header>Cantidad</header>
+				<dataIndex>Quantity</dataIndex>
+			</columns>
+		</look>
+	</view>
+	<view>
+		<name>salesYearly</name>>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[Quantity], [Measures].[SalePrice]} ON COLUMNS, 
+		    	NON EMPTY {[Time].[Month].members} on rows
+		    	FROM [Sales]
+		    	WHERE ${brand} 
+			</query>
+		</datasource>
+		<look>
+			<lookType>ext.graph</lookType>
+			<title>Ventas Anuales</title>
+			<width>300</width>
+			<height>300</height>
+			<xtype>linechart</xtype>
+			<xField>Time</xField>
+			<fields>Time</fields>
+			<fields>SalePrice</fields>
+			<fields>Quantity</fields>
+			<series>
+				<type>column</type>
+				<displayName>Precio</displayName>
+				<yField>SalePrice</yField>
+			</series>
+			<series>
+				<type>line</type>
+				<displayName>Cantidad</displayName>
+				<yField>Quantity</yField>
+			</series>
+		</look>
+	</view>
+	<filters>
+		<filter>
+			<name>brand</name>
+			<label>Marca</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    	{[Brand].members} on rows
+			    	FROM [Sales]
+				</query>
+			</datasource>
+		</filter>
+		<filter>
+			<name>month</name>
+			<label>Mes</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    	{[Time].[All], [Time].[Month].members} on rows
+			    	FROM [Sales]
+				</query>
+			</datasource>
+		</filter>
+	</filters>
+	<connection>
+		<cubeAlias>cube_sales</cubeAlias>
+		<dataBaseAlias>db</dataBaseAlias>
+	</connection>
+</dashboard>

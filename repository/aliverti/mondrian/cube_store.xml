@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Library  SYSTEM "mondrian.dtd"> 
+<Schema name="aliverti.store">
+	<Dimension name="Product">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID" name="Product">
+			<Table name="LK_PRODUCT"/>
+			<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true" ordinalColumn="PRODUCT_NAME"/>
+		</Hierarchy>
+	</Dimension>
+
+	<Dimension name="ProductBrand">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID" name="Brand">
+			<Table name="LK_PRODUCT"/>
+			<Level name="Brand" column="BRAND_ID" nameColumn="BRAND_NAME" uniqueMembers="false" ordinalColumn="BRAND_NAME"/>
+			<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+	</Dimension>
+
+	<Dimension name="ProductCategory">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID" name="Category">
+			<Table name="LK_PRODUCT"/>
+			<Level name="Level1" column="CATEGORY_LEVEL1_NAME" uniqueMembers="false" ordinalColumn="CATEGORY_LEVEL1_NAME"/>
+			<Level name="Level2" column="CATEGORY_LEVEL2_NAME" uniqueMembers="false" ordinalColumn="CATEGORY_LEVEL2_NAME"/>
+			<Level name="Level3" column="CATEGORY_LEVEL3_NAME" uniqueMembers="false" ordinalColumn="CATEGORY_LEVEL3_NAME"/>
+			<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+	</Dimension>
+	
+	<Dimension name="ProductUse">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID" name="Use">
+			<Table name="LK_PRODUCT"/>
+			<Level name="Use" column="USE" uniqueMembers="false"/>
+			<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+	</Dimension>
+	
+	<Dimension name="ProductSaleType">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID" name="SaleType">
+			<Table name="LK_PRODUCT"/>
+			<Level name="SaleType" column="SALE_TYPE" uniqueMembers="false"/>
+			<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+	</Dimension>
+	
+	<Dimension name="Time" type="TimeDimension">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="DATE_ID" name="Time">
+			<Table name="LK_TIME"/>
+			<Level name="Year" column="YEAR" uniqueMembers="false" levelType="TimeYears" type="Numeric"/>
+			<Level name="Quarter" column="QUARTER" uniqueMembers="false" levelType="TimeQuarters" type="Numeric"/>
+			<Level name="Month" column="MONTH" uniqueMembers="false" nameColumn="MONTH_NAME" levelType="TimeMonths" type="Numeric"/>
+			<Level name="Day" column="DAY_IN_MONTH" uniqueMembers="false" nameColumn="DAY_IN_MONTH" levelType="TimeDays" type="Numeric"/>
+		</Hierarchy>
+	</Dimension>		
+	<Cube name="Sales">
+		<Table name="FT_SALES"/>
+		<DimensionUsage name="Product" source="Product" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductBrand" source="ProductBrand" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductCategory" source="ProductCategory" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductUse" source="ProductUse" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductSaleType" source="ProductSaleType" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<Measure name="Quantity" column="QUANTITY" aggregator="sum" formatString="#,###"/>
+		<Measure name="UnitPrice" column="SALE_PESO" aggregator="avg" formatString="#,###.##"/>
+		<Measure name="UnitCost" column="COST_PESO" aggregator="avg" formatString="#,###.##"/>
+		<Measure name="SaleAmount" aggregator="sum" formatString="#,###.##">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_SALES.QUANTITY * FT_SALES.SALE_PESO)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		<Measure name="Profit" aggregator="sum" formatString="#,###.##">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_SALES.QUANTITY * (FT_SALES.SALE_PESO - FT_SALES.COST_PESO) )
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		
+	</Cube>
+	<Cube name="Stock">
+		<Table name="FT_STOCK"/>
+		<DimensionUsage name="Product" source="Product" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductBrand" source="ProductBrand" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductCategory" source="ProductCategory" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductUse" source="ProductUse" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductSaleType" source="ProductSaleType" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<Measure name="Quantity" column="QUANTITY" aggregator="sum" formatString="#,###"/>
+		<Measure name="UnitCost" column="COST_PESO" aggregator="avg" formatString="#,###.##"/>
+		<Measure name="TotalCost" aggregator="sum" formatString="#,###.##">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_STOCK.QUANTITY * FT_STOCK.COST_PESO)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+	</Cube>
+</Schema>

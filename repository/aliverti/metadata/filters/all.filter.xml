@@ -1,0 +1,7 @@
+<include file="../filters/brand.filter.xml"/>
+<include file="../filters/category.filter.xml"/>
+<include file="../filters/product.filter.xml"/>
+<include file="../filters/year.filter.xml"/>
+<include file="../filters/month.filter.xml"/>
+<include file="../filters/use.filter.xml"/>
+<include file="../filters/saleType.filter.xml"/>

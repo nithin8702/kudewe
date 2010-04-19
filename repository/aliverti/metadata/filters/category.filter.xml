@@ -1,0 +1,49 @@
+<filter>
+	<name>categoryLevel1</name>
+	<label>Categoria 1</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[ProductCategory].[All], [ProductCategory].[Level1].members} on rows
+	    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>
+<filter>
+	<name>categoryLevel2</name>
+	<label>Categoria 2</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+	    		[ProductCategory].[All],
+	    		Descendants(${categoryLevel1.default([ProductCategory].[All])}, [ProductCategory].[Level2])
+	    	} on rows
+	    	FROM [Sales]
+		</query>
+		<dependencies>
+			<filter>categoryLevel1</filter>
+		</dependencies>
+	</datasource>
+</filter>
+<filter>
+	<name>categoryLevel3</name>
+	<label>Categoria 3</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+	    		[ProductCategory].[All],
+	    		Descendants(${categoryLevel2.parent(categoryLevel1).default([ProductCategory].[All])}, [ProductCategory].[Level3])
+	    	} on rows
+	    	FROM [Sales]
+		</query>
+		<dependencies>
+			<filter>categoryLevel1</filter>
+			<filter>categoryLevel2</filter>
+		</dependencies>
+	</datasource>
+</filter>

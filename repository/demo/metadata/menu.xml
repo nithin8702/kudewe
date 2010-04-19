@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<menu>
+		<name>Ventas</name>
+		<items>
+			<menu>
+				<name>Ventas Anuales</name>
+				<dashBoardUrl>sales/yearly</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Por Marca</name>
+				<dashBoardUrl>sales/byBrand</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Comparar Marcas</name>
+				<dashBoardUrl>sales/compareBrand</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Historial</name>
+				<dashBoardUrl>sales/history</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+</items>

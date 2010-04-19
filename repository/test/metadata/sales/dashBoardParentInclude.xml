@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/productByMonth.view.xml"/>
+	<include file="views/salesYearly.view.xml"/>
+	<filters>
+		<include file="../filters/brand.filter.xml"/>
+		<include file="../filters/month.filter.xml"/>
+	</filters>
+	<connection>
+		<cubeAlias>cube_sales</cubeAlias>
+		<dataBaseAlias>testdb</dataBaseAlias>
+		<template>hsqldb</template>
+	</connection>
+</dashboard>
+

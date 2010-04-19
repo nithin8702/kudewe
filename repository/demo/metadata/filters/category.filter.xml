@@ -1,0 +1,13 @@
+<filter>
+	<name>category</name>
+	<label>Categoria</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+		    	SELECT {[Measures].[one]} ON COLUMNS,
+		    	{[Category].[All], [Category].members} on rows
+		    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>
+

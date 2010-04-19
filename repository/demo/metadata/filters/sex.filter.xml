@@ -1,0 +1,12 @@
+<filter>
+	<name>sex</name>
+	<label>Sexo</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+		    	SELECT {[Measures].[one]} ON COLUMNS,
+		    	NON EMPTY {[Sex].members} on rows
+		    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>

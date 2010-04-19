@@ -1,0 +1,48 @@
+<view>
+	<name>stockByProduct</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity], [Measures].[TotalCost]} ON COLUMNS, 
+	    	NON EMPTY {[Product].members} on rows
+	    	FROM [Stock]
+	    	WHERE ${brand}, ${categoryLevel3.parent(categoryLevel2).parent(categoryLevel1)}, ${month.parent(year).default([Time].[All].LastChild)}, ${use}, ${saleType} 
+		</query>
+		<dependencies>
+			<filter>brand</filter>
+			<filter>categoryLevel1</filter>
+			<filter>categoryLevel2</filter>
+			<filter>categoryLevel3</filter>
+			<filter>month</filter>
+			<filter>year</filter>
+			<filter>use</filter>
+			<filter>saleType</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Stock x Producto</title>
+		<height>100</height>
+		<fields>Product</fields>
+		<fields>Quantity</fields>
+		<fields>TotalCost</fields>
+		<columns>
+			<header>Producto</header>
+			<dataIndex>Product</dataIndex>
+			<width>220</width>
+		</columns>
+		<columns>
+			<header>Cantidad</header>
+			<dataIndex>Quantity</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>60</width>
+		</columns>
+		<columns>
+			<header>Inversion $</header>
+			<dataIndex>TotalCost</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+	</look>
+</view>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<menu>
+		<name>Paneles Solares</name>
+		<items>
+			<menu>
+				<name>Instalacion x Paises</name>
+				<dashBoardUrl>solarPanels/byCountry</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+</items>

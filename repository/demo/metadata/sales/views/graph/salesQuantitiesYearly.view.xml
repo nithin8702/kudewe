@@ -1,0 +1,33 @@
+<view>
+	<name>salesQuantitiesYearly</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [Sales]
+	    	WHERE ${brand}, ${category}, ${sex} 
+		</query>
+		<dependencies>
+			<filter>brand</filter>
+			<filter>category</filter>
+			<filter>sex</filter>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Ventas Anuales x Cantidad</title>
+		<height>200</height>
+		<xtype>linechart</xtype>
+		<xField>Time</xField>
+		<fields>Time</fields>
+		<fields>Quantity</fields>
+		<series type="list">
+			<type>line</type>
+			<displayName>Cantidad</displayName>
+			<yField>Quantity</yField>
+		</series>
+	</look>
+</view>

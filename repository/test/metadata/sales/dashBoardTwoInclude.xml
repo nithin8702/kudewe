@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/productByMonth.view.xml"/>
+	<include file="views/salesYearly.view.xml"/>
+	<filters>
+		<filter>
+			<name>brand</name>
+			<label>Marca</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    	{[Brand].members} on rows
+			    	FROM [Sales]
+				</query>
+			</datasource>
+		</filter>
+		<filter>
+			<name>month</name>
+			<label>Mes</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    	{[Time].[All], [Time].[Month].members} on rows
+			    	FROM [Sales]
+				</query>
+			</datasource>
+		</filter>
+	</filters>
+	<connection>
+		<cubeAlias>cube_sales</cubeAlias>
+		<dataBaseAlias>testdb</dataBaseAlias>
+		<template>hsqldb</template>
+	</connection>
+</dashboard>
+

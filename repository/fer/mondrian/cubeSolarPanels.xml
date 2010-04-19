@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Library  SYSTEM "mondrian.dtd"> 
+<Schema name="Fer">
+	<Cube name="SolarPanels">
+		<Table name="FT_SOLAR_PANELS"/>
+		<Dimension name="Country" foreignKey="COUNTRY_ID">
+			<Hierarchy hasAll="true" allMemberName="All" primaryKey="COUNTRY_ID">
+				<Table name="LK_COUNTRY"/>
+				<Level name="Country" column="COUNTRY_ID" nameColumn="COUNTRY_NAME" uniqueMembers="true"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension" foreignKey="DATE_ID">
+			<Hierarchy hasAll="true" allMemberName="All" primaryKey="DATE_ID">
+				<Table name="LK_TIME"/>
+				<Level name="Year" column="YEAR" uniqueMembers="true" levelType="TimeYears" type="Numeric"/>
+				<Level name="Quarter" column="QUARTER" uniqueMembers="false" levelType="TimeQuarters" />
+				<Level name="Month" column="MONTH" uniqueMembers="false" ordinalColumn="MONTH" nameColumn="MONTH_NAME" levelType="TimeMonths" type="Numeric"/>
+				<Level name="WEEK" column="WEEK_IN_MONTH" uniqueMembers="false" levelType="TimeWeeks" />
+				<Level name="DAY" column="DAY_IN_MONTH" uniqueMembers="false" ordinalColumn="DAY_IN_MONTH" nameColumn="DAY_IN_MONTH" levelType="TimeDays" type="Numeric"/>
+			</Hierarchy>
+		</Dimension>		
+		<Measure name="Surface" column="SURFACE" aggregator="sum" formatString="#,###"/>
+	</Cube>
+</Schema>

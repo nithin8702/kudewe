@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<view>
+		<name>solarPanelsByMonth</name>>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[Surface]} ON COLUMNS, 
+		    	NON EMPTY {[Country].members} on rows
+		    	FROM [SolarPanels]
+		    	WHERE (${month}) 
+			</query>
+			<dependencies>
+				<filter>month</filter>
+			</dependencies>
+		</datasource>
+		<look>
+			<lookType>ext.grid</lookType>
+			<title>Paneles Instalador por Mes</title>
+			<width>400</width>
+			<height>200</height>
+			<fields>Country</fields>
+			<fields>Surface</fields>
+			<columns>
+				<header>Pais</header>
+				<dataIndex>Country</dataIndex>
+			</columns>
+			<columns>
+				<header>Superficie m2</header>
+				<dataIndex>Surface</dataIndex>
+			</columns>
+		</look>
+	</view>
+	<view>
+		<name>solarPanelsByYear</name>>
+		<datasource>
+			<query>
+		    	SELECT {[Measures].[Surface]} ON COLUMNS, 
+		    	NON EMPTY {[Time].[Month].members} on rows
+		    	FROM [SolarPanels]
+		    	WHERE ${country} 
+			</query>
+			<dependencies>
+				<filter>country</filter>
+			</dependencies>
+		</datasource>
+		<look>
+			<lookType>ext.graph</lookType>
+			<title>Instalacion de Paneles Anual</title>
+			<width>300</width>
+			<height>300</height>
+			<xtype>linechart</xtype>
+			<xField>Time</xField>
+			<fields>Time</fields>
+			<fields>Surface</fields>
+			<series>
+				<type>column</type>
+				<displayName>Superficie</displayName>
+				<yField>Surface</yField>
+			</series>
+			<series>
+				<type>line</type>
+				<displayName>Superficie</displayName>
+				<yField>Surface</yField>
+			</series>
+		</look>
+	</view>
+	<filters>
+		<filter>
+			<name>month</name>
+			<label>Mes</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    	{[Time].[All], [Time].[Month].members} on rows
+			    	FROM [SolarPanels]
+				</query>
+			</datasource>
+		</filter>
+		<filter>
+			<name>country</name>
+			<label>Pais</label>
+			<datasource>
+				<query>
+					WITH MEMBER [Measures].[one] AS '1'
+			    	SELECT {[Measures].[one]} ON COLUMNS,
+			    	{[Country].[All], [Country].members} on rows
+			    	FROM [SolarPanels]
+				</query>
+			</datasource>
+		</filter>
+	</filters>
+	<connection>
+		<cubeAlias>cubeSolarPanels</cubeAlias>
+		<dataBaseAlias>testdb</dataBaseAlias>
+		<template>hsqldb</template>
+	</connection>
+</dashboard>
