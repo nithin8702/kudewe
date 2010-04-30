@@ -1,7 +1,5 @@
 #summary See your organization as a landscape
 
-= Kudewe Reports =
-
 Here you can see more about it on: http://www.kudewe.com/reports
 
 
