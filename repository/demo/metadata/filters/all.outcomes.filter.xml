@@ -1,0 +1,4 @@
+<include file="../filters/outcomeType.filter.xml"/>
+<include file="../filters/year.filter.xml"/>
+<include file="../filters/month.filter.xml"/>
+<include file="../filters/week.filter.xml"/>

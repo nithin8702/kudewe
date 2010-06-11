@@ -1,32 +1,31 @@
 <view>
-	<name>salesBySex</name>
+	<name>salesByProduct</name>
 	<datasource>
 		<query>
 	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount]} ON COLUMNS, 
-	    	NON EMPTY {[Sex].members} on rows
+	    	NON EMPTY {[Product].members} on rows
 	    	FROM [Sales]
-	    	WHERE ${ageRange}, ${paymentMethod}, ${product}, ${week.parent(month).parent(year).default([Time].[All].LastChild)} 
+	    	WHERE ${sex}, ${ageRange}, ${paymentMethod}, ${month.parent(year).default([Time].[All].LastChild)} 
 		</query>
 		<dependencies>
+			<filter>sex</filter>
 			<filter>ageRange</filter>
 			<filter>paymentMethod</filter>
-			<filter>product</filter>
 			<filter>year</filter>
 			<filter>month</filter>
-			<filter>week</filter>
 		</dependencies>
 	</datasource>
 	<look>
 		<lookType>ext.grid</lookType>
-		<title>Ventas x Sexo</title>
-		<height>95</height>
-		<fields>Sex</fields>
+		<title>Ventas x Producto</title>
+		<height>120</height>
+		<fields>Product</fields>
 		<fields>Quantity</fields>
 		<fields>SaleAmount</fields>
 		<columns>
-			<header>Sexo</header>
-			<dataIndex>Sex</dataIndex>
-			<width>150</width>
+			<header>Producto</header>
+			<dataIndex>Product</dataIndex>
+			<width>140</width>
 		</columns>
 		<columns>
 			<header>Cantidad</header>

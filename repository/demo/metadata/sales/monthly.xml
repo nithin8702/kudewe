@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dashboard>
-	<include file="views/graph/salesYearly.view.xml"/>
-	<include file="views/graph/salesQuantitiesYearly.view.xml"/>
+	<include file="views/graph/salesMonthly.view.xml"/>
+	<include file="views/graph/salesQuantitiesMonthly.view.xml"/>
 	<include file="views/grid/salesBySex.view.xml"/>
 	<include file="views/grid/salesByAgeRange.view.xml"/>
 	<include file="views/grid/salesByPaymentMethod.view.xml"/>

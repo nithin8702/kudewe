@@ -1,12 +1,12 @@
 <filter>
-	<name>paymentMethod</name>
-	<label>Forma de Pago</label>
+	<name>outcomeType</name>
+	<label>Tipo de Egreso</label>
 	<datasource>
 		<query>
 			WITH MEMBER [Measures].[one] AS '1'
 		    	SELECT {[Measures].[one]} ON COLUMNS,
-		    	{[PaymentMethod].[All], [PaymentMethod].members} on rows
-		    	FROM [Sales]
+		    	{[OutcomeType].[All], [OutcomeType].members} on rows
+		    	FROM [Outcomes]
 		</query>
 	</datasource>
 </filter>

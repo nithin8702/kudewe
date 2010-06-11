@@ -1,5 +1,5 @@
 <connection>
-	<cubeAlias>cube_store</cubeAlias>
+	<cubeAlias>cube</cubeAlias>
 	<!--
 	<dataBaseAlias>db</dataBaseAlias>
 	<template>mysql</template>

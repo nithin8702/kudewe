@@ -1,34 +1,32 @@
 <view>
-	<name>salesQuantitiesYearly</name>
+	<name>outcomesYearly</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
+	    	SELECT {[Measures].[Amount]} ON COLUMNS, 
 	    	{
 	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
 	    	} on rows
-	    	FROM [Sales]
-	    	WHERE ${sex}, ${ageRange}, ${paymentMethod}, ${product} 
+	    	FROM [Outcomes]
+	    	WHERE ${outcomeType}  
 		</query>
 		<dependencies>
-			<filter>sex</filter>
-			<filter>ageRange</filter>
-			<filter>paymentMethod</filter>
-			<filter>product</filter>
+			<filter>outcomeType</filter>
 			<filter>year</filter>
 		</dependencies>
 	</datasource>
 	<look>
 		<lookType>ext.graph</lookType>
-		<title>Ventas Anuales x Cantidad</title>
+		<title>Egresos Anuales</title>
 		<height>200</height>
+		<width>100</width>
 		<xtype>linechart</xtype>
 		<xField>Time</xField>
 		<fields>Time</fields>
-		<fields>Quantity</fields>
+		<fields>Amount</fields>
 		<series type="list">
 			<type>line</type>
-			<displayName>Cantidad</displayName>
-			<yField>Quantity</yField>
+			<displayName>Monto</displayName>
+			<yField>Amount</yField>
 		</series>
 	</look>
 </view>

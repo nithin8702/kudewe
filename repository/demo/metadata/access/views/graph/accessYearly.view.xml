@@ -1,27 +1,26 @@
 <view>
-	<name>salesQuantitiesHistory</name>
+	<name>accessYearly</name>
 	<datasource>
 		<query>
 	    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
 	    	{
-	    		Descendants(${year1.default([Time].[All].FirstChild)} : ${year2.default([Time].[All].LastChild)}, [Time].[Month])
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
 	    	} on rows
-	    	FROM [Sales]
-	    	WHERE ${brand}, ${category}, ${sex} 
+	    	FROM [Access]
+	    	WHERE ${sex}, ${ageRange}, ${product}  
 		</query>
 		<dependencies>
-			<filter>brand</filter>
-			<filter>category</filter>
 			<filter>sex</filter>
-			<filter>year1</filter>
-			<filter>year2</filter>
+			<filter>ageRange</filter>
+			<filter>product</filter>
+			<filter>year</filter>
 		</dependencies>
 	</datasource>
 	<look>
 		<lookType>ext.graph</lookType>
-		<title>Ventas Anuales x Cantidad</title>
-		<width>200</width>
+		<title>Accesos Anuales</title>
 		<height>200</height>
+		<width>100</width>
 		<xtype>linechart</xtype>
 		<xField>Time</xField>
 		<fields>Time</fields>

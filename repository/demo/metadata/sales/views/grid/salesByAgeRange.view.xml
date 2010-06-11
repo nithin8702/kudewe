@@ -1,30 +1,30 @@
 <view>
-	<name>salesByCategory</name>
+	<name>salesByAgeRange</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
-	    	NON EMPTY {[Category].members} on rows
+	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount]} ON COLUMNS, 
+	    	NON EMPTY {[AgeRange].members} on rows
 	    	FROM [Sales]
-	    	WHERE ${brand}, ${sex}, ${month.parent(year).default([Time].[All].LastChild)} 
+	    	WHERE ${sex}, ${paymentMethod}, ${product}, ${month.parent(year).default([Time].[All].LastChild)} 
 		</query>
 		<dependencies>
-			<filter>brand</filter>
 			<filter>sex</filter>
-			<filter>month</filter>
+			<filter>paymentMethod</filter>
+			<filter>product</filter>
 			<filter>year</filter>
+			<filter>month</filter>
 		</dependencies>
 	</datasource>
 	<look>
 		<lookType>ext.grid</lookType>
-		<title>Ventas x Categoria</title>
-		<height>95</height>
-		<fields>Category</fields>
+		<title>Ventas x Edad</title>
+		<height>165</height>
+		<fields>AgeRange</fields>
 		<fields>Quantity</fields>
 		<fields>SaleAmount</fields>
-		<fields>Profit</fields>
 		<columns>
-			<header>Categoria</header>
-			<dataIndex>Category</dataIndex>
+			<header>Edad</header>
+			<dataIndex>AgeRange</dataIndex>
 			<width>140</width>
 		</columns>
 		<columns>
@@ -40,13 +40,6 @@
 			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>65</width>
-		</columns>
-		<columns>
-			<header>Ganancia $</header>
-			<dataIndex>Profit</dataIndex>
-			<renderer>intNumber</renderer>
-			<align>right</align>
-			<width>80</width>
 		</columns>
 	</look>
 </view>
