@@ -8,16 +8,30 @@
 				<dashBoardUrl>sales/yearly</dashBoardUrl>
 			</menu>
 			<menu>
-				<name>Por Marca</name>
-				<dashBoardUrl>sales/byBrand</dashBoardUrl>
+				<name>Ventas Mensuales</name>
+				<dashBoardUrl>sales/monthly</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+	<menu>
+		<name>Control de Accesos</name>
+		<items>
+			<menu>
+				<name>Accesos Anuales</name>
+				<dashBoardUrl>access/yearly</dashBoardUrl>
 			</menu>
 			<menu>
-				<name>Comparar Marcas</name>
-				<dashBoardUrl>sales/compareBrand</dashBoardUrl>
+				<name>Accesos Mensuales</name>
+				<dashBoardUrl>access/monthly</dashBoardUrl>
 			</menu>
+		</items>
+	</menu>
+	<menu>
+		<name>Egresos</name>
+		<items>
 			<menu>
-				<name>Historial</name>
-				<dashBoardUrl>sales/history</dashBoardUrl>
+				<name>Egresos Anuales</name>
+				<dashBoardUrl>outcomes/yearly</dashBoardUrl>
 			</menu>
 		</items>
 	</menu>

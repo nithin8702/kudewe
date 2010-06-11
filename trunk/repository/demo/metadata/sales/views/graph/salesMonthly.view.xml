@@ -1,13 +1,13 @@
 <view>
-	<name>salesQuantitiesYearly</name>
+	<name>salesMonthly</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
+	    	SELECT {[Measures].[SaleAmount]} ON COLUMNS, 
 	    	{
-	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    		Descendants(${month.parent(year).default([Time].[All].LastChild)}, [Time].[Week])
 	    	} on rows
 	    	FROM [Sales]
-	    	WHERE ${sex}, ${ageRange}, ${paymentMethod}, ${product} 
+	    	WHERE ${sex}, ${ageRange}, ${paymentMethod}, ${product}  
 		</query>
 		<dependencies>
 			<filter>sex</filter>
@@ -15,20 +15,22 @@
 			<filter>paymentMethod</filter>
 			<filter>product</filter>
 			<filter>year</filter>
+			<filter>month</filter>
 		</dependencies>
 	</datasource>
 	<look>
 		<lookType>ext.graph</lookType>
-		<title>Ventas Anuales x Cantidad</title>
+		<title>Ventas Mensuales</title>
 		<height>200</height>
+		<width>100</width>
 		<xtype>linechart</xtype>
 		<xField>Time</xField>
 		<fields>Time</fields>
-		<fields>Quantity</fields>
+		<fields>SaleAmount</fields>
 		<series type="list">
-			<type>line</type>
-			<displayName>Cantidad</displayName>
-			<yField>Quantity</yField>
+			<type>column</type>
+			<displayName>Monto Venta</displayName>
+			<yField>SaleAmount</yField>
 		</series>
 	</look>
 </view>

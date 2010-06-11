@@ -1,0 +1,51 @@
+<view>
+	<name>profitByOutcomeType</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[SaleAmount], [Measures].[Amount], [Measures].[Profit]} ON COLUMNS, 
+	    	{
+	    		${year.default([Time].[All].LastChild)},
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [SalesAndOutcomes]
+		</query>
+		<dependencies>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Egresos x Mes</title>
+		<height>180</height>
+		<fields>Time</fields>
+		<fields>SaleAmount</fields>
+		<fields>Amount</fields>
+		<fields>Profit</fields>
+		<columns>
+			<header>Mes</header>
+			<dataIndex>Time</dataIndex>
+			<width>140</width>
+		</columns>
+		<columns>
+			<header>Monto Venta</header>
+			<dataIndex>SaleAmount</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>80</width>
+		</columns>
+		<columns>
+			<header>Monto Egreso</header>
+			<dataIndex>Amount</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>80</width>
+		</columns>
+		<columns>
+			<header>Beneficio</header>
+			<dataIndex>Profit</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+	</look>
+</view>

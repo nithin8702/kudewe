@@ -1,0 +1,35 @@
+<view>
+	<name>outcomesByOutcomeType</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Amount]} ON COLUMNS, 
+	    	NON EMPTY {[OutcomeType].members} on rows
+	    	FROM [Outcomes]
+	    	WHERE ${week.parent(month).parent(year).default([Time].[All].LastChild)} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>week</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Egresos x Tipo</title>
+		<height>180</height>
+		<fields>OutcomeType</fields>
+		<fields>Amount</fields>
+		<columns>
+			<header>Tipo</header>
+			<dataIndex>OutcomeType</dataIndex>
+			<width>140</width>
+		</columns>
+		<columns>
+			<header>Monto</header>
+			<dataIndex>Amount</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+	</look>
+</view>

@@ -1,11 +1,11 @@
 <filter>
-	<name>brand</name>
-	<label>Marca</label>
+	<name>ageRange</name>
+	<label>Edad</label>
 	<datasource>
 		<query>
 			WITH MEMBER [Measures].[one] AS '1'
 	    	SELECT {[Measures].[one]} ON COLUMNS,
-	    	{[Brand].[All], [Brand].members} on rows
+	    	{[AgeRange].[All], [AgeRange].members} on rows
 	    	FROM [Sales]
 		</query>
 	</datasource>

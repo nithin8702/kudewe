@@ -4,7 +4,7 @@
 		<query>
 	    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
 	    	{
-	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    		Descendants(${month.parent(year).default([Time].[All].LastChild)}, [Time].[Week])
 	    	} on rows
 	    	FROM [Sales]
 	    	WHERE ${sex}, ${ageRange}, ${paymentMethod}, ${product} 
@@ -15,11 +15,12 @@
 			<filter>paymentMethod</filter>
 			<filter>product</filter>
 			<filter>year</filter>
+			<filter>month</filter>
 		</dependencies>
 	</datasource>
 	<look>
 		<lookType>ext.graph</lookType>
-		<title>Ventas Anuales x Cantidad</title>
+		<title>Ventas Mensuales x Cantidad</title>
 		<height>200</height>
 		<xtype>linechart</xtype>
 		<xField>Time</xField>

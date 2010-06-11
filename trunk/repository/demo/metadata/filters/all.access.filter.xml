@@ -1,7 +1,6 @@
 <include file="../filters/sex.filter.xml"/>
 <include file="../filters/ageRange.filter.xml"/>
 <include file="../filters/product.filter.xml"/>
-<include file="../filters/paymentMethod.filter.xml"/>
 <include file="../filters/year.filter.xml"/>
 <include file="../filters/month.filter.xml"/>
 <include file="../filters/week.filter.xml"/>
