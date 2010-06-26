@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
               http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd"> 
 	<http auto-config='true'>
-		<concurrent-session-control max-sessions="1" exception-if-maximum-exceeded="false"/>
+		<concurrent-session-control max-sessions="5" exception-if-maximum-exceeded="false"/>
 		<intercept-url pattern="/**" access="ROLE_USER" />
 		<intercept-url pattern="/login.jsp" filters="none" />
 		<form-login login-page="/login.jsp" 
@@ -20,6 +20,7 @@
       		<user name="aliverti" password="aliverti" authorities="ROLE_USER" />
       		<user name="google" password="google" authorities="ROLE_USER" />
       		<user name="demo" password="demo" authorities="ROLE_USER" />
+      		<user name="zentidos" password="zentidos" authorities="ROLE_USER" />
     	</user-service>
   	</authentication-provider>
   	<!-- Security -->
