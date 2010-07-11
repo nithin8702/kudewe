@@ -1,11 +1,11 @@
 <filter>
-	<name>paymentMethod</name>
-	<label>Forma de Pago</label>
+	<name>category</name>
+	<label>Categoria</label>
 	<datasource>
 		<query>
 			WITH MEMBER [Measures].[one] AS '1'
 		    	SELECT {[Measures].[one]} ON COLUMNS,
-		    	{[PaymentMethod].[All], [PaymentMethod].members} on rows
+		    	{[Category].[All], [Category].members} on rows
 		    	FROM [Sales]
 		</query>
 	</datasource>

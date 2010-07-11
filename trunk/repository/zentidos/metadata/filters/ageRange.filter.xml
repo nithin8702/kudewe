@@ -1,0 +1,12 @@
+<filter>
+	<name>ageRange</name>
+	<label>Edad</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[AgeRange].[All], [AgeRange].members} on rows
+	    	FROM [Sales]
+		</query>
+	</datasource>
+</filter>

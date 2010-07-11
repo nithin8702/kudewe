@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/graph/accessYearly.view.xml"/>
+	<include file="views/grid/accessByAgeRange.view.xml"/>
+	<include file="views/grid/accessByCategory.view.xml"/>
+	<include file="views/grid/accessByProduct.view.xml"/>
+	<filters>
+		<include file="../filters/all.access.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Library  SYSTEM "mondrian.dtd"> 
+<Schema name="zentidos">
+	<Dimension name="Time" type="TimeDimension">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="DATE_ID" name="Time">
+			<Table name="LK_TIME"/>
+			<Level name="Year" column="YEAR" uniqueMembers="false" levelType="TimeYears" type="Numeric"/>
+			<Level name="Quarter" column="QUARTER" uniqueMembers="false" levelType="TimeQuarters" type="Numeric"/>
+			<Level name="Month" column="MONTH" uniqueMembers="false" nameColumn="MONTH_NAME" levelType="TimeMonths" type="Numeric"/>
+			<Level name="Week" column="WEEK_IN_MONTH" uniqueMembers="false" levelType="TimeWeeks" />
+			<Level name="Day" column="DAY_IN_MONTH" uniqueMembers="false" nameColumn="DAY_IN_MONTH" levelType="TimeDays" type="Numeric"/>
+		</Hierarchy>
+	</Dimension>		
+	<Dimension name="AgeRange">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="AgeRange">
+			<Table name="LK_AGE_RANGE"/>
+			<Level name="AgeRange" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Product">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID" name="Product">
+			<Table name="LK_PRODUCT"/>
+			<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true" ordinalColumn="PRODUCT_NAME"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="ProductCategory">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="PRODUCT_ID" name="Category">
+			<Table name="LK_PRODUCT"/>
+			<Level name="Level1" column="CATEGORY_NAME" uniqueMembers="false" ordinalColumn="CATEGORY_NAME"/>
+			<Level name="Product" column="PRODUCT_ID" nameColumn="PRODUCT_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="OutcomeType">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="OutcomeType">
+			<Table name="LK_OUTCOME_TYPE"/>
+			<Level name="OutcomeType" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+	
+	<Cube name="Sales">
+		<Table name="FT_SALES"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<DimensionUsage name="AgeRange" source="AgeRange" foreignKey="AGE_RANGE_ID"/>
+		<DimensionUsage name="Product" source="Product" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductCategory" source="ProductCategory" foreignKey="PRODUCT_ID"/>
+		<Measure name="Quantity" column="QUANTITY" aggregator="sum" formatString="#,###"/>
+		<Measure name="Price" column="PRICE" aggregator="avg" formatString="#,###.##"/>
+		<Measure name="SaleAmount" aggregator="sum" formatString="#,###.##">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_SALES.QUANTITY * FT_SALES.PRICE)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+	</Cube>
+	<Cube name="Access">
+		<Table name="FT_ACCESS"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<DimensionUsage name="AgeRange" source="AgeRange" foreignKey="AGE_RANGE_ID"/>
+		<DimensionUsage name="Product" source="Product" foreignKey="PRODUCT_ID"/>
+		<DimensionUsage name="ProductCategory" source="ProductCategory" foreignKey="PRODUCT_ID"/>
+		<Measure name="Quantity" column="QUANTITY" aggregator="sum" formatString="#,###"/>
+	</Cube>
+	<Cube name="Outcomes">
+		<Table name="FT_OUTCOME"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<DimensionUsage name="OutcomeType" source="OutcomeType" foreignKey="OUTCOME_TYPE_ID"/>
+		<Measure name="Amount" column="AMOUNT" aggregator="sum" formatString="#,###"/>
+	</Cube>
+	<VirtualCube name="SalesAndOutcomes">
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeMeasure cubeName="Sales" name="[Measures].[SaleAmount]"/>
+		<VirtualCubeMeasure cubeName="Outcomes" name="[Measures].[Amount]"/>
+		<CalculatedMember name="Profit" dimension="Measures">
+			<Formula>[Measures].[SaleAmount] - [Measures].[Amount]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
+</Schema>

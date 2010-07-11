@@ -1,0 +1,17 @@
+<filter>
+	<name>product</name>
+	<label>Producto</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+		    	SELECT {[Measures].[one]} ON COLUMNS,
+		    	NON EMPTY {[Product].members} on rows
+		    	FROM [Sales]
+		    	WHERE ${category}
+		</query>
+		<dependencies>
+			<filter>category</filter>
+		</dependencies>
+	</datasource>
+</filter>
+

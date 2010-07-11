@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<menu>
+		<name>Ventas</name>
+		<items>
+			<menu>
+				<name>Ventas Anuales</name>
+				<dashBoardUrl>sales/yearly</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Ventas Mensuales</name>
+				<dashBoardUrl>sales/monthly</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+	<menu>
+		<name>Control de Accesos</name>
+		<items>
+			<menu>
+				<name>Accesos Anuales</name>
+				<dashBoardUrl>access/yearly</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Accesos Mensuales</name>
+				<dashBoardUrl>access/monthly</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+	<menu>
+		<name>Egresos</name>
+		<items>
+			<menu>
+				<name>Egresos Anuales</name>
+				<dashBoardUrl>outcomes/yearly</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+</items>

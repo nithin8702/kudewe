@@ -1,0 +1,9 @@
+<connection>
+	<cubeAlias>cube</cubeAlias>
+	<!--
+	<dataBaseAlias>db</dataBaseAlias>
+	<template>mysql</template>
+	-->
+	<dataBaseAlias>db</dataBaseAlias>
+	<template>hsqldb</template>
+</connection>

@@ -1,0 +1,13 @@
+<filter>
+	<name>outcomeType</name>
+	<label>Tipo de Egreso</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+		    	SELECT {[Measures].[one]} ON COLUMNS,
+		    	{[OutcomeType].[All], [OutcomeType].members} on rows
+		    	FROM [Outcomes]
+		</query>
+	</datasource>
+</filter>
+
