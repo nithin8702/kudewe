@@ -1,0 +1,5 @@
+<include file="../filters/ageRange.filter.xml"/>
+<include file="../filters/category.filter.xml"/>
+<include file="../filters/product.access.filter.xml"/>
+<include file="../filters/year.filter.xml"/>
+<include file="../filters/month.filter.xml"/>

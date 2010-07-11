@@ -2,18 +2,16 @@
 	<name>salesBySex</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount]} ON COLUMNS, 
+	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
 	    	NON EMPTY {[Sex].members} on rows
 	    	FROM [Sales]
-	    	WHERE ${ageRange}, ${paymentMethod}, ${product}, ${week.parent(month).parent(year).default([Time].[All].LastChild)} 
+	    	WHERE ${brand}, ${category}, ${month.parent(year).default([Time].[All].LastChild)} 
 		</query>
 		<dependencies>
-			<filter>ageRange</filter>
-			<filter>paymentMethod</filter>
-			<filter>product</filter>
-			<filter>year</filter>
+			<filter>brand</filter>
+			<filter>category</filter>
 			<filter>month</filter>
-			<filter>week</filter>
+			<filter>year</filter>
 		</dependencies>
 	</datasource>
 	<look>
@@ -23,6 +21,7 @@
 		<fields>Sex</fields>
 		<fields>Quantity</fields>
 		<fields>SaleAmount</fields>
+		<fields>Profit</fields>
 		<columns>
 			<header>Sexo</header>
 			<dataIndex>Sex</dataIndex>
@@ -41,6 +40,13 @@
 			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>65</width>
+		</columns>
+		<columns>
+			<header>Ganancia $</header>
+			<dataIndex>Profit</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>80</width>
 		</columns>
 	</look>
 </view>

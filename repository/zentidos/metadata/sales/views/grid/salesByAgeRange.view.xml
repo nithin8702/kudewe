@@ -1,0 +1,45 @@
+<view>
+	<name>salesByAgeRange</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount]} ON COLUMNS, 
+	    	NON EMPTY {[AgeRange].members} on rows
+	    	FROM [Sales]
+	    	WHERE ${category}, ${product}, ${week.parent(month).parent(year).default([Time].[All].LastChild)} 
+		</query>
+		<dependencies>
+			<filter>category</filter>
+			<filter>product</filter>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>week</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Ventas x Edad</title>
+		<height>165</height>
+		<fields>AgeRange</fields>
+		<fields>Quantity</fields>
+		<fields>SaleAmount</fields>
+		<columns>
+			<header>Edad</header>
+			<dataIndex>AgeRange</dataIndex>
+			<width>140</width>
+		</columns>
+		<columns>
+			<header>Cantidad</header>
+			<dataIndex>Quantity</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+		<columns>
+			<header>Venta $</header>
+			<dataIndex>SaleAmount</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>65</width>
+		</columns>
+	</look>
+</view>

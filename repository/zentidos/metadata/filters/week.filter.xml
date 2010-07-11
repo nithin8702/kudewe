@@ -1,0 +1,23 @@
+<filter>
+	<name>week</name>
+	<label>Semana</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+				[Time].[All],
+				ORDER(
+					Descendants(${month.parent(year).default([Time].[All].LastChild)}, [Time].[Week]),
+					[Time].[Month].CurrentMember.Properties("Key"),
+ 					DESC
+				)
+			} on rows
+	    	FROM [Sales]
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>month</filter>
+		</dependencies>
+	</datasource>
+</filter>

@@ -1,0 +1,34 @@
+<view>
+	<name>salesYearly</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[SaleAmount]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [Sales]
+	    	WHERE ${ageRange}, ${category}, ${product}  
+		</query>
+		<dependencies>
+			<filter>ageRange</filter>
+			<filter>category</filter>
+			<filter>product</filter>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Ventas Anuales</title>
+		<height>200</height>
+		<width>100</width>
+		<xtype>linechart</xtype>
+		<xField>Time</xField>
+		<fields>Time</fields>
+		<fields>SaleAmount</fields>
+		<series type="list">
+			<type>column</type>
+			<displayName>Monto Venta</displayName>
+			<yField>SaleAmount</yField>
+		</series>
+	</look>
+</view>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/graph/outcomeYearly.view.xml"/>
+	<include file="views/grid/outcomeByOutcomeType.view.xml"/>
+	<include file="views/graph/profitYearly.view.xml"/>
+	<include file="views/grid/profitByMonth.view.xml"/>
+	<filters>
+		<include file="../filters/all.outcomes.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>

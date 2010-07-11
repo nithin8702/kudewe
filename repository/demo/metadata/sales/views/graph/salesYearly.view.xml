@@ -2,18 +2,17 @@
 	<name>salesYearly</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[SaleAmount]} ON COLUMNS, 
+	    	SELECT {[Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
 	    	{
 	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
 	    	} on rows
 	    	FROM [Sales]
-	    	WHERE ${sex}, ${ageRange}, ${paymentMethod}, ${product}  
+	    	WHERE ${brand}, ${category}, ${sex} 
 		</query>
 		<dependencies>
+			<filter>brand</filter>
+			<filter>category</filter>
 			<filter>sex</filter>
-			<filter>ageRange</filter>
-			<filter>paymentMethod</filter>
-			<filter>product</filter>
 			<filter>year</filter>
 		</dependencies>
 	</datasource>
@@ -26,10 +25,16 @@
 		<xField>Time</xField>
 		<fields>Time</fields>
 		<fields>SaleAmount</fields>
-		<series type="list">
+		<fields>Profit</fields>
+		<series>
 			<type>column</type>
 			<displayName>Monto Venta</displayName>
 			<yField>SaleAmount</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<displayName>Ganancia</displayName>
+			<yField>Profit</yField>
 		</series>
 	</look>
 </view>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/graph/salesMonthly.view.xml"/>
+	<include file="views/graph/salesQuantitiesMonthly.view.xml"/>
+	<include file="views/grid/salesByAgeRange.view.xml"/>
+	<include file="views/grid/salesByProduct.view.xml"/>
+	<filters>
+		<include file="../filters/all.sales.filter.xml"/>
+		<include file="../filters/week.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>

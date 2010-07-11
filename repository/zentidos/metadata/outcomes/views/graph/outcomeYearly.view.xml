@@ -1,0 +1,32 @@
+<view>
+	<name>outcomesYearly</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Amount]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [Outcomes]
+	    	WHERE ${outcomeType}  
+		</query>
+		<dependencies>
+			<filter>outcomeType</filter>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Egresos Anuales</title>
+		<height>200</height>
+		<width>100</width>
+		<xtype>linechart</xtype>
+		<xField>Time</xField>
+		<fields>Time</fields>
+		<fields>Amount</fields>
+		<series type="list">
+			<type>line</type>
+			<displayName>Monto</displayName>
+			<yField>Amount</yField>
+		</series>
+	</look>
+</view>

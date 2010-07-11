@@ -1,0 +1,37 @@
+<view>
+	<name>accessByProduct</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
+	    	NON EMPTY {[Product].members} on rows
+	    	FROM [Access]
+	    	WHERE ${category}, ${ageRange}, ${week.parent(month).parent(year).default([Time].[All].LastChild)} 
+		</query>
+		<dependencies>
+			<filter>category</filter>
+			<filter>ageRange</filter>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>week</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Accesos x Producto</title>
+		<height>120</height>
+		<fields>Product</fields>
+		<fields>Quantity</fields>
+		<columns>
+			<header>Producto</header>
+			<dataIndex>Product</dataIndex>
+			<width>140</width>
+		</columns>
+		<columns>
+			<header>Cantidad</header>
+			<dataIndex>Quantity</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+	</look>
+</view>

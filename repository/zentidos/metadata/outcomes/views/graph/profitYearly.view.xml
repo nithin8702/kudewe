@@ -1,0 +1,36 @@
+<view>
+	<name>profitYearly</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[SaleAmount], [Measures].[Amount]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [SalesAndOutcomes]
+		</query>
+		<dependencies>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Beneficios Anuales</title>
+		<height>200</height>
+		<width>100</width>
+		<xtype>linechart</xtype>
+		<xField>Time</xField>
+		<fields>Time</fields>
+		<fields>SaleAmount</fields>
+		<fields>Amount</fields>
+		<series>
+			<type>column</type>
+			<displayName>Monto Venta</displayName>
+			<yField>SaleAmount</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<displayName>Monto Egreso</displayName>
+			<yField>Amount</yField>
+		</series>
+	</look>
+</view>

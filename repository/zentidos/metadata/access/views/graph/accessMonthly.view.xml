@@ -1,0 +1,35 @@
+<view>
+	<name>accessMonthly</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity]} ON COLUMNS, 
+	    	{
+	    		Descendants(${month.parent(year).default([Time].[All].LastChild)}, [Time].[Week])
+	    	} on rows
+	    	FROM [Access]
+	    	WHERE ${ageRange}, ${category}, ${product}  
+		</query>
+		<dependencies>
+			<filter>ageRange</filter>
+			<filter>category</filter>
+			<filter>product</filter>
+			<filter>year</filter>
+			<filter>month</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Accesos Mensuales</title>
+		<height>200</height>
+		<width>100</width>
+		<xtype>linechart</xtype>
+		<xField>Time</xField>
+		<fields>Time</fields>
+		<fields>Quantity</fields>
+		<series type="list">
+			<type>line</type>
+			<displayName>Cantidad</displayName>
+			<yField>Quantity</yField>
+		</series>
+	</look>
+</view>
