@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<description>Job for load delta information from legacy system</description>
+	
+	<!-- Readers -->
+	<bean id="cleanTableReader" class="kdw.core.reader.TableReader">
+	    <property name="tables">
+	    	<list>
+	            <value>FT_ACCESS</value>
+	            <value>FT_OUTCOME</value>
+	            <value>FT_SALES</value>
+	            <value>LK_AGE_RANGE</value>
+	            <value>LK_OUTCOME_TYPE</value>
+	            <value>LK_PRODUCT</value>
+	            <value>LK_TIME</value>
+          </list>
+	    </property>
+	</bean>
+	<bean id="lkTimeReader" class="kdw.core.reader.LkTimeReader">
+	    <property name="startYear" value="2009"/>
+	</bean>
+	<bean id="lkAgeRangeReader" class="kdw.core.reader.LkSimpleReader">
+	    <property name="items">
+	    	<list>
+	            <value>1 a 24</value>
+	            <value>25 a 34</value>
+	            <value>35 a 44</value>
+	            <value>45 a 54</value>
+	            <value>55 a 100</value>
+	            <value>sin clasificar</value>
+          </list>
+	    </property>
+	</bean>
+	<bean id="lkProductReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	    <property name="dataSource" ref="dataSourceInputZentidos"/>
+	    <property name="sql" 
+	    	value="select distinct descripcion as productName
+	    		   from ventaAbonos"/>
+	    <property name="rowMapper">
+	        <bean class="kdw.zentidos.mapper.ReadLkProductMapper"/>
+	    </property>
+	</bean>
+	<bean id="ftSalesReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	    <property name="dataSource" ref="dataSourceInputZentidos"/>
+	    <property name="sql" 
+	    	value="select fechaVenta as fecha,
+	    				  valorVenta as precio,
+	    				  cantidadAccesos as cantidad
+	    		   from ventaAbonos"/>
+	    <property name="rowMapper">
+	        <bean class="kdw.zentidos.mapper.ReadFtSalesMapper"/>
+	    </property>
+	</bean>
+	
+	<!-- Writters -->
+	<bean id="cleanTableWriter" class="kdw.core.writer.CleanTableWriter">
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	<bean id="lkTimeWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO lk_time (date_id, year, quarter, month, month_name, week_in_month, day_in_month, day_name)
+				   values (:id, :year, :quarter, :month, :monthName, :week, :day, :dayName)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	<bean id="lkAgeRangeWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO lk_age_range (id, name)
+				   values (:id, :name)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	<bean id="lkProductWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO lk_product (product_id, product_name, category_name)
+				   values (:id, :name, :category.name)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	<bean id="ftSalesWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+		<property name="sql" 
+			value="INSERT INTO ft_sales (date_id, age_range_id, product_id, quantity, price)
+				   values (:date.id, :ageRange.id, :product.id, :quantity, :price)"
+		/>
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+	</bean>
+	
+	<!-- Processors -->
+	<bean id="productProcessor" class="kdw.zentidos.processor.ProductProcessor">
+	</bean>
+	
+	<!-- Common definitions for all steps -->
+	<bean id="legacyStep"
+		class="org.springframework.batch.core.step.item.SimpleStepFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManagerOutputKudewe" />
+		<property name="jobRepository" ref="jobRepository" />
+		<property name="startLimit" value="100" />
+		<property name="commitInterval" value="10" />
+	</bean>
+	
+	<!-- Job definition -->
+	<job id="loadDaily" xmlns="http://www.springframework.org/schema/batch">
+		<step id="cleanTable" parent="legacyStep" next="lkTime">
+			<tasklet>
+				<chunk reader="cleanTableReader" writer="cleanTableWriter" />
+			</tasklet>
+		</step>
+		<step id="lkTime" parent="legacyStep" next="lkAgeRange">
+			<tasklet>
+				<chunk reader="lkTimeReader" writer="lkTimeWriter" />
+			</tasklet>
+		</step>		
+		<step id="lkAgeRange" parent="legacyStep" next="lkProduct">
+			<tasklet>
+				<chunk reader="lkAgeRangeReader" writer="lkAgeRangeWriter" />
+			</tasklet>
+		</step>
+		<step id="lkProduct" parent="legacyStep" next="ftSales">
+			<tasklet>
+				<chunk reader="lkProductReader" processor="productProcessor" writer="lkProductWriter" />
+			</tasklet>
+		</step>
+		<step id="ftSales" parent="legacyStep">
+			<tasklet>
+				<chunk reader="ftSalesReader" writer="ftSalesWriter" />
+			</tasklet>
+		</step>
+	</job>
+	
+</beans>
