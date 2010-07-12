@@ -14,7 +14,7 @@ public class ReadFtSalesMapper implements RowMapper {
 	public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
 		Product p = new Product();
-		p.setId(1);
+		p.setName(rs.getString("producto"));
 		
 		LkSimple ageRange = new LkSimple();
 		ageRange.setId(1);

@@ -47,7 +47,8 @@
 	<bean id="ftSalesReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
 	    <property name="dataSource" ref="dataSourceInputZentidos"/>
 	    <property name="sql" 
-	    	value="select fechaVenta as fecha,
+	    	value="select descripcion as producto,
+	    				  fechaVenta as fecha,
 	    				  valorVenta as precio,
 	    				  cantidadAccesos as cantidad
 	    		   from ventaAbonos"/>
@@ -108,6 +109,17 @@
 	<!-- Processors -->
 	<bean id="productProcessor" class="kdw.zentidos.processor.ProductProcessor">
 	</bean>
+	<bean id="saleProcessor" class="kdw.zentidos.processor.SaleProcessor">
+		<property name="lkProductRepository" ref="lkProductRepository" />
+	</bean>
+	
+	<!-- Repositories -->
+	<bean id="lkProductRepository" class="kdw.zentidos.repository.jdbc.LkProductRepositoryJdbc">
+		<property name="dataSource" ref="dataSourceOutputKudewe" />
+		<property name="rowMapper">
+	        <bean class="kdw.zentidos.mapper.LkProductParametrizedMapper"/>
+	    </property>
+	</bean>
 	
 	<!-- Common definitions for all steps -->
 	<bean id="legacyStep"
@@ -143,7 +155,7 @@
 		</step>
 		<step id="ftSales" parent="legacyStep">
 			<tasklet>
-				<chunk reader="ftSalesReader" writer="ftSalesWriter" />
+				<chunk reader="ftSalesReader" processor="saleProcessor" writer="ftSalesWriter" />
 			</tasklet>
 		</step>
 	</job>

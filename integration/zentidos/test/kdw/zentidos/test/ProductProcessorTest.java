@@ -1,5 +1,7 @@
 package kdw.zentidos.test;
 
+import javax.annotation.Resource;
+
 import kdw.zentidos.model.Category;
 import kdw.zentidos.model.Product;
 
@@ -7,14 +9,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ContextConfiguration(locations={"/launch-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ProductProcessorTest {
-	@Autowired
+	@Resource
 	private ItemProcessor<Product, Product> productProcessor;
 	
 	@Test
