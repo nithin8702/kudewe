@@ -102,6 +102,7 @@
  	</div>
   	<div id="messagePanel">
   		<h1>Bienvenido a Kudewe Reports</h1>
+  		<p>Punto panor&aacute;mico de su organizaci&oacute;n</p>
 	  	<div id="login"></div>
 	  	<div id="error" class="x-hide-display">
 		    <c:if test="${not empty param.login_error}">
