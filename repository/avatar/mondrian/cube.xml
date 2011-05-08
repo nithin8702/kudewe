@@ -27,7 +27,7 @@
 		<Measure name="TotalCost" aggregator="sum" formatString="#,###">
 			<MeasureExpression>
 				<SQL dialect="generic">
-				(FT_SALES.DIRECT_COST + INDIRECT_COST)
+				(FT_RESOURCE_COST.DIRECT_COST + FT_RESOURCE_COST.INDIRECT_COST)
 				</SQL>
 			</MeasureExpression>
 		</Measure>
