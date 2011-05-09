@@ -10,9 +10,7 @@ function buildComboFilter(filterDefinition) {
 	    forceSelection: true,
 	    loadingText: 'Loading...',
 	    triggerAction: 'all',
-	    mode: 'local'
-	    //lazyInit: false
-	    //lazyRender: true
+	    mode: 'remote'
 	});
 
 	comboFilter.on('beforequery', function(queryEvent , store) {
@@ -63,12 +61,22 @@ function buildComboFilter(filterDefinition) {
 }
 
 function buildFilterStore(filterDefinition) {
-	return new Ext.data.JsonStore({
-		autoLoad: false,
-        url: 'olap/' + filterDefinition.url + '.json',
-        root: 'data',
-        fields: ['id', 'name']
-    });
+	return new Ext.data.Store({
+		fields: ['id', 'name'],
+		proxy: {
+	        type: 'ajax',
+	        url : 'olap/' + filterDefinition.url + '.json',
+	        //noCache: false,
+	        pageParam: null,
+	        startParam: null,
+	        limitParam: null,
+	        reader: {
+	            type: 'json',
+	            root: 'data'
+	        }
+	    },
+	    autoLoad: false
+	});
 }
 
 function subscribeStoreFilterToBus(store, filterDefinition, comboFilter) {
