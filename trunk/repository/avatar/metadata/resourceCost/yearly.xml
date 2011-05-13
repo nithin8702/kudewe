@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/graph/costYearly.view.xml"/>
+	<include file="views/grid/costYearly.view.xml"/>
+	<include file="views/graph/totalCostByProfile.view.xml"/>
+	<include file="views/graph/totalCostBySeniority.view.xml"/>
+	<include file="views/graph/totalCostByWorkingHours.view.xml"/>
+	
+	<filters>
+		<include file="../filters/all.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>

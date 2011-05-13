@@ -1,0 +1,22 @@
+<filter>
+	<name>month</name>
+	<label>Mes</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+				[Time].[All],
+				ORDER(
+					Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month]),
+					[Time].[Month].CurrentMember.Properties("Key"),
+ 					DESC
+				)
+			} on rows
+	    	FROM [ResourceCost]
+		</query>
+		<dependencies>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+</filter>
