@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<menu>
+		<name>Recursos</name>
+		<items>
+			<menu>
+				<name>Costo Anual</name>
+				<dashBoardUrl>resourceCost/yearly</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Costo x Pefil</name>
+				<dashBoardUrl>resourceCost/byProfile</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
+</items>
