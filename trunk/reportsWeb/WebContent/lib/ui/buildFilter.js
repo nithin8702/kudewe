@@ -73,6 +73,19 @@ function buildFilterStore(filterDefinition) {
 	        reader: {
 	            type: 'json',
 	            root: 'data'
+	        },
+	        encodeFilters: function(filters) {
+	            var length   = filters.length,
+	                filterStrs = [],
+	                filter, i;
+
+	            for (i = 0; i < length; i++) {
+	            	filter = filters[i];
+
+	            	filterStrs[i] = filter.property + '=' + filter.value
+	            }
+	            console.log(filterStrs.join("&"));
+	            return filterStrs.join("&");
 	        }
 	    },
 	    autoLoad: false
@@ -97,7 +110,7 @@ function subscribeStoreFilterToBus(store, filterDefinition, comboFilter) {
 		function(subject, message, subscriberData) {
 			// If prompt changed is in dependencies
 			if (subscriberData.dependencies.indexOf(message.filterName) >= 0) {
-				var paramsFilter = {}
+				var filters = [];
 	
 				// Query to bus for get selected filters
 				window.PageBus.query(
@@ -106,16 +119,15 @@ function subscribeStoreFilterToBus(store, filterDefinition, comboFilter) {
 					function(subject, value, data) {
 						if (subject != 'com.tibco.pagebus.query.done') {
 							// Add filter to params
-							eval('paramsFilter.' + value.filterName + '="' + value.filterValue + '"');
-							
+							filters.push({
+					            property: value.filterName,
+					            value: value.filterValue
+					        })
 							// Get next result
 							return true;
 						} else {
 							// Reload data
-							subscriberData.store.reload({
-								params: paramsFilter
-							});
-							subscriberData.filter.clearValue();
+							subscriberData.store.filter(filters);
 						}
 					},
 					null,
