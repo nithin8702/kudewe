@@ -1,0 +1,54 @@
+<filter>
+	<name>profile</name>
+	<label>Perfil</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[Resource].[All], [Resource].[Profile].members} on rows
+	    	FROM [ResourceCost]
+		</query>
+	</datasource>
+</filter>
+<filter>
+	<name>employee</name>
+	<label>Empleado</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+	    		[Resource].[All],
+	    		Descendants(${profile.default([Resource].[All])}, [Resource].[Employee])
+	    	} on rows
+	    	FROM [ResourceCost]
+		</query>
+		<dependencies>
+			<filter>profile</filter>
+		</dependencies>
+	</datasource>
+</filter>
+<filter>
+	<name>seniority</name>
+	<label>Seniority</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[ResourceSeniority].[All], [ResourceSeniority].[Seniority].members} on rows
+	    	FROM [ResourceCost]
+		</query>
+	</datasource>
+</filter>
+<filter>
+	<name>workingHours</name>
+	<label>Dedicacion</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[ResourceWorkingHours].[All], [ResourceWorkingHours].[WorkingHours].members} on rows
+	    	FROM [ResourceCost]
+		</query>
+	</datasource>
+</filter>
