@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Library  SYSTEM "mondrian.dtd"> 
+<Schema name="avatar">
+	<Dimension name="Time" type="TimeDimension">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="DATE_ID" name="Time">
+			<Table name="LK_TIME"/>
+			<Level name="Year" column="YEAR" uniqueMembers="false" levelType="TimeYears" type="Numeric"/>
+			<Level name="Quarter" column="QUARTER" uniqueMembers="false" levelType="TimeQuarters" type="Numeric"/>
+			<Level name="Month" column="MONTH" uniqueMembers="false" nameColumn="MONTH_NAME" levelType="TimeMonths" type="Numeric"/>
+			<Level name="Day" column="DAY_IN_MONTH" uniqueMembers="false" nameColumn="DAY_IN_MONTH" levelType="TimeDays" type="Numeric"/>
+		</Hierarchy>
+	</Dimension>		
+	<Dimension name="Resource">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="Resource">
+			<Table name="LK_RESOURCE"/>
+			<Level name="Profile" column="PROFILE" uniqueMembers="false"/>			
+			<Level name="Employee" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="ResourceSeniority">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="ResourceSeniority">
+			<Table name="LK_RESOURCE"/>
+			<Level name="Seniority" column="SENIORITY" uniqueMembers="false"/>			
+			<Level name="Employee" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="ResourceWorkingHours">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="ResourceWorkingHours">
+			<Table name="LK_RESOURCE"/>
+			<Level name="WorkingHours" column="WORKINGHOURS" uniqueMembers="false"/>			
+			<Level name="Employee" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+
+	<Cube name="ResourceCost">
+		<Table name="FT_RESOURCE_COST"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<DimensionUsage name="Resource" source="Resource" foreignKey="RESOURCE_ID"/>
+		<DimensionUsage name="ResourceSeniority" source="ResourceSeniority" foreignKey="RESOURCE_ID"/>
+		<DimensionUsage name="ResourceWorkingHours" source="ResourceWorkingHours" foreignKey="RESOURCE_ID"/>
+		
+		<Measure name="DirectCost" column="DIRECT_COST" aggregator="sum" formatString="#,###"/>
+		<Measure name="IndirectCost" column="INDIRECT_COST" aggregator="sum" formatString="#,###"/>
+		<Measure name="TotalCost" aggregator="sum" formatString="#,###">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_RESOURCE_COST.DIRECT_COST + FT_RESOURCE_COST.INDIRECT_COST)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+	</Cube>
+</Schema>
