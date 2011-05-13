@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Library  SYSTEM "mondrian.dtd"> 
+<Schema name="aliverti.store">
+	<Dimension name="Brand">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="Brand">
+			<Table name="LK_BRAND"/>
+			<Level name="Brand" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Category">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="Category">
+			<Table name="LK_CATEGORY"/>
+			<Level name="Category" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Sex">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="Sex">
+			<Table name="LK_SEX"/>
+			<Level name="Sex" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Time" type="TimeDimension">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="DATE_ID" name="Time">
+			<Table name="LK_TIME"/>
+			<Level name="Year" column="YEAR" uniqueMembers="false" levelType="TimeYears" type="Numeric"/>
+			<Level name="Quarter" column="QUARTER" uniqueMembers="false" levelType="TimeQuarters" type="Numeric"/>
+			<Level name="Month" column="MONTH" uniqueMembers="false" nameColumn="MONTH_NAME" levelType="TimeMonths" type="Numeric"/>
+			<Level name="Day" column="DAY_IN_MONTH" uniqueMembers="false" nameColumn="DAY_IN_MONTH" levelType="TimeDays" type="Numeric"/>
+		</Hierarchy>
+	</Dimension>		
+	<Cube name="Sales">
+		<Table name="FT_SALES"/>
+		<DimensionUsage name="Brand" source="Brand" foreignKey="BRAND_ID"/>
+		<DimensionUsage name="Category" source="Category" foreignKey="CATEGORY_ID"/>
+		<DimensionUsage name="Sex" source="Sex" foreignKey="SEX_ID"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<Measure name="Quantity" column="QUANTITY" aggregator="sum" formatString="#,###"/>
+		<Measure name="UnitPrice" column="SALE_PESO" aggregator="avg" formatString="#,###.##"/>
+		<Measure name="UnitCost" column="COST_PESO" aggregator="avg" formatString="#,###.##"/>
+		<Measure name="SaleAmount" aggregator="sum" formatString="#,###.##">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_SALES.QUANTITY * FT_SALES.SALE_PESO)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		<Measure name="Profit" aggregator="sum" formatString="#,###.##">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_SALES.QUANTITY * (FT_SALES.SALE_PESO - FT_SALES.COST_PESO) )
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		
+	</Cube>
+</Schema>
