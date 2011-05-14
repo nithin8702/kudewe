@@ -30,6 +30,14 @@
       		<json:property name="${lookObject.name}" value="${lookObject.value}"/>
       	</c-rt:forEach>
       	
+      	<c-rt:forEach var="lookObject" items="${look.complexProperties}">
+      		<json:object name="${lookObject.name}">
+	      		<c-rt:forEach var="lookObjectProperty" items="${lookObject.simpleProperties}">
+		      		<json:property name="${lookObjectProperty.name}" value="${lookObjectProperty.value}"/>
+		      	</c-rt:forEach>
+      		</json:object>
+      	</c-rt:forEach>
+      	
       	<c-rt:forEach var="lookSimpleArray" items="${look.simpleArrayProperties}">
       		<json:array name="${lookSimpleArray.name}" var="lookSimpleArrayItem" items="${lookSimpleArray.value}">
       			<json:property value="${lookSimpleArrayItem}"/>
@@ -43,6 +51,21 @@
 	      				<c-rt:forEach var="lookObject" items="${look.simpleProperties}">
       						<json:property name="${lookObject.name}" value="${lookObject.value}"/>
       					</c-rt:forEach>
+      					
+      					<c-rt:forEach var="lookObject" items="${look.complexProperties}">
+				      		<json:object name="${lookObject.name}">
+					      		<c-rt:forEach var="lookObjectProperty" items="${lookObject.simpleProperties}">
+						      		<json:property name="${lookObjectProperty.name}" value="${lookObjectProperty.value}"/>
+						      	</c-rt:forEach>
+				      		</json:object>
+				      	</c-rt:forEach>
+				      	
+      					<c-rt:forEach var="lookSimpleArray" items="${look.simpleArrayProperties}">
+				      		<json:array name="${lookSimpleArray.name}" var="lookSimpleArrayItem" items="${lookSimpleArray.value}">
+				      			<json:property value="${lookSimpleArrayItem}"/>
+				      		</json:array>
+				      	</c-rt:forEach>
+      					
 	      			</json:object>
       			</c-rt:forEach>
       		</json:array>
