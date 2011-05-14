@@ -67,6 +67,19 @@ public class OlapViewController extends AbstractController {
 		
 		// Build filter map from request
 		Map<String, Filter> filters = new HashMap<String, Filter>();
+		String filtersParam = request.getParameter("filter");
+		if (filtersParam != null) {
+			String[] filtersArray = filtersParam.split("&");
+			for (String filterParam : filtersArray) {
+				String[] filterArray = filterParam.split("="); 
+				String filterName = filterArray[0];
+				String filterValue = filterArray[1];
+				Filter filter = new Filter(filterName, filterValue);
+				filters.put(filterName, filter);
+			}
+		}
+		
+		/*
 		Enumeration<String> paramNames = (Enumeration<String>) request.getParameterNames();
 		while (paramNames.hasMoreElements()) {
 			String filterName = paramNames.nextElement();
@@ -74,7 +87,7 @@ public class OlapViewController extends AbstractController {
 			Filter filter = new Filter(filterName, filterValue);
 			filters.put(filterName, filter);
 		}
-		
+		*/
 		// Get view
 		View<Result> view = olapService.getView(viewUrl, filters);
 		

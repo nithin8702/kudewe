@@ -40,8 +40,24 @@ public class GenericDefinitionAdapter {
 		
 		for (GenericDefinition innerObject : genericDefinition.getProperties()) {
 			if (innerObject.getValue() != null && 
-				!List.class.isAssignableFrom(innerObject.getValue().getClass())) {
+				!List.class.isAssignableFrom(innerObject.getValue().getClass()) &&
+				!GenericDefinition.class.isAssignableFrom(innerObject.getValue().getClass())
+			) {
 				properties.add(innerObject);
+			}
+		}
+		return properties;
+	}
+	
+	public List<GenericDefinitionAdapter> getComplexProperties() {
+		List<GenericDefinitionAdapter> properties = new ArrayList<GenericDefinitionAdapter>();
+		
+		for (GenericDefinition innerObject : genericDefinition.getProperties()) {
+			if (innerObject.getValue() != null && 
+				GenericDefinition.class.isAssignableFrom(innerObject.getValue().getClass())) {
+				GenericDefinition complexProperty = (GenericDefinition) innerObject.getValue();
+				complexProperty.setName(innerObject.getName());
+				properties.add(new GenericDefinitionAdapter(complexProperty));
 			}
 		}
 		return properties;
