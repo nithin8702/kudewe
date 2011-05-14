@@ -24,6 +24,12 @@ public class GenericDefinitionAdapterTest extends BaseTest {
 		look.addProperty(new GenericDefinition("width", 400));
 		look.addProperty(new GenericDefinition("height", 200));
 		
+		// Complex property
+		GenericDefinition legendValue = new GenericDefinition();
+		legendValue.addProperty(new GenericDefinition("position", "right"));
+		GenericDefinition legend = new GenericDefinition("legend", legendValue);
+		look.addProperty(legend);
+		
 		// Array string property
 		List<String> fields = new ArrayList<String>();
 		fields.add("Product");
@@ -61,6 +67,20 @@ public class GenericDefinitionAdapterTest extends BaseTest {
 		Assert.assertEquals(3, properties.size());
 		Assert.assertEquals("width", properties.get(1).getName());
 		Assert.assertEquals(200, properties.get(2).getValue());
+	}
+	
+	@Test
+	public void getComplexProperties() {
+		List<GenericDefinitionAdapter> properties = lookAdapter.getComplexProperties();
+		Assert.assertEquals(1, properties.size());
+		
+		GenericDefinitionAdapter legend = properties.get(0);
+		Assert.assertEquals("legend", legend.getName());
+		
+		Assert.assertEquals(1, legend.getSimpleProperties().size());
+		
+		//Assert.assertEquals("position", legend.getSimpleArrayProperties().get(0).getName());
+		//Assert.assertEquals("right", legend.getSimpleArrayProperties().get(0).getValue());
 	}
 	
 	@SuppressWarnings("unchecked")
