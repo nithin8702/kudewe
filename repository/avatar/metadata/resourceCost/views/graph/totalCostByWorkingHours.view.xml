@@ -1,0 +1,38 @@
+<view>
+	<name>totalCostByWorkingHoursGraph</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[TotalCost]} ON COLUMNS, 
+	    	{
+	    		ORDER({[ResourceWorkingHours].[WorkingHours].members}, [Measures].[TotalCost], DESC)
+	    	} on rows
+	    	FROM [ResourceCost]
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${seniority}, ${profile}
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>seniority</filter>
+			<filter>profile</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Costo Total x Dedicacion</title>
+		<height>200</height>
+		<width>100</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Resource</fields>
+		<fields>TotalCost</fields>
+		<series type="list">
+			<type>pie</type>
+			<field>TotalCost</field>
+			<label>
+				<field>Resource</field>
+			</label>
+		</series>
+	</look>
+</view>

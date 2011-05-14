@@ -1,0 +1,64 @@
+<view>
+	<name>costYearlyGraph</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[DirectCost], [Measures].[IndirectCost], [Measures].[TotalCost]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [ResourceCost]
+	    	WHERE ${profile.parent(employee)}, ${seniority}, ${workingHours} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>profile</filter>
+			<filter>employee</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Costo Anual</title>
+		<height>200</height>
+		<width>200</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Time</fields>
+		<fields>DirectCost</fields>
+		<fields>IndirectCost</fields>
+		<fields>TotalCost</fields>
+		<axes>
+			<type>Numeric</type>
+			<position>left</position>
+			<fields>DirectCost</fields>
+			<fields>IndirectCost</fields>
+			<fields>TotalCost</fields>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Time</fields>
+		</axes>
+		<series>
+			<type>column</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>TotalCost</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>DirectCost</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>IndirectCost</yField>
+		</series>
+	</look>
+</view>

@@ -1,0 +1,58 @@
+<view>
+	<name>costByProfileGrid</name>
+	<datasource>
+		<query>
+	    	SELECT {
+	    		[Measures].[DirectCost], [Measures].[IndirectCost], [Measures].[TotalCost]
+	    	} ON COLUMNS, NON EMPTY {
+	    		Descendants(${employee.parent(profile).default([Resource].[All])}, [Resource].[Employee], SELF_AND_BEFORE)
+	    	} on rows
+	    	FROM [ResourceCost]
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${seniority}, ${workingHours} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>profile</filter>
+			<filter>employee</filter>
+			<filter>seniority</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Costo x Perfil</title>
+		<height>400</height>
+		<fields>Resource</fields>
+		<fields>DirectCost</fields>
+		<fields>IndirectCost</fields>
+		<fields>TotalCost</fields>
+		<columns>
+			<header>Recurso</header>
+			<dataIndex>Resource</dataIndex>
+			<width>150</width>
+		</columns>
+		<columns>
+			<header>Indirecto</header>
+			<dataIndex>IndirectCost</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+		<columns>
+			<header>Directo</header>
+			<dataIndex>DirectCost</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>65</width>
+		</columns>
+		<columns>
+			<header>Total</header>
+			<dataIndex>TotalCost</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>80</width>
+		</columns>
+	</look>
+</view>

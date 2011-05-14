@@ -1,0 +1,63 @@
+<view>
+	<name>costByProfileGraph</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[DirectCost], [Measures].[IndirectCost], [Measures].[TotalCost]} ON COLUMNS, 
+	    	{
+	    		ORDER({[Resource].[Profile].members}, [Measures].[TotalCost], DESC)
+	    	} on rows
+	    	FROM [ResourceCost]
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${seniority}, ${workingHours}
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Costo x Perfil</title>
+		<height>200</height>
+		<width>100</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Resource</fields>
+		<fields>DirectCost</fields>
+		<fields>IndirectCost</fields>
+		<fields>TotalCost</fields>
+		<axes>
+			<type>Numeric</type>
+			<position>left</position>
+			<fields>DirectCost</fields>
+			<fields>IndirectCost</fields>
+			<fields>TotalCost</fields>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Resource</fields>
+		</axes>
+		<series>
+			<type>column</type>
+			<axis>left</axis>
+			<xField>Resource</xField>
+			<yField>TotalCost</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Resource</xField>
+			<yField>DirectCost</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Resource</xField>
+			<yField>IndirectCost</yField>
+		</series>
+	</look>
+</view>

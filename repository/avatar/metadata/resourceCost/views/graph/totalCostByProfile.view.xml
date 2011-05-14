@@ -1,0 +1,38 @@
+<view>
+	<name>totalCostByProfileGraph</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[TotalCost]} ON COLUMNS, 
+	    	{
+	    		ORDER({[Resource].[Profile].members}, [Measures].[TotalCost], DESC)
+	    	} on rows
+	    	FROM [ResourceCost]
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${seniority}, ${workingHours}
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Costo Total x Perfil</title>
+		<height>200</height>
+		<width>100</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Resource</fields>
+		<fields>TotalCost</fields>
+		<series type="list">
+			<type>pie</type>
+			<field>TotalCost</field>
+			<label>
+				<field>Resource</field>
+			</label>
+		</series>
+	</look>
+</view>
