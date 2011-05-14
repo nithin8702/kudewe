@@ -73,6 +73,21 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 								"<displayName>Cantidad</displayName>" +
 								"<yField>Quantity</yField>" +
 							"</series>" +
+							"<axes>" +
+								"<type>Numeric</type>" +
+								"<position>left</position>" +
+								"<fields>DirectCost</fields>" +
+								"<fields>IndirectCost</fields>" +
+								"<fields>TotalCost</fields>" +
+							"</axes>" +
+							"<axes>" +
+								"<type>Category</type>" +
+								"<position>bottom</position>" +
+								"<fields type=\"list\">Time</fields>" +
+							"</axes>" +
+							"<legend>" +
+								"<position>right</position>" +
+							"</legend>" +
 						"</look>" +
 					"</view>" +
 					"<view>" +
@@ -201,6 +216,29 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 		assertEquals("Cantidad", serie.getProperties().get(1).getValue());
 		assertEquals("yField", serie.getProperties().get(2).getName());
 		assertEquals("Quantity", serie.getProperties().get(2).getValue());
+		
+		// axes 1
+		assertEquals("axes", viewDefinition1.getLookDefinition().getProperties().get(6).getName());
+		List<GenericDefinition> axes = (List<GenericDefinition>) viewDefinition1.getLookDefinition().getProperties().get(6).getValue();
+		GenericDefinition axe1 = axes.get(0);
+		
+		assertEquals("fields", axe1.getProperties().get(2).getName());
+		
+		// axes 2
+		GenericDefinition axe2fields = axes.get(1).getProperties().get(2);
+		assertEquals("fields", axe2fields.getName());
+		
+		List<GenericDefinition> axe2fieldsList = (List<GenericDefinition>) axe2fields.getValue();
+		assertEquals(1, axe2fieldsList.size());
+		
+		// position
+		GenericDefinition legend = viewDefinition1.getLookDefinition().getProperties().get(7);
+		assertEquals("legend", legend.getName());
+		
+		GenericDefinition legendValue = (GenericDefinition)legend.getValue();
+		assertEquals(1, legendValue.getProperties().size());
+		assertEquals("position", legendValue.getProperties().get(0).getName());
+		assertEquals("right", legendValue.getProperties().get(0).getValue());
 		
 		// View 2
 		ViewDefinition viewDefinition2 = dashBoardDefinition.getViews().get(1);
