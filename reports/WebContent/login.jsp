@@ -6,16 +6,9 @@
 <html>
   <head>
     <title>Kudewe Reports</title>
-    <!-- ** CSS ** -->
-    <!-- base library -->
-    <link rel="stylesheet" type="text/css" href="lib/ext-3.0.0/resources/css/ext-all.css" />
-
-    <!-- ** Javascript ** -->
-    <!-- ExtJS library: base/adapter -->
- 	<script type="text/javascript" src="lib/ext-3.0.0/adapter/ext/ext-base.js"></script>
-	
- 	<!-- ExtJS library: all widgets -->
-    <script type="text/javascript" src="lib/ext-3.0.0/ext-all.js"></script>
+    <!-- Ext includes -->
+    <link rel="stylesheet" type="text/css" href="lib/ext-4.0.0/resources/css/ext-all.css" />
+    <script type="text/javascript" src="lib/ext-4.0.0/bootstrap.js"></script>
 	
 	<script type="text/javascript">
     Ext.onReady(function(){
@@ -56,9 +49,10 @@
 	                var fp = this.ownerCt.ownerCt;
 	                var form = fp.getForm();
 	                if (form.isValid()) {
-	                	document.getElementById('j_username').value = form.items.get(0).getValue();
-	                	document.getElementById('j_password').value = form.items.get(1).getValue();
-	                	document.getElementById('_spring_security_remember_me').value = form.items.get(2).getValue();
+						values = form.getValues();
+	                	document.getElementById('j_username').value = values.username;
+	                	document.getElementById('j_password').value = values.password;
+	                	document.getElementById('_spring_security_remember_me').value = values.rememberme;
 		                document.getElementById('frmMain').submit();
 	                }
 	            }
@@ -66,7 +60,7 @@
         });
 
         simple.render('login');
-        Ext.get('error').removeClass('x-hide-display');
+        Ext.get('error').removeCls('x-hide-display');
     });
 	</script>
 	<style>
