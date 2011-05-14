@@ -21,6 +21,7 @@
       		<user name="google" password="google" authorities="ROLE_USER" />
       		<user name="demo" password="demo" authorities="ROLE_USER" />
       		<user name="zentidos" password="zentidos" authorities="ROLE_USER" />
+      		<user name="avatar" password="avatar" authorities="ROLE_USER" />
     	</user-service>
   	</authentication-provider>
   	<!-- Security -->
