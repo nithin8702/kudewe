@@ -8,11 +8,34 @@ function buildView(viewDefinition) {
 }
 
 function buildViewStore(viewDefinition) {
-	return new Ext.data.JsonStore({
-        root: 'data',
-        fields: viewDefinition.look.fields,
-        url: 'olap/' + viewDefinition.url + '.json'
-    });
+	return new Ext.data.Store({
+		fields: viewDefinition.look.fields,
+		proxy: {
+	        type: 'ajax',
+	        url : 'olap/' + viewDefinition.url + '.json',
+	        pageParam: null,
+	        startParam: null,
+	        limitParam: null,
+	        reader: {
+	            type: 'json',
+	            root: 'data'
+	        },
+	        encodeFilters: function(filters) {
+	            var length   = filters.length,
+	                filterStrs = [],
+	                filter, i;
+
+	            for (i = 0; i < length; i++) {
+	            	filter = filters[i];
+
+	            	filterStrs[i] = filter.property + '=' + filter.value
+	            }
+	            return filterStrs.join("&");
+	        }
+	    },
+	    autoLoad: false,
+	    remoteFilter: true
+	});
 }
 
 var loadStoreDelay = 1000;
@@ -67,7 +90,7 @@ function subscribeStoreViewToBus(store, viewDefinition) {
 		function(subject, message, subscriberData) {
 			// If prompt changed is in dependencies
 			if (subscriberData.dependencies.indexOf(message.filterName) >= 0) {
-				var paramsFilter = {}
+				var filters = [];
 	
 				// Query to bus for get selected filters
 				window.PageBus.query(
@@ -76,15 +99,15 @@ function subscribeStoreViewToBus(store, viewDefinition) {
 					function(subject, value, data) {
 						if (subject != 'com.tibco.pagebus.query.done') {
 							// Add filter to params
-							eval('paramsFilter.' + value.filterName + '="' + value.filterValue + '"');
-							
+							filters.push({
+					            property: value.filterName,
+					            value: value.filterValue
+					        })
 							// Get next result
 							return true;
 						} else {
 							// Reload data
-							subscriberData.store.reload({
-								params: paramsFilter
-							});
+							subscriberData.store.filter(filters);
 						}
 					},
 					null,
@@ -149,18 +172,37 @@ function buildViewGraph(graphDefinition) {
 	// create the Data Store
     var storeView = buildViewStore(graphDefinition);
 	
+    // set tip
+    Ext.each(
+    	graphDefinition.look.series, 
+	    function(serie, index, allItems) {
+    		serie.tips = {
+				trackMouse: true,
+		        width: 200,
+		        height: 28,
+		        renderer: function(storeItem, item) {
+					this.setTitle(storeItem.get(serie.xField) + ': ' + storeItem.get(serie.yField));
+		        }
+    		};
+		}
+	);
+    
     var view = new Ext.Panel({
         width: graphDefinition.look.width - 20,
         height: graphDefinition.look.height - 20,
         layout:'fit',
         items: {
-            xtype: graphDefinition.look.xtype,
+            xtype: "chart",
             store: storeView,
-            xField: graphDefinition.look.xField,
-            series: graphDefinition.look.series,
-    		yAxis: new Ext.chart.NumericAxis({
-                labelRenderer : Ext.util.Format.numberRenderer('0.000/i')
-            })
+            animate: true,
+            //xField: graphDefinition.look.xField,
+            theme: graphDefinition.look.theme,
+            legend: graphDefinition.look.legend,
+            axes: graphDefinition.look.axes,
+            series: graphDefinition.look.series
+    		//yAxis: new Ext.chart.NumericAxis({
+                //labelRenderer : Ext.util.Format.numberRenderer('0.000/i')
+            //})
         }
     });
     
@@ -178,7 +220,8 @@ function buildViewDebug() {
 	var viewDebug = new Ext.Panel({
 		width: '100%',
 		contentEl: 'panelDebugPagebus',
-		autoScroll: true
+		autoScroll: true,
+		height: 100
 	});
 
 	// Suscribo reporte al bus

@@ -47,7 +47,7 @@ function onItemClick(item){
 		dashBoard: item.dashBoardUrl
 	});
 	
-	Ext.DomHelper.append(document.body, {
+	Ext.core.DomHelper.append(document.body, {
 	    id: phId,
 	    cn: [{
 	    	tag: 'iframe', 

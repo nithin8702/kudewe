@@ -1,4 +1,4 @@
-Ext.chart.Chart.CHART_URL = 'lib/ext-3.0.0/resources/charts.swf';
+//Ext.chart.Chart.CHART_URL = 'lib/ext-3.0.0/resources/charts.swf';
 
 //Build dashboard's filters
 function buildFilters(dashBoardDefinition) {
@@ -35,7 +35,7 @@ function setDefaultValues(dashBoardDefinition) {
 function buildLayoutPortal(dashBoardDefinition) {
 	var viewDefinitions = dashBoardDefinition.views;
 	var portal =  {
-		xtype:'portal',
+		xtype:'portalpanel',
         region:'center',
         margins:'0 0 0 0',
         items:[]
@@ -61,6 +61,7 @@ function buildLayoutPortal(dashBoardDefinition) {
 			});
 		}
 	);
+	
 	/*
 	portal.items[0].items.push({
 		title: 'Debug',
@@ -68,7 +69,6 @@ function buildLayoutPortal(dashBoardDefinition) {
         items: buildViewDebug()
 	});
 	*/
-	
 	return portal;
 }
 
