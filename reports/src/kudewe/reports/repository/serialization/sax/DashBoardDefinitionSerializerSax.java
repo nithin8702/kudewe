@@ -28,6 +28,7 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 	private GenericDefinition genericDefinition;
 	private String genericDefinitionType;
 	private GenericDefinition genericDefinition2;
+	private String genericDefinitionType2;
 	private StringBuilder text;
 	private List<String> path = new ArrayList<String>();
 	
@@ -114,8 +115,6 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 			}
 		} else {
 			// Create look in function of parent node
-			
-			
 			if ("look".equals(getAncestorNodeName(1))) {
 				// parser is on look
 				genericDefinition = new GenericDefinition();
@@ -125,6 +124,7 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 				// parser is on look/x
 				genericDefinition2 = new GenericDefinition();
 				genericDefinition2.setName(name);
+				genericDefinitionType2 = atts.getValue("type");
 			}
 		}
 		
@@ -188,13 +188,15 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 						viewDefinition.getLookDefinition().addProperty(genericDefinition, genericDefinitionType);
 					} else {
 						viewDefinition.getLookDefinition().addProperty(new GenericDefinition(name, genericDefinition), genericDefinitionType);
+						//viewDefinition.getLookDefinition().addProperty(genericDefinition, genericDefinitionType);
 					}
 				}
 			} else if ("look".equals(getAncestorNodeName(2))) {
 				// parser is on look/x
 				genericDefinition2.setValue(getGenericDefinitionValue(text.toString()));
-				genericDefinition.addProperty(genericDefinition2, null);
+				genericDefinition.addProperty(genericDefinition2, genericDefinitionType2);
 			}
+			
 		
 		}
 		path.remove(path.size() - 1);

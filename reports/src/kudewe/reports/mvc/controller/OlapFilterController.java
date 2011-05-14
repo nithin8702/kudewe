@@ -52,13 +52,25 @@ public class OlapFilterController extends AbstractController {
 		
 		// Build filter map from request
 		Map<String, Filter> filters = new HashMap<String, Filter>();
-		Enumeration<String> paramNames = (Enumeration<String>) request.getParameterNames();
-		while (paramNames.hasMoreElements()) {
-			String filterName = paramNames.nextElement();
-			String filterValue = request.getParameter(filterName);
-			Filter filter = new Filter(filterName, filterValue);
-			filters.put(filterName, filter);
+		String filtersParam = request.getParameter("filter");
+		if (filtersParam != null) {
+			String[] filtersArray = filtersParam.split("&");
+			for (String filterParam : filtersArray) {
+				String[] filterArray = filterParam.split("="); 
+				String filterName = filterArray[0];
+				String filterValue = filterArray[1];
+				Filter filter = new Filter(filterName, filterValue);
+				filters.put(filterName, filter);
+			}
 		}
+		
+		//Enumeration<String> paramNames = (Enumeration<String>) request.getParameterNames();
+		//while (paramNames.hasMoreElements()) {
+			//String filterName = paramNames.nextElement();
+			//String filterValue = request.getParameter(filterName);
+			//Filter filter = new Filter(filterName, filterValue);
+			//filters.put(filterName, filter);
+		//}
 		
 		// Get filter
 		Filter filter = olapService.getFilter(filterUrl, filters);
