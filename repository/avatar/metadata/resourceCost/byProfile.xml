@@ -8,7 +8,7 @@
 	
 	
 	<filters>
-		<include file="../filters/all.filter.xml"/>
+		<include file="../filters/cost.all.filter.xml"/>
 	</filters>
 	<include file="../connections/default.conn.xml"/>
 </dashboard>

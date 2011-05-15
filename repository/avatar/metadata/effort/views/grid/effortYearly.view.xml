@@ -1,0 +1,42 @@
+<view>
+	<name>effortYearlyGrid</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Effort]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [Effort]
+	    	WHERE ${profile.parent(employee)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>profile</filter>
+			<filter>employee</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+			<filter>subProject</filter>
+			<filter>project</filter>
+			<filter>customer</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Esfuerzo Anual</title>
+		<height>180</height>
+		<fields>Time</fields>
+		<fields>Effort</fields>
+		<columns>
+			<header>Mes</header>
+			<dataIndex>Time</dataIndex>
+			<width>150</width>
+		</columns>
+		<columns>
+			<header>Esfuerzo</header>
+			<dataIndex>Effort</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+	</look>
+</view>

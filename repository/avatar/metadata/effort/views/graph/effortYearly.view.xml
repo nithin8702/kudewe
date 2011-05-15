@@ -1,0 +1,51 @@
+<view>
+	<name>effortYearlyGraph</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Effort]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [Effort]
+	    	WHERE ${profile.parent(employee)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>profile</filter>
+			<filter>employee</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+			<filter>subProject</filter>
+			<filter>project</filter>
+			<filter>customer</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Esfuerzo Anual</title>
+		<height>200</height>
+		<width>200</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Time</fields>
+		<fields>Effort</fields>
+		<axes>
+			<type>Numeric</type>
+			<position>left</position>
+			<fields>Effort</fields>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Time</fields>
+		</axes>
+		<series type="list">
+			<type>column</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>Effort</yField>
+		</series>
+	</look>
+</view>

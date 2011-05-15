@@ -1,0 +1,43 @@
+<view>
+	<name>totalEffortByProfileGraph</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Effort]} ON COLUMNS, 
+	    	{
+	    		ORDER({[Resource].[Profile].members}, [Measures].[Effort], DESC)
+	    	} on rows
+	    	FROM [Effort]
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${profile.parent(employee)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)}
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>month</filter>
+			<filter>profile</filter>
+			<filter>employee</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+			<filter>subProject</filter>
+			<filter>project</filter>
+			<filter>customer</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Esfuezo x Perfil</title>
+		<height>200</height>
+		<width>100</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Resource</fields>
+		<fields>Effort</fields>
+		<series type="list">
+			<type>pie</type>
+			<field>Effort</field>
+			<label>
+				<field>Resource</field>
+			</label>
+		</series>
+	</look>
+</view>

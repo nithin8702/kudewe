@@ -1,0 +1,2 @@
+<include file="../filters/project.filter.xml"/>
+<include file="../filters/cost.all.filter.xml"/>

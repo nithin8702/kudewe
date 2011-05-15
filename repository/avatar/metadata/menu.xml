@@ -13,4 +13,13 @@
 			</menu>
 		</items>
 	</menu>
+	<menu>
+		<name>Esfuerzo</name>
+		<items>
+			<menu>
+				<name>Esfuerzo Anual</name>
+				<dashBoardUrl>effort/yearly</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
 </items>
