@@ -1,0 +1,43 @@
+<view>
+	<name>effortBySubProjectGrid</name>
+	<datasource>
+		<query>
+	    	SELECT {
+	    		[Measures].[Effort]
+	    	} ON COLUMNS, NON EMPTY {
+	    		Descendants(${subProject.parent(project).parent(customer).default([Project].[All])}, [Project].[SubProject], SELF_AND_BEFORE)
+	    	} on rows
+	    	FROM [Effort]
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${profile.parent(employee)}, ${seniority}, ${workingHours} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>profile</filter>
+			<filter>employee</filter>
+			<filter>seniority</filter>
+			<filter>workingHours</filter>
+			<filter>subProject</filter>
+			<filter>project</filter>
+			<filter>customer</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.grid</lookType>
+		<title>Esfuerzo x Proyecto</title>
+		<height>200</height>
+		<fields>Project</fields>
+		<fields>Effort</fields>
+		<columns>
+			<header>Proyecto</header>
+			<dataIndex>Project</dataIndex>
+			<width>150</width>
+		</columns>
+		<columns>
+			<header>Esfuerzo</header>
+			<dataIndex>Effort</dataIndex>
+			<renderer>intNumber</renderer>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+	</look>
+</view>

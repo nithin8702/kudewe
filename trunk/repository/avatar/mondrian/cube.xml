@@ -31,7 +31,15 @@
 			<Level name="Employee" column="ID" nameColumn="NAME" uniqueMembers="true" ordinalColumn="NAME"/>
 		</Hierarchy>
 	</Dimension>
-
+	<Dimension name="Project">
+		<Hierarchy hasAll="true" allMemberName="All" primaryKey="ID" name="Project">
+			<Table name="LK_PROJECT"/>
+			<Level name="Customer" column="CUSTOMER" uniqueMembers="false"/>
+			<Level name="Project" column="PROJECT" uniqueMembers="false"/>			
+			<Level name="SubProject" column="SUBPROJECT" uniqueMembers="false" />
+		</Hierarchy>
+	</Dimension>
+	
 	<Cube name="ResourceCost">
 		<Table name="FT_RESOURCE_COST"/>
 		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
@@ -48,5 +56,16 @@
 				</SQL>
 			</MeasureExpression>
 		</Measure>
+	</Cube>
+	
+	<Cube name="Effort">
+		<Table name="FT_EFFORT"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<DimensionUsage name="Resource" source="Resource" foreignKey="RESOURCE_ID"/>
+		<DimensionUsage name="ResourceSeniority" source="ResourceSeniority" foreignKey="RESOURCE_ID"/>
+		<DimensionUsage name="ResourceWorkingHours" source="ResourceWorkingHours" foreignKey="RESOURCE_ID"/>
+		<DimensionUsage name="Project" source="Project" foreignKey="PROJECT_ID"/>
+		
+		<Measure name="Effort" column="EFFORT" aggregator="sum" formatString="#,###"/>
 	</Cube>
 </Schema>

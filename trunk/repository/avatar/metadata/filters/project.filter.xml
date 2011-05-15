@@ -1,0 +1,53 @@
+<filter>
+	<name>customer</name>
+	<label>Cliente</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{[Project].[All], [Project].[Customer].members} on rows
+	    	FROM [Effort]
+		</query>
+	</datasource>
+</filter>
+<filter>
+	<name>project</name>
+	<label>Proyecto</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+	    		[Project].[All],
+	    		Descendants(${customer.default([Project].[All])}, [Project].[Project])
+	    	} on rows
+	    	FROM [effort]
+		</query>
+		<!-- 
+		<dependencies>
+			<filter>customer</filter>
+		</dependencies>
+		 -->
+	</datasource>
+</filter>
+<filter>
+	<name>subProject</name>
+	<label>Subproyecto</label>
+	<datasource>
+		<query>
+			WITH MEMBER [Measures].[one] AS '1'
+	    	SELECT {[Measures].[one]} ON COLUMNS,
+	    	{
+	    		[Project].[All],
+	    		Descendants(${project.parent(customer).default([Project].[All])}, [Project].[SubProject])
+	    	} on rows
+	    	FROM [Effort]
+		</query>
+		<!-- 
+		<dependencies>
+			<filter>customer</filter>
+			<filter>subProject</filter>
+		</dependencies>
+		 -->
+	</datasource>
+</filter>
