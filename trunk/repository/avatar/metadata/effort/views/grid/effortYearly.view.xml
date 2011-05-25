@@ -34,7 +34,6 @@
 		<columns>
 			<header>Esfuerzo</header>
 			<dataIndex>Effort</dataIndex>
-			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>70</width>
 		</columns>

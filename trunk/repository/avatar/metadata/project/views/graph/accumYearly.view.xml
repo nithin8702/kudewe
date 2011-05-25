@@ -1,0 +1,73 @@
+<view>
+	<name>accumYearlyGraph</name>
+	<datasource>
+		<query>
+			WITH
+				MEMBER [Measures].[IncomeAccum] AS
+  					SUM( { [Time].[All].FirstChild.FirstChild.FirstChild : [Time].[Month].CurrentMember }, [Measures].[Income] )
+			 	MEMBER [Measures].[OutcomeAccum] AS
+   					SUM( { [Time].[All].FirstChild.FirstChild.FirstChild : [Time].[Month].CurrentMember }, [Measures].[Outcome] )
+			 	MEMBER [Measures].[Balance] AS
+   					[Measures].[IncomeAccum] - [Measures].[OutcomeAccum] 
+
+	    	SELECT {
+	    		[Measures].[IncomeAccum], [Measures].[OutcomeAccum], [Measures].[Balance]
+	    	} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [CashFlow]
+	    	WHERE ${subProject.parent(project).parent(customer)} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>subProject</filter>
+			<filter>project</filter>
+			<filter>customer</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Acumulado Anual</title>
+		<height>200</height>
+		<width>200</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Time</fields>
+		<fields>IncomeAccum</fields>
+		<fields>OutcomeAccum</fields>
+		<fields>Balance</fields>
+		<axes>
+			<type>Numeric</type>
+			<position>left</position>
+			<fields>IncomeAccum</fields>
+			<fields>OutcomeAccum</fields>
+			<fields>Balance</fields>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Time</fields>
+		</axes>
+		<series>
+			<type>column</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>Balance</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>IncomeAccum</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>OutcomeAccum</yField>
+		</series>
+	</look>
+</view>

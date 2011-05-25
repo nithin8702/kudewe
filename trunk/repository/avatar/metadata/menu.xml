@@ -22,4 +22,13 @@
 			</menu>
 		</items>
 	</menu>
+	<menu>
+		<name>Proyecto</name>
+		<items>
+			<menu>
+				<name>Quema</name>
+				<dashBoardUrl>project/burn</dashBoardUrl>
+			</menu>
+		</items>
+	</menu>
 </items>

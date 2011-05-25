@@ -1,0 +1,55 @@
+<view>
+	<name>cashflowYearlyGraph</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Income], [Measures].[Outcome]} ON COLUMNS, 
+	    	{
+	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	} on rows
+	    	FROM [CashFlow]
+	    	WHERE ${subProject.parent(project).parent(customer)} 
+		</query>
+		<dependencies>
+			<filter>year</filter>
+			<filter>subProject</filter>
+			<filter>project</filter>
+			<filter>customer</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>CashFlow Anual</title>
+		<height>200</height>
+		<width>200</width>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
+		<fields>Time</fields>
+		<fields>Income</fields>
+		<fields>Outcome</fields>
+		<axes>
+			<type>Numeric</type>
+			<position>left</position>
+			<fields>Income</fields>
+			<fields>Outcome</fields>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Time</fields>
+		</axes>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>Income</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>Outcome</yField>
+		</series>
+	</look>
+</view>
