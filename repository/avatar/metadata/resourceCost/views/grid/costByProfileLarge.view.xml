@@ -36,21 +36,18 @@
 		<columns>
 			<header>Indirecto</header>
 			<dataIndex>IndirectCost</dataIndex>
-			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>70</width>
 		</columns>
 		<columns>
 			<header>Directo</header>
 			<dataIndex>DirectCost</dataIndex>
-			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>65</width>
 		</columns>
 		<columns>
 			<header>Total</header>
 			<dataIndex>TotalCost</dataIndex>
-			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>80</width>
 		</columns>

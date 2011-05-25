@@ -7,13 +7,11 @@
 	    		ORDER({[Resource].[Profile].members}, [Measures].[Effort], DESC)
 	    	} on rows
 	    	FROM [Effort]
-	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${profile.parent(employee)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)}
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)}
 		</query>
 		<dependencies>
 			<filter>year</filter>
 			<filter>month</filter>
-			<filter>profile</filter>
-			<filter>employee</filter>
 			<filter>seniority</filter>
 			<filter>workingHours</filter>
 			<filter>subProject</filter>
