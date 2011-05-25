@@ -47,9 +47,9 @@
 		<DimensionUsage name="ResourceSeniority" source="ResourceSeniority" foreignKey="RESOURCE_ID"/>
 		<DimensionUsage name="ResourceWorkingHours" source="ResourceWorkingHours" foreignKey="RESOURCE_ID"/>
 		
-		<Measure name="DirectCost" column="DIRECT_COST" aggregator="sum" formatString="#,###"/>
-		<Measure name="IndirectCost" column="INDIRECT_COST" aggregator="sum" formatString="#,###"/>
-		<Measure name="TotalCost" aggregator="sum" formatString="#,###">
+		<Measure name="DirectCost" column="DIRECT_COST" aggregator="sum" />
+		<Measure name="IndirectCost" column="INDIRECT_COST" aggregator="sum" />
+		<Measure name="TotalCost" aggregator="sum">
 			<MeasureExpression>
 				<SQL dialect="generic">
 				(FT_RESOURCE_COST.DIRECT_COST + FT_RESOURCE_COST.INDIRECT_COST)
@@ -66,6 +66,22 @@
 		<DimensionUsage name="ResourceWorkingHours" source="ResourceWorkingHours" foreignKey="RESOURCE_ID"/>
 		<DimensionUsage name="Project" source="Project" foreignKey="PROJECT_ID"/>
 		
-		<Measure name="Effort" column="EFFORT" aggregator="sum" formatString="#,###"/>
+		<Measure name="Effort" column="EFFORT" aggregator="sum"/>
+	</Cube>
+	
+	<Cube name="CashFlow">
+		<Table name="FT_CASHFLOW"/>
+		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
+		<DimensionUsage name="Project" source="Project" foreignKey="PROJECT_ID"/>
+		
+		<Measure name="Income" column="INCOME" aggregator="sum"/>
+		
+		<Measure name="Outcome" aggregator="sum">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_CASHFLOW.INCOME * 0.12)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
 	</Cube>
 </Schema>
