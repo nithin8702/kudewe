@@ -1,19 +1,21 @@
 <view>
-	<name>effortBySubProjectGrid</name>
+	<name>effortByProfileGrid</name>
 	<datasource>
 		<query>
 	    	SELECT {
 	    		[Measures].[Effort], [Measures].[EffortCost]
 	    	} ON COLUMNS, NON EMPTY {
-	    		Descendants(${subProject.parent(project).parent(customer).default([Project].[All])}, [Project].[SubProject], SELF_AND_BEFORE)
+	    		Descendants(${employee.parent(profile).default([Resource].[All])}, [Resource].[Employee], SELF_AND_BEFORE)
 	    	} on rows
 	    	FROM [Effort]
-	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${profile.parent(employee)}, ${seniority}, ${workingHours} 
+	    	WHERE ${month.parent(year).default([Time].[All].LastChild)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)}
 		</query>
 		<dependencies>
 			<filter>year</filter>
+			<filter>month</filter>
 			<filter>profile</filter>
 			<filter>employee</filter>
+			<filter>seniority</filter>
 			<filter>seniority</filter>
 			<filter>workingHours</filter>
 			<filter>subProject</filter>
@@ -23,14 +25,14 @@
 	</datasource>
 	<look>
 		<lookType>ext.grid</lookType>
-		<title>Esfuerzo x Proyecto</title>
-		<height>300</height>
-		<fields>Project</fields>
+		<title>Costo x Perfil</title>
+		<height>400</height>
+		<fields>Resource</fields>
 		<fields>Effort</fields>
 		<fields>EffortCost</fields>
 		<columns>
-			<header>Proyecto</header>
-			<dataIndex>Project</dataIndex>
+			<header>Recurso</header>
+			<dataIndex>Resource</dataIndex>
 			<width>150</width>
 		</columns>
 		<columns>

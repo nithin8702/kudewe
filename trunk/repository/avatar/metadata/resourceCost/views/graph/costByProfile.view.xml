@@ -2,7 +2,7 @@
 	<name>costByProfileGraph</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[DirectCost], [Measures].[IndirectCost], [Measures].[TotalCost]} ON COLUMNS, 
+	    	SELECT {[Measures].[DirectCost], [Measures].[IndirectCost]} ON COLUMNS, 
 	    	{
 	    		ORDER({[Resource].[Profile].members}, [Measures].[TotalCost], DESC)
 	    	} on rows
@@ -35,28 +35,18 @@
 			<fields>DirectCost</fields>
 			<fields>IndirectCost</fields>
 			<fields>TotalCost</fields>
+			<minimum>0</minimum>
 		</axes>
 		<axes>
 			<type>Category</type>
 			<position>bottom</position>
 			<fields type="list">Resource</fields>
 		</axes>
-		<series>
-			<type>column</type>
+		<series type="list">
+			<type>area</type>
 			<axis>left</axis>
-			<xField>Resource</xField>
-			<yField>TotalCost</yField>
-		</series>
-		<series>
-			<type>line</type>
-			<axis>left</axis>
-			<xField>Resource</xField>
+			<xField>Time</xField>
 			<yField>DirectCost</yField>
-		</series>
-		<series>
-			<type>line</type>
-			<axis>left</axis>
-			<xField>Resource</xField>
 			<yField>IndirectCost</yField>
 		</series>
 	</look>

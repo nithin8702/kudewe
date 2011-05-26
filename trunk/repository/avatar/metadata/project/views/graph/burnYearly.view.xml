@@ -1,12 +1,12 @@
 <view>
-	<name>cashflowYearlyGraph</name>
+	<name>burnYearly</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[Income], [Measures].[Outcome]} ON COLUMNS, 
+	    	SELECT {[Measures].[EffortCost], [Measures].[Budget]} ON COLUMNS, 
 	    	{
 	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
 	    	} on rows
-	    	FROM [CashFlow]
+	    	FROM [ProjectBurn]
 	    	WHERE ${subProject.parent(project).parent(customer)} 
 		</query>
 		<dependencies>
@@ -18,7 +18,7 @@
 	</datasource>
 	<look>
 		<lookType>ext.graph</lookType>
-		<title>CashFlow Anual</title>
+		<title>Presupuesto - Esfuerzo Anual</title>
 		<height>200</height>
 		<width>200</width>
 		<theme>Category1</theme>
@@ -26,13 +26,13 @@
 			<position>right</position>
 		</legend>
 		<fields>Time</fields>
-		<fields>Income</fields>
-		<fields>Outcome</fields>
+		<fields>EffortCost</fields>
+		<fields>Budget</fields>
 		<axes>
 			<type>Numeric</type>
 			<position>left</position>
-			<fields>Income</fields>
-			<fields>Outcome</fields>
+			<fields>EffortCost</fields>
+			<fields>Budget</fields>
 		</axes>
 		<axes>
 			<type>Category</type>
@@ -43,13 +43,13 @@
 			<type>line</type>
 			<axis>left</axis>
 			<xField>Time</xField>
-			<yField>Income</yField>
+			<yField>EffortCost</yField>
 		</series>
 		<series>
 			<type>line</type>
 			<axis>left</axis>
 			<xField>Time</xField>
-			<yField>Outcome</yField>
+			<yField>Budget</yField>
 		</series>
 	</look>
 </view>

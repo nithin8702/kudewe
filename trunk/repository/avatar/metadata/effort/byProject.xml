@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dashboard>
 	<include file="views/graph/effortYearly.view.xml"/>
-	<include file="views/grid/effortYearly.view.xml"/>
 	<include file="views/graph/effortByCustomer.view.xml"/>
-	<include file="views/graph/totalEffortByProfile.view.xml"/>
-	<include file="views/graph/totalEffortCostByProfile.view.xml"/>
+	<include file="views/grid/effortBySubProject.view.xml"/>
+	<include file="views/graph/effortByProject.view.xml"/>
 	
 	<filters>
 		<include file="../filters/effort.all.filter.xml"/>

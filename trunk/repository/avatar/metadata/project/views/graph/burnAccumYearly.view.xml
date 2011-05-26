@@ -1,22 +1,12 @@
 <view>
-	<name>accumYearlyGraph</name>
+	<name>burnAccumYearly</name>
 	<datasource>
 		<query>
-			WITH
-				MEMBER [Measures].[IncomeAccum] AS
-  					SUM( { [Time].[All].FirstChild.FirstChild.FirstChild : [Time].[Month].CurrentMember }, [Measures].[Income] )
-			 	MEMBER [Measures].[OutcomeAccum] AS
-   					SUM( { [Time].[All].FirstChild.FirstChild.FirstChild : [Time].[Month].CurrentMember }, [Measures].[Outcome] )
-			 	MEMBER [Measures].[Balance] AS
-   					[Measures].[IncomeAccum] - [Measures].[OutcomeAccum] 
-
-	    	SELECT {
-	    		[Measures].[IncomeAccum], [Measures].[OutcomeAccum], [Measures].[Balance]
-	    	} ON COLUMNS, 
+	    	SELECT {[Measures].[EffortCostAccum], [Measures].[BudgetAccum], [Measures].[Balance]} ON COLUMNS, 
 	    	{
 	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
 	    	} on rows
-	    	FROM [CashFlow]
+	    	FROM [ProjectBurn]
 	    	WHERE ${subProject.parent(project).parent(customer)} 
 		</query>
 		<dependencies>
@@ -28,22 +18,22 @@
 	</datasource>
 	<look>
 		<lookType>ext.graph</lookType>
-		<title>Acumulado Anual</title>
-		<height>200</height>
+		<title>Presupuesto - Esfuerzo Acumulado Anual</title>
+		<height>300</height>
 		<width>200</width>
 		<theme>Category1</theme>
 		<legend>
 			<position>right</position>
 		</legend>
 		<fields>Time</fields>
-		<fields>IncomeAccum</fields>
-		<fields>OutcomeAccum</fields>
+		<fields>EffortCostAccum</fields>
+		<fields>BudgetAccum</fields>
 		<fields>Balance</fields>
 		<axes>
 			<type>Numeric</type>
 			<position>left</position>
-			<fields>IncomeAccum</fields>
-			<fields>OutcomeAccum</fields>
+			<fields>EffortCostAccum</fields>
+			<fields>BudgetAccum</fields>
 			<fields>Balance</fields>
 		</axes>
 		<axes>
@@ -52,22 +42,22 @@
 			<fields type="list">Time</fields>
 		</axes>
 		<series>
-			<type>column</type>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>BudgetAccum</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>EffortCostAccum</yField>
+		</series>
+		<series>
+			<type>line</type>
 			<axis>left</axis>
 			<xField>Time</xField>
 			<yField>Balance</yField>
-		</series>
-		<series>
-			<type>line</type>
-			<axis>left</axis>
-			<xField>Time</xField>
-			<yField>IncomeAccum</yField>
-		</series>
-		<series>
-			<type>line</type>
-			<axis>left</axis>
-			<xField>Time</xField>
-			<yField>OutcomeAccum</yField>
 		</series>
 	</look>
 </view>

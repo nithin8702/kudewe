@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<include file="views/graph/budgetYearly.view.xml"/>
+	<include file="views/graph/budgetAccumYearly.view.xml"/>
+	<include file="views/graph/burnYearly.view.xml"/>
+	<include file="views/graph/burnAccumYearly.view.xml"/>
+	<filters>
+		<include file="../filters/project.all.filter.xml"/>
+	</filters>
+	<include file="../connections/default.conn.xml"/>
+</dashboard>
