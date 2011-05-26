@@ -20,14 +20,22 @@
 				<name>Esfuerzo Anual</name>
 				<dashBoardUrl>effort/yearly</dashBoardUrl>
 			</menu>
+			<menu>
+				<name>Esfuerzo x Proyecto</name>
+				<dashBoardUrl>effort/byProject</dashBoardUrl>
+			</menu>
+			<menu>
+				<name>Esfuerzo x Recurso</name>
+				<dashBoardUrl>effort/byResource</dashBoardUrl>
+			</menu>
 		</items>
 	</menu>
 	<menu>
 		<name>Proyecto</name>
 		<items>
 			<menu>
-				<name>Quema</name>
-				<dashBoardUrl>project/burn</dashBoardUrl>
+				<name>Presupuesto</name>
+				<dashBoardUrl>project/budget</dashBoardUrl>
 			</menu>
 		</items>
 	</menu>

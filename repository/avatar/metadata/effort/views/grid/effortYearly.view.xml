@@ -2,9 +2,10 @@
 	<name>effortYearlyGrid</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[Effort]} ON COLUMNS, 
-	    	{
-	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
+	    	SELECT {
+	    		[Measures].[Effort], [Measures].[EffortCost]
+	    	} ON COLUMNS, {
+	    		${year.default([Time].[All].LastChild)}, Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
 	    	} on rows
 	    	FROM [Effort]
 	    	WHERE ${profile.parent(employee)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)} 
@@ -26,6 +27,7 @@
 		<height>180</height>
 		<fields>Time</fields>
 		<fields>Effort</fields>
+		<fields>EffortCost</fields>
 		<columns>
 			<header>Mes</header>
 			<dataIndex>Time</dataIndex>
@@ -34,6 +36,12 @@
 		<columns>
 			<header>Esfuerzo</header>
 			<dataIndex>Effort</dataIndex>
+			<align>right</align>
+			<width>70</width>
+		</columns>
+		<columns>
+			<header>Costo</header>
+			<dataIndex>EffortCost</dataIndex>
 			<align>right</align>
 			<width>70</width>
 		</columns>

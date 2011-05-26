@@ -1,21 +1,16 @@
 <view>
-	<name>effortYearlyGraph</name>
+	<name>budgetYearly</name>
 	<datasource>
 		<query>
-	    	SELECT {
-	    		[Measures].[Effort], [Measures].[EffortCost] 
-	    	} ON COLUMNS, {
+	    	SELECT {[Measures].[Income], [Measures].[Outcome], [Measures].[Budget]} ON COLUMNS, 
+	    	{
 	    		Descendants(${year.default([Time].[All].LastChild)}, [Time].[Month])
 	    	} on rows
-	    	FROM [Effort]
-	    	WHERE ${profile.parent(employee)}, ${seniority}, ${workingHours}, ${subProject.parent(project).parent(customer)} 
+	    	FROM [ProjectBudget]
+	    	WHERE ${subProject.parent(project).parent(customer)} 
 		</query>
 		<dependencies>
 			<filter>year</filter>
-			<filter>profile</filter>
-			<filter>employee</filter>
-			<filter>seniority</filter>
-			<filter>workingHours</filter>
 			<filter>subProject</filter>
 			<filter>project</filter>
 			<filter>customer</filter>
@@ -23,7 +18,7 @@
 	</datasource>
 	<look>
 		<lookType>ext.graph</lookType>
-		<title>Esfuerzo Anual</title>
+		<title>Presupuesto Anual</title>
 		<height>200</height>
 		<width>200</width>
 		<theme>Category1</theme>
@@ -31,19 +26,15 @@
 			<position>right</position>
 		</legend>
 		<fields>Time</fields>
-		<fields>Effort</fields>
-		<fields>EffortCost</fields>
+		<fields>Income</fields>
+		<fields>Outcome</fields>
+		<fields>Budget</fields>
 		<axes>
 			<type>Numeric</type>
 			<position>left</position>
-			<fields>EffortCost</fields>
-			<minumum>0</minumum>
-		</axes>
-		<axes>
-			<type>Numeric</type>
-			<position>right</position>
-			<fields>Effort</fields>
-			<minumum>0</minumum>
+			<fields>Income</fields>
+			<fields>Outcome</fields>
+			<fields>Budget</fields>
 		</axes>
 		<axes>
 			<type>Category</type>
@@ -54,13 +45,19 @@
 			<type>line</type>
 			<axis>left</axis>
 			<xField>Time</xField>
-			<yField>EffortCost</yField>
+			<yField>Income</yField>
 		</series>
 		<series>
 			<type>line</type>
-			<axis>right</axis>
+			<axis>left</axis>
 			<xField>Time</xField>
-			<yField>Effort</yField>
+			<yField>Outcome</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>left</axis>
+			<xField>Time</xField>
+			<yField>Budget</yField>
 		</series>
 	</look>
 </view>

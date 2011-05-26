@@ -67,10 +67,23 @@
 		<DimensionUsage name="Project" source="Project" foreignKey="PROJECT_ID"/>
 		
 		<Measure name="Effort" column="EFFORT" aggregator="sum"/>
+		<Measure name="ResourceCost" column="RESOURCE_COST" aggregator="sum" />
+		
+		<Measure name="EffortCost" aggregator="sum">
+			<MeasureExpression>
+				<SQL dialect="generic">
+				(FT_EFFORT.EFFORT * FT_EFFORT.RESOURCE_COST)
+				</SQL>
+			</MeasureExpression>
+		</Measure>
+		
+		<CalculatedMember name="EffortCostAccum" dimension="Measures">
+			<Formula>SUM( { [Time].[All].FirstChild.FirstChild.FirstChild : [Time].[Month].CurrentMember }, [Measures].[EffortCost] )</Formula>
+		</CalculatedMember>
 	</Cube>
 	
-	<Cube name="CashFlow">
-		<Table name="FT_CASHFLOW"/>
+	<Cube name="ProjectBudget">
+		<Table name="FT_PROJECT_BUDGET"/>
 		<DimensionUsage name="Time" source="Time" foreignKey="DATE_ID"/>
 		<DimensionUsage name="Project" source="Project" foreignKey="PROJECT_ID"/>
 		
@@ -79,9 +92,43 @@
 		<Measure name="Outcome" aggregator="sum">
 			<MeasureExpression>
 				<SQL dialect="generic">
-				(FT_CASHFLOW.INCOME * 0.12)
+				(FT_PROJECT_BUDGET.INCOME * 0.12)
 				</SQL>
 			</MeasureExpression>
 		</Measure>
+		
+		<CalculatedMember name="Budget" dimension="Measures">
+			<Formula>[Measures].[Income] - [Measures].[Outcome]</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="IncomeAccum" dimension="Measures">
+			<Formula>SUM( { [Time].[All].FirstChild.FirstChild.FirstChild : [Time].[Month].CurrentMember }, [Measures].[Income] )</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="OutcomeAccum" dimension="Measures">
+			<Formula>SUM( { [Time].[All].FirstChild.FirstChild.FirstChild : [Time].[Month].CurrentMember }, [Measures].[Outcome] )</Formula>
+		</CalculatedMember>
+		<CalculatedMember name="BudgetAccum" dimension="Measures">
+			<Formula>[Measures].[IncomeAccum] - [Measures].[OutcomeAccum]</Formula>
+		</CalculatedMember>
 	</Cube>
+	
+	<VirtualCube name="ProjectBurn">
+		<CubeUsages>
+			<CubeUsage cubeName="Effort"/>
+			<CubeUsage cubeName="ProjectBudget"/>
+		</CubeUsages>
+		<VirtualCubeDimension name="Time"/>
+		<VirtualCubeDimension name="Resource"/>
+		<VirtualCubeDimension name="ResourceSeniority"/>
+		<VirtualCubeDimension name="ResourceWorkingHours"/>
+		<VirtualCubeDimension name="Project"/>
+		
+		<VirtualCubeMeasure cubeName="Effort" name="[Measures].[EffortCost]"/>
+		<VirtualCubeMeasure cubeName="Effort" name="[Measures].[EffortCostAccum]"/>
+		<VirtualCubeMeasure cubeName="ProjectBudget" name="[Measures].[Budget]"/>
+		<VirtualCubeMeasure cubeName="ProjectBudget" name="[Measures].[BudgetAccum]"/>
+		
+		<CalculatedMember name="Balance" dimension="Measures">
+			<Formula>[Measures].[BudgetAccum] - [Measures].[EffortCostAccum]</Formula>
+		</CalculatedMember>
+	</VirtualCube>
 </Schema>

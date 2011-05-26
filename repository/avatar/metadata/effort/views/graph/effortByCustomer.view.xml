@@ -2,8 +2,9 @@
 	<name>effortByClientGraph</name>
 	<datasource>
 		<query>
-	    	SELECT {[Measures].[Effort]} ON COLUMNS, 
-	    	NON EMPTY {
+	    	SELECT {
+	    		[Measures].[Effort], [Measures].[EffortCost] 
+	    	} ON COLUMNS, NON EMPTY {
 	    		TopCount(
 	    			ORDER(
 	    				{
@@ -37,19 +38,33 @@
 		</legend>
 		<fields>Project</fields>
 		<fields>Effort</fields>
+		<fields>EffortCost</fields>
 		<axes>
 			<type>Numeric</type>
 			<position>left</position>
+			<fields>EffortCost</fields>
+			<minumum>0</minumum>
+		</axes>
+		<axes>
+			<type>Numeric</type>
+			<position>right</position>
 			<fields>Effort</fields>
+			<minumum>0</minumum>
 		</axes>
 		<axes>
 			<type>Category</type>
 			<position>bottom</position>
 			<fields type="list">Project</fields>
 		</axes>
-		<series type="list">
-			<type>column</type>
+		<series>
+			<type>line</type>
 			<axis>left</axis>
+			<xField>Project</xField>
+			<yField>EffortCost</yField>
+		</series>
+		<series>
+			<type>line</type>
+			<axis>right</axis>
 			<xField>Project</xField>
 			<yField>Effort</yField>
 		</series>

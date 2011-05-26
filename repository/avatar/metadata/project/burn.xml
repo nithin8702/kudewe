@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dashboard>
-	<include file="views/graph/cashflowYearly.view.xml"/>
-	<include file="views/graph/accumYearly.view.xml"/>
-	<filters>
-		<include file="../filters/project.all.filter.xml"/>
-	</filters>
-	<include file="../connections/default.conn.xml"/>
-</dashboard>
