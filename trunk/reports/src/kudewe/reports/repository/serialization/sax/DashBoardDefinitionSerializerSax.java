@@ -29,6 +29,7 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 	private String genericDefinitionType;
 	private GenericDefinition genericDefinition2;
 	private String genericDefinitionType2;
+	private GenericDefinition genericDefinition3;
 	private StringBuilder text;
 	private List<String> path = new ArrayList<String>();
 	
@@ -125,6 +126,10 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 				genericDefinition2 = new GenericDefinition();
 				genericDefinition2.setName(name);
 				genericDefinitionType2 = atts.getValue("type");
+			} else if ("look".equals(getAncestorNodeName(3))) {
+				// parser is on look/x/x
+				genericDefinition3 = new GenericDefinition();
+				genericDefinition3.setName(name);
 			}
 		}
 		
@@ -152,13 +157,10 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 				viewDefinition.setName(text.toString());
 			}
 		
-		} else if ("label".equals (name)) {
-			
+		} else if ("label".equals (name) && "filter".equals(getAncestorNodeName(1))) {
 			// Set name in function of parent node
-			if ("filter".equals(getAncestorNodeName(1))) {
-				// parser is on filter
-				filterDefinition.setLabel(text.toString());
-			}
+			// parser is on filter
+			filterDefinition.setLabel(text.toString());
 		} else if ("query".equals(name)) {
 			
 			// Set query in function of parent node
@@ -193,8 +195,17 @@ public class DashBoardDefinitionSerializerSax extends DefaultHandler implements 
 				}
 			} else if ("look".equals(getAncestorNodeName(2))) {
 				// parser is on look/x
-				genericDefinition2.setValue(getGenericDefinitionValue(text.toString()));
+				if (genericDefinition2.getProperties().size() == 0) {
+					genericDefinition2.setValue(getGenericDefinitionValue(text.toString()));
+					//viewDefinition.getLookDefinition().addProperty(genericDefinition, genericDefinitionType);
+				} else {
+					//viewDefinition.getLookDefinition().addProperty(new GenericDefinition(name, genericDefinition), genericDefinitionType);
+				}
 				genericDefinition.addProperty(genericDefinition2, genericDefinitionType2);
+			} else if ("look".equals(getAncestorNodeName(3))) {
+				// parser is on look/x/x
+				genericDefinition3.setValue(getGenericDefinitionValue(text.toString()));
+				genericDefinition2.addProperty(genericDefinition3);
 			}
 			
 		
