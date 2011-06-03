@@ -1,6 +1,7 @@
 package kudewe.reports.test.repository.serialization;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.Reader;
 import java.io.StringReader;
@@ -72,6 +73,9 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 								"<type>line</type>" +
 								"<displayName>Cantidad</displayName>" +
 								"<yField>Quantity</yField>" +
+								"<label>" +
+									"<field>Product</field>" +
+								"</label>" +
 							"</series>" +
 							"<axes>" +
 								"<type>Numeric</type>" +
@@ -216,6 +220,11 @@ public class DashBoardDefinitionSerializerSaxTest extends BaseTest {
 		assertEquals("Cantidad", serie.getProperties().get(1).getValue());
 		assertEquals("yField", serie.getProperties().get(2).getName());
 		assertEquals("Quantity", serie.getProperties().get(2).getValue());
+		
+		GenericDefinition serieLabel = serie.getProperty("label");
+		assertNotNull("falta el label", serieLabel);
+		assertEquals("field", serieLabel.getProperties().get(0).getName());
+		assertEquals("Product", serieLabel.getProperties().get(0).getValue());
 		
 		// axes 1
 		assertEquals("axes", viewDefinition1.getLookDefinition().getProperties().get(6).getName());

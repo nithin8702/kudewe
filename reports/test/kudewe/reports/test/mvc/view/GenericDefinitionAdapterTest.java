@@ -36,6 +36,16 @@ public class GenericDefinitionAdapterTest extends BaseTest {
 		fields.add("SalePrice");
 		fields.add("Quantity");
 		
+		// series, label, field
+		GenericDefinition field = new GenericDefinition("field", "Product");
+		GenericDefinition label = new GenericDefinition();
+		label.setName("label");
+		label.addProperty(field);
+		GenericDefinition series = new GenericDefinition();
+		series.setName("series");
+		series.addProperty(label);
+		look.addProperty(series);
+		
 		look.addProperty(new GenericDefinition("fields", fields));
 		
 		// Array definition property
@@ -72,15 +82,20 @@ public class GenericDefinitionAdapterTest extends BaseTest {
 	@Test
 	public void getComplexProperties() {
 		List<GenericDefinitionAdapter> properties = lookAdapter.getComplexProperties();
-		Assert.assertEquals(1, properties.size());
+		Assert.assertEquals(2, properties.size());
 		
 		GenericDefinitionAdapter legend = properties.get(0);
 		Assert.assertEquals("legend", legend.getName());
-		
 		Assert.assertEquals(1, legend.getSimpleProperties().size());
-		
 		//Assert.assertEquals("position", legend.getSimpleArrayProperties().get(0).getName());
 		//Assert.assertEquals("right", legend.getSimpleArrayProperties().get(0).getValue());
+		
+		GenericDefinitionAdapter serie = properties.get(1);
+		Assert.assertEquals("series", serie.getName());
+		
+		GenericDefinitionAdapter label = serie.getComplexProperties().get(0);
+		
+		
 	}
 	
 	@SuppressWarnings("unchecked")
