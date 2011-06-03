@@ -21,17 +21,21 @@
 		<title>Costo Total x Dedicacion</title>
 		<height>200</height>
 		<width>100</width>
-		<theme>Category1</theme>
 		<legend>
 			<position>right</position>
 		</legend>
-		<fields>Resource</fields>
+		<theme>Base:gradients</theme>
+		<fields>ResourceWorkingHours</fields>
 		<fields>TotalCost</fields>
 		<series type="list">
 			<type>pie</type>
 			<field>TotalCost</field>
+			<showInLegend>true</showInLegend>
 			<label>
-				<field>Resource</field>
+				<field>ResourceWorkingHours</field>
+				<display>rotate</display>
+				<contrast>true</contrast>
+				<font>18px Arial</font>
 			</label>
 		</series>
 	</look>

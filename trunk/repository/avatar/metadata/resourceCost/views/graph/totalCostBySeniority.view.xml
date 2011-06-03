@@ -21,17 +21,20 @@
 		<title>Costo Total x Seniority</title>
 		<height>200</height>
 		<width>100</width>
-		<theme>Category1</theme>
 		<legend>
 			<position>right</position>
 		</legend>
-		<fields>Resource</fields>
+		<theme>Base:gradients</theme>
+		<fields>ResourceSeniority</fields>
 		<fields>TotalCost</fields>
 		<series type="list">
 			<type>pie</type>
 			<field>TotalCost</field>
+			<showInLegend>true</showInLegend>
 			<label>
-				<field>Resource</field>
+				<field>ResourceSeniority</field>
+				<display>rotate</display>
+				<contrast>true</contrast>
 			</label>
 		</series>
 	</look>
