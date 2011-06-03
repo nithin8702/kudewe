@@ -58,6 +58,10 @@ public class GenericDefinitionAdapter {
 				GenericDefinition complexProperty = (GenericDefinition) innerObject.getValue();
 				complexProperty.setName(innerObject.getName());
 				properties.add(new GenericDefinitionAdapter(complexProperty));
+			} else if (innerObject.getProperties().size() > 0) {
+				GenericDefinition complexProperty = innerObject;
+				complexProperty.setName(innerObject.getName());
+				properties.add(new GenericDefinitionAdapter(complexProperty));
 			}
 		}
 		return properties;
