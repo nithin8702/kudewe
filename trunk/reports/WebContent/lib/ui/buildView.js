@@ -181,7 +181,13 @@ function buildViewGraph(graphDefinition) {
 		        width: 200,
 		        height: 28,
 		        renderer: function(storeItem, item) {
-					this.setTitle(storeItem.get(serie.xField) + ': ' + storeItem.get(serie.yField));
+					var label = storeItem.get(serie.xField);
+					if (!label) label = storeItem.get(serie.label.field);
+					
+					var value = storeItem.get(serie.yField);
+					if (!value) value = storeItem.get(serie.field);
+					
+    				this.setTitle(label + ': ' + value);
 		        }
     		};
 		}
