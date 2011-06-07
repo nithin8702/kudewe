@@ -10,13 +10,15 @@ function buildComboFilter(filterDefinition) {
 	    forceSelection: true,
 	    loadingText: 'Loading...',
 	    triggerAction: 'all',
-	    mode: 'remote'
+	    mode: 'local'
 	});
 
-	comboFilter.on('beforequery', function(queryEvent , store) {
+	comboFilter.on('beforequery', function(queryEvent , query, forceAll, cancel) {
 		if (queryEvent.combo.store.getCount() == 0) {
 			queryEvent.combo.store.load();
+			//cancel = true;
 		}
+		//return false;
 	});
 	
 	// Set on select event handler
