@@ -20,14 +20,41 @@
 		<lookType>ext.graph</lookType>
 		<title>Ventas Anuales x Cantidad</title>
 		<height>200</height>
-		<xtype>linechart</xtype>
-		<xField>Time</xField>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
 		<fields>Time</fields>
 		<fields>Quantity</fields>
+		<axes>
+			<type>Numeric</type>
+			<position>left</position>
+			<fields type="list">Quantity</fields>
+			<minimum>0</minimum>
+			<grid>true</grid>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Time</fields>
+		</axes>
 		<series type="list">
 			<type>line</type>
-			<displayName>Cantidad</displayName>
+			<axis>left</axis>
 			<yField>Quantity</yField>
+			<xField>Time</xField>
+			<fill>true</fill>
+			<smooth>true</smooth>
+			<highlight>
+				<size>7</size>
+				<radius>7</radius>
+			</highlight>
+			<markerConfig>
+				<type>circle</type>
+				<size>4</size>
+				<radius>4</radius>
+				<stroke-width>0</stroke-width>
+			</markerConfig>
 		</series>
 	</look>
 </view>

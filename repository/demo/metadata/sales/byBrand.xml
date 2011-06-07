@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dashboard>
 	<include file="views/graph/salesByBrandByYear.view.xml"/>
-	<include file="views/grid/salesByCategory.view.xml"/>
 	<include file="views/graph/salesYearly.view.xml"/>
+	<include file="views/graph/salesProfitByCategory.view.xml"/>
+	<include file="views/graph/salesProfitBySex.view.xml"/>
+	<include file="views/grid/salesByCategory.view.xml"/>
 	<include file="views/grid/salesBySex.view.xml"/>
 	<filters>
 		<include file="../filters/all.filter.xml"/>

@@ -11,10 +11,12 @@
 				<name>Por Marca</name>
 				<dashBoardUrl>sales/byBrand</dashBoardUrl>
 			</menu>
+			<!-- 
 			<menu>
 				<name>Comparar Marcas</name>
 				<dashBoardUrl>sales/compareBrand</dashBoardUrl>
 			</menu>
+			-->
 			<menu>
 				<name>Historial</name>
 				<dashBoardUrl>sales/history</dashBoardUrl>
