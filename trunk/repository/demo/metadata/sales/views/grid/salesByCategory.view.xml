@@ -30,21 +30,18 @@
 		<columns>
 			<header>Cantidad</header>
 			<dataIndex>Quantity</dataIndex>
-			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>70</width>
 		</columns>
 		<columns>
 			<header>Venta $</header>
 			<dataIndex>SaleAmount</dataIndex>
-			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>65</width>
 		</columns>
 		<columns>
 			<header>Ganancia $</header>
 			<dataIndex>Profit</dataIndex>
-			<renderer>intNumber</renderer>
 			<align>right</align>
 			<width>80</width>
 		</columns>

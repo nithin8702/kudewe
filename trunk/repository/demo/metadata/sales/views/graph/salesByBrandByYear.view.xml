@@ -18,21 +18,42 @@
 		<lookType>ext.graph</lookType>
 		<title>Ventas x Marca (Top 10)</title>
 		<height>200</height>
-		<xtype>linechart</xtype>
-		<xField>Brand</xField>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
 		<fields>Brand</fields>
-		<fields>Quantity</fields>
 		<fields>SaleAmount</fields>
 		<fields>Profit</fields>
+		<axes>
+ 			<type>Numeric</type>
+			<position>left</position>
+			<fields>SaleAmount</fields>
+			<fields>Profit</fields>
+			<minimum>0</minimum>
+			<grid>true</grid>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Brand</fields>
+		</axes>
 		<series>
 			<type>column</type>
-			<displayName>Monto Venta</displayName>
+			<axis>left</axis>
 			<yField>SaleAmount</yField>
+			<xField>Brand</xField>
+			<highlight>true</highlight>
 		</series>
 		<series>
 			<type>line</type>
-			<displayName>Ganancia</displayName>
+			<axis>left</axis>
 			<yField>Profit</yField>
+			<xField>Brand</xField>
+			<highlight>
+				<size>7</size>
+				<radius>7</radius>
+			</highlight>
 		</series>
 	</look>
 </view>

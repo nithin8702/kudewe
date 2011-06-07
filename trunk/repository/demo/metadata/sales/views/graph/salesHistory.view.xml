@@ -22,20 +22,45 @@
 		<title>Ventas Anuales</title>
 		<width>200</width>
 		<height>200</height>
-		<xtype>linechart</xtype>
-		<xField>Time</xField>
+		<theme>Category1</theme>
+		<legend>
+			<position>right</position>
+		</legend>
 		<fields>Time</fields>
 		<fields>SaleAmount</fields>
 		<fields>Profit</fields>
+		<axes>
+ 			<type>Numeric</type>
+			<position>left</position>
+			<fields>SaleAmount</fields>
+			<fields>Profit</fields>
+			<minimum>0</minimum>
+			<grid>true</grid>
+		</axes>
+		<axes>
+			<type>Category</type>
+			<position>bottom</position>
+			<fields type="list">Time</fields>
+		</axes>
 		<series>
 			<type>line</type>
-			<displayName>Monto Venta</displayName>
+			<axis>left</axis>
 			<yField>SaleAmount</yField>
+			<xField>Time</xField>
+			<highlight>
+				<size>7</size>
+				<radius>7</radius>
+			</highlight>
 		</series>
 		<series>
 			<type>line</type>
-			<displayName>Ganancia</displayName>
+			<axis>left</axis>
 			<yField>Profit</yField>
+			<xField>Time</xField>
+			<highlight>
+				<size>7</size>
+				<radius>7</radius>
+			</highlight>
 		</series>
 	</look>
 </view>

@@ -1,0 +1,40 @@
+<view>
+	<name>salesQuantityByBrand</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
+	    	NON EMPTY {[Brand].[Brand].members} on rows
+	    	FROM [Sales]
+	    	WHERE ${category}, ${sex}, ${month.parent(year).default([Time].[All].LastChild)} 
+		</query>
+			<dependencies>
+			<filter>category</filter>
+			<filter>sex</filter>
+			<filter>month</filter>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Cantidades x Marca</title>
+		<height>200</height>
+		<fields>Brand</fields>
+		<fields>Quantity</fields>
+		<fields>SaleAmount</fields>
+		<fields>Profit</fields>
+		<legend>
+			<position>right</position>
+		</legend>
+		<theme>Base:gradients</theme>
+		<series type="list">
+			<type>pie</type>
+			<field>Quantity</field>
+			<showInLegend>true</showInLegend>
+			<label>
+				<field>Brand</field>
+				<display>rotate</display>
+				<contrast>true</contrast>
+			</label>
+		</series>
+	</look>
+</view>

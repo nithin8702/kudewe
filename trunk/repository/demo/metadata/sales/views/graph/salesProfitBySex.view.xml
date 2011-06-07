@@ -1,0 +1,40 @@
+<view>
+	<name>salesProfitBySex</name>
+	<datasource>
+		<query>
+	    	SELECT {[Measures].[Quantity], [Measures].[SaleAmount], [Measures].[Profit]} ON COLUMNS, 
+	    	NON EMPTY {[Sex].[Sex].members} on rows
+	    	FROM [Sales]
+	    	WHERE ${brand}, ${category}, ${month.parent(year).default([Time].[All].LastChild)} 
+		</query>
+			<dependencies>
+			<filter>brand</filter>
+			<filter>category</filter>
+			<filter>month</filter>
+			<filter>year</filter>
+		</dependencies>
+	</datasource>
+	<look>
+		<lookType>ext.graph</lookType>
+		<title>Ganancia x Sexo</title>
+		<height>200</height>
+		<fields>Sex</fields>
+		<fields>Quantity</fields>
+		<fields>SaleAmount</fields>
+		<fields>Profit</fields>
+		<legend>
+			<position>right</position>
+		</legend>
+		<theme>Base:gradients</theme>
+		<series type="list">
+			<type>pie</type>
+			<field>Profit</field>
+			<showInLegend>true</showInLegend>
+			<label>
+				<field>Sex</field>
+				<display>rotate</display>
+				<contrast>true</contrast>
+			</label>
+		</series>
+	</look>
+</view>
